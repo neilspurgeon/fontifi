@@ -49,7 +49,7 @@ class FontControls extends Component {
             </label>
           </div>
 
-          <select onChange={this.props.handleChange.bind(this, this.state.activeFont, 'fontFamily')} value={this.state.activeFont === 'heading' ? this.props.heading.fontFamily :this.props.body.fontFamily}>
+          <select className={styles.inputSelect} onChange={this.props.handleChange.bind(this, this.state.activeFont, 'fontFamily')} value={this.state.activeFont === 'heading' ? this.props.heading.fontFamily :this.props.body.fontFamily}>
             { this.state.fontList.map((fontObj) => {
               return <option value={fontObj.family}>{fontObj.family}</option>;
             })}

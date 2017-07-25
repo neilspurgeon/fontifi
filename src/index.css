@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
 @import url('https://fonts.googleapis.com/css?family=Noticia+Text');
 
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   padding: 0;
