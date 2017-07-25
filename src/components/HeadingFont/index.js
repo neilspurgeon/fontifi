@@ -6,7 +6,10 @@ function HeadingFont (props) {
   if (props.fontFamily) {
     const fontFamilyString = props.fontFamily.split(' ').join('+');
     const url = 'https://fonts.googleapis.com/css?family=' + fontFamilyString;
-    const fontStyle = {fontFamily: props.fontFamily};
+    const fontStyle = {
+      fontFamily: props.fontFamily,
+      fontSize: props.fontSize
+    };
 
     return (
       <div>

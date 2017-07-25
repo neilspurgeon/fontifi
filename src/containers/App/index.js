@@ -67,8 +67,12 @@ class App extends Component {
 
           <div className={contentClassnames}>
             <div className={styles.fonts}>
-              <HeadingFont fontFamily={this.state.heading.fontFamily}/>
-              <BodyFont fontFamily={this.state.body.fontFamily}/>
+              <HeadingFont
+                fontFamily={this.state.heading.fontFamily}
+                fontSize={this.state.heading.fontSize} />
+              <BodyFont
+                fontFamily={this.state.body.fontFamily}
+                fontSize={this.state.body.fontSize} />
             </div>
             <div className={styles.GetFonts}>
               <GetFonts triggerUpdateFonts={this.updateFonts} />

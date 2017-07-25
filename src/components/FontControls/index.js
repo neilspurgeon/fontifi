@@ -11,7 +11,10 @@ class FontControls extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.fontSizes = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 36, 48, 64, 72, 144, 288];
   }
+
+
 
   componentDidMount() {
     fetch('/fonts')
@@ -39,20 +42,37 @@ class FontControls extends Component {
         <form>
           <div>
             <label>
-              <input type="radio" name="fontType" value="heading" onChange={this.handleChange} checked={this.state.activeFont === 'heading'} />
+              <input type="radio"
+                name="fontType"
+                value="heading"
+                onChange={this.handleChange}
+                checked={this.state.activeFont === 'heading'} />
               Heading
             </label>
 
             <label>
-              <input type="radio" name="fontType" value="body" onChange={this.handleChange} checked={this.state.activeFont === 'body'} />
+              <input type="radio" name="fontType" value="body"
+                onChange={this.handleChange} checked={this.state.activeFont === 'body'} />
               body
             </label>
           </div>
 
-          <select className={styles.inputSelect} onChange={this.props.handleChange.bind(this, this.state.activeFont, 'fontFamily')} value={this.state.activeFont === 'heading' ? this.props.heading.fontFamily :this.props.body.fontFamily}>
+          <select className={styles.inputSelect}
+            onChange={this.props.handleChange.bind(this, this.state.activeFont, 'fontFamily')}
+            value={this.state.activeFont === 'heading' ? this.props.heading.fontFamily :this.props.body.fontFamily}>
             { this.state.fontList.map((fontObj) => {
               return <option value={fontObj.family}>{fontObj.family}</option>;
             })}
+          </select>
+
+          <select className={styles.inputSelect}
+            onChange={this.props.handleChange.bind(this, this.state.activeFont, 'fontSize')}
+            value={this.state.activeFont === 'heading' ? this.props.heading.fontSize :this.props.body.fontSize}>
+
+            { this.fontSizes.map((fontSize) => {
+              return <option value={fontSize}>{fontSize}</option>;
+            }) }
+
           </select>
 
         </form>
