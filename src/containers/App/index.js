@@ -60,7 +60,7 @@ class App extends Component {
           <div className={contentClassnames}>
             <div className={styles.fonts}>
               <p>Heading: {this.state.heading.fontFamily}</p>
-              <HeadingFont />
+              <HeadingFont fontFamily={this.state.heading.fontFamily}/>
               <BodyFont />
             </div>
             <div className={styles.GetFonts}>
