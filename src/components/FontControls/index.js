@@ -6,27 +6,30 @@ class FontControls extends Component {
     super(props);
     console.log(this.props);
     this.state = {
-      activeFont: 'heading'
+      activeFont: 'heading',
+      fontList: ['fontlist']
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({
-      activeFont: event.target.value
-    });
-  }
-
-  getFontList() {
-    console.log('getting fonts...');
+  componentDidMount() {
     fetch('/fonts')
       .then((response) => {
         return response.json();
       })
       .then((parsedData) => {
-        console.log(parsedData);
+        this.setState({
+          fontList: parsedData.items
+        });
+        console.log(parsedData.items[1].family);
       });
+  };
+
+  handleChange(event) {
+    this.setState({
+      activeFont: event.target.value
+    });
   }
 
   render() {
@@ -46,14 +49,14 @@ class FontControls extends Component {
             </label>
           </div>
 
-          <input onChange={this.props.handleChange.bind(this, this.state.activeFont, 'fontFamily')}
-          value={this.state.activeFont === 'heading' ? this.props.heading.fontFamily :this.props.body.fontFamily }/>
-
-          <select>
-            {this.getFontList()}
+          <select onChange={this.props.handleChange.bind(this, this.state.activeFont, 'fontFamily')} value={this.state.activeFont === 'heading' ? this.props.heading.fontFamily :this.props.body.fontFamily}>
+            { this.state.fontList.map((fontObj) => {
+              return <option value={fontObj.family}>{fontObj.family}</option>;
+            })}
           </select>
 
         </form>
+
       </div>
     );
   }
