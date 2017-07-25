@@ -4,6 +4,9 @@ const path = require('path');
 const app = express();
 const db = require('./models');
 
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
+
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
 
@@ -16,8 +19,18 @@ app.get('/fontpairs/random', (req, res) => {
     if (err) {
       return res.status(400).json({error: err});
     }
-    return res.json(fontPair);
+    res.json(fontPair);
   });
+});
+
+app.get('/fonts', (req, res) => {
+  fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=' + process.env.GOOGLE_FONTS_KEY )
+    .then((fonts) => {
+      return fonts.json();
+    })
+    .then((parsedData) => {
+      res.json(parsedData);
+    });
 });
 
 app.post('/fontpairs', (req, res) => {
