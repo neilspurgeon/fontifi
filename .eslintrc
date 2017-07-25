@@ -1,0 +1,9 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "no-space-before-semi": 0,
+    "semi-spacing": 1,
+    "semi": [2, "always"],
+    "no-trailing-spaces": 1,
+  }
+}

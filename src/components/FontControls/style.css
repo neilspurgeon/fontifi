@@ -1,0 +1,12 @@
+.ControlPanel {
+  width: 100%;
+  /*min-height: 100vh;*/
+  /*position: fixed;*/
+  top: 0;
+  right: 0;
+  border-left: 1px solid #E2E1E3;
+
+  @media (min-width: 500px) {
+    background-color: blue;
+  }
+}
