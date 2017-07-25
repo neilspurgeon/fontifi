@@ -15,8 +15,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      heading: {},
-      body: {},
+      heading: {fontFamily: 'Poppins'},
+      body: {fontFamily: 'Open Sans'},
       controlsOpen: true
     };
     this.updateFonts = this.updateFonts.bind(this);

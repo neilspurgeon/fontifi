@@ -8,6 +8,14 @@ class FontControls extends Component {
     this.state = {
       activeFont: 'heading'
     };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      activeFont: event.target.value
+    });
   }
 
   render() {
@@ -15,7 +23,15 @@ class FontControls extends Component {
       <div className={styles.ControlPanel}>
         <p>{this.props.heading.fontFamily}</p>
         <form>
-          <input onChange={this.props.handleChange.bind(this, 'heading', 'fontFamily')} />
+          <div>
+            <input type="radio" name="fontType" value="heading" onChange={this.handleChange} checked={this.state.activeFont === 'heading'} />
+            <label for="heading">Heading</label>
+            <input type="radio" name="fontType" value="body" onChange={this.handleChange} checked={this.state.activeFont === 'body'} />
+            <label for="body">body</label>
+          </div>
+
+          <input onChange={this.props.handleChange.bind(this, this.state.activeFont, 'fontFamily')}
+          value={this.state.activeFont === 'heading' ? this.props.heading.fontFamily :this.props.body.fontFamily }/>
         </form>
       </div>
     );
