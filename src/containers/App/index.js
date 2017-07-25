@@ -21,6 +21,7 @@ class App extends Component {
     };
     this.updateFonts = this.updateFonts.bind(this);
     this.handleControlsOpen = this.handleControlsOpen.bind(this);
+    this.handleFontChange = this.handleFontChange.bind(this);
   };
 
   updateFonts() {
@@ -35,6 +36,13 @@ class App extends Component {
           body: parsedData.body
         });
       });
+  }
+
+  handleFontChange(fontType, propertyName, event) {
+    // fontType: 'heading' or 'body'
+    const font = this.state[fontType];
+    font[propertyName] = event.target.value;
+    this.setState({ fontType: font });
   }
 
   handleControlsOpen() {
@@ -68,7 +76,7 @@ class App extends Component {
           </div>
 
           <div className={controlsClassnames}>
-            <FontControls />
+            <FontControls heading={this.state.heading} body={this.state.body} handleChange={this.handleFontChange}/>
           </div>
 
       </div>
