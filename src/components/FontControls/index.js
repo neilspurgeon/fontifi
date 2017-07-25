@@ -18,20 +18,41 @@ class FontControls extends Component {
     });
   }
 
+  getFontList() {
+    console.log('getting fonts...');
+    fetch('/fonts')
+      .then((response) => {
+        return response.json();
+      })
+      .then((parsedData) => {
+        console.log(parsedData);
+      });
+  }
+
   render() {
     return (
       <div className={styles.ControlPanel}>
         <p>{this.props.heading.fontFamily}</p>
         <form>
           <div>
-            <input type="radio" name="fontType" value="heading" onChange={this.handleChange} checked={this.state.activeFont === 'heading'} />
-            <label for="heading">Heading</label>
-            <input type="radio" name="fontType" value="body" onChange={this.handleChange} checked={this.state.activeFont === 'body'} />
-            <label for="body">body</label>
+            <label>
+              <input type="radio" name="fontType" value="heading" onChange={this.handleChange} checked={this.state.activeFont === 'heading'} />
+              Heading
+            </label>
+
+            <label>
+              <input type="radio" name="fontType" value="body" onChange={this.handleChange} checked={this.state.activeFont === 'body'} />
+              body
+            </label>
           </div>
 
           <input onChange={this.props.handleChange.bind(this, this.state.activeFont, 'fontFamily')}
           value={this.state.activeFont === 'heading' ? this.props.heading.fontFamily :this.props.body.fontFamily }/>
+
+          <select>
+            {this.getFontList()}
+          </select>
+
         </form>
       </div>
     );
