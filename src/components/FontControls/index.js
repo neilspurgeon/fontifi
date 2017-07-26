@@ -19,44 +19,6 @@ class FontControls extends Component {
     this.fontSizes = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 36, 48, 64, 72, 144, 288];
   }
 
-
-
-
-  // componentDidMount() {
-  //   fetch('/fonts')
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((parsedData) => {
-  //       this.setState({
-  //         fontList: parsedData.items
-  //       });
-  //       this.setFont('heading', this.props);
-  //       this.setFont('body', this.props);
-  //     });
-  // };
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.body) {
-  //     this.setFont('body', nextProps);
-  //   }
-  //   if (nextProps.heading) {
-  //     this.setFont('heading', this.props);
-  //   }
-  // }
-
-  // setFont(fontType, props) {
-  //   const fontList = this.state.fontList;
-  //   const font = fontList.find((obj) => {
-  //     return obj.family === this.state[fontType].fontFamily;
-  //   });
-  //   this.setState({
-  //     fontType: font
-  //   });
-  // }
-
-
-
   componentDidMount() {
     fetch('/fonts')
       .then((response) => {
@@ -66,37 +28,27 @@ class FontControls extends Component {
         this.setState({
           fontList: parsedData.items,
         });
-        this.setHeading();
-        this.setBody();
+        this.setFont('heading', this.props.heading.fontFamily);
+        this.setFont('body', this.props.body.fontFamily);
       });
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.body) {
-      this.setBody();
-    }
     if (nextProps.heading) {
-      this.setHeading();
+      this.setFont('heading', nextProps.heading.fontFamily);
+    }
+    if (nextProps.body) {
+      this.setFont('body', nextProps.body.fontFamily);
     }
   }
 
-  setBody() {
-    const fontList = this.state.fontList;
-    const bodyFont = fontList.find((obj) => {
-      return obj.family === this.props.body.fontFamily;
-    });
-    this.setState({
-      body: bodyFont
-    });
-  }
-
-  setHeading() {
+  setFont(fontType, fontFamily) {
     const fontList = this.state.fontList;
     const font = fontList.find((obj) => {
-      return obj.family === this.props.heading.fontFamily;
+      return obj.family === fontFamily;
     });
     this.setState({
-      heading: font
+      [fontType]: font
     });
   }
 
