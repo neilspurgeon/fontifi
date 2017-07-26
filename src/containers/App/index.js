@@ -15,7 +15,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      heading: {fontFamily: 'Poppins'},
+      heading: {
+        fontFamily: 'Poppins',
+        fontWeight: 'not selected'
+      },
       body: {fontFamily: 'Open Sans'},
       controlsOpen: true
     };
@@ -69,7 +72,8 @@ class App extends Component {
             <div className={styles.fonts}>
               <HeadingFont
                 fontFamily={this.state.heading.fontFamily}
-                fontSize={this.state.heading.fontSize} />
+                fontSize={this.state.heading.fontSize}
+                letterSpacing={this.state.heading.letterSpacing} />
               <BodyFont
                 fontFamily={this.state.body.fontFamily}
                 fontSize={this.state.body.fontSize} />
@@ -80,7 +84,10 @@ class App extends Component {
           </div>
 
           <div className={controlsClassnames}>
-            <FontControls heading={this.state.heading} body={this.state.body} handleChange={this.handleFontChange}/>
+            <FontControls
+              heading={this.state.heading}
+              body={this.state.body}
+              handleChange={this.handleFontChange} />
           </div>
 
       </div>
