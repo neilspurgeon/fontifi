@@ -6,6 +6,8 @@ function HeadingFont (props) {
   if (props.fontFamily) {
     const fontFamilyString = props.fontFamily.split(' ').join('+');
     const url = 'https://fonts.googleapis.com/css?family=' + fontFamilyString;
+    let fontUrls = [url];
+    fontUrls.push(url + ':' + props.fontWeight);
     const fontStyle = {
       fontFamily: props.fontFamily,
       fontSize: props.fontSize,
@@ -14,7 +16,9 @@ function HeadingFont (props) {
 
     return (
       <div>
-        <style>@import url("{ url }");</style>
+        {fontUrls.map((fontUrl) => {
+          return <style>@import url("{fontUrl}");</style>;
+        })}
         <h1 className={styles.heading} style={fontStyle}>Heading</h1>
       </div>
     );

@@ -7,8 +7,8 @@ function BodyFont (props) {
     const fontFamilyString = props.fontFamily.split(' ').join('+');
     const url = 'https://fonts.googleapis.com/css?family=' + fontFamilyString;
     let fontUrls = [url];
-    fontUrls.push(url + ':' +props.fontWeight);
-    let fontStyle = {
+    fontUrls.push(url + ':' + props.fontWeight);
+    const fontStyle = {
       fontFamily: props.fontFamily,
       fontSize: props.fontSize,
       fontWeight: props.fontWeight
@@ -16,8 +16,8 @@ function BodyFont (props) {
 
     return (
       <div>
-        { fontUrls.map((url) => {
-          return <style>@import url("{url}");</style>;
+        {fontUrls.map((fontUrl) => {
+          return <style>@import url("{fontUrl}");</style>;
         })}
 
         <p style={fontStyle}>{text}</p>
