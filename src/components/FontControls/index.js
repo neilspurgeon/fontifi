@@ -106,7 +106,17 @@ class FontControls extends Component {
 
             { this.state[this.state.fontController].variants.map((fontWeight) => {
               return <option value={fontWeight}>{fontWeight}</option>;
-            }) }
+            })}
+
+          </select>
+
+          <select className={styles.inputSelect}
+            onChange={this.props.handleChange.bind(this, this.state.fontController, 'fontSize')}
+            value={this.state.activeFontType === 'heading' ? this.state.fontController : this.props.body.fontSize}>
+
+            { this.fontSizes.map((fontSize) => {
+              return <option value={fontSize}>{fontSize}</option>;
+            })}
 
           </select>
 
