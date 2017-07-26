@@ -98,7 +98,6 @@ class FontControls extends Component {
             })}
           </select>
 
-
           <select
             className={styles.inputSelect}
             onChange={this.props.handleChange.bind(this, this.state.fontController, 'fontWeight')}

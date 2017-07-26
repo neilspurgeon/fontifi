@@ -8,7 +8,8 @@ function BodyFont (props) {
     const url = 'https://fonts.googleapis.com/css?family=' + fontFamilyString;
     const fontStyle = {
       fontFamily: props.fontFamily,
-      fontSize: props.fontSize
+      fontSize: props.fontSize,
+      fontWeight: props.fontWeight
     };
 
     return (
