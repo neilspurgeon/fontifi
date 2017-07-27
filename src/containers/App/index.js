@@ -19,7 +19,10 @@ class App extends Component {
         fontFamily: 'Poppins',
         fontWeight: 'not selected'
       },
-      body: {fontFamily: 'Open Sans'},
+      body: {
+        fontFamily: 'Open Sans',
+        fontWeight: 'asdas'
+      },
       controlsOpen: true
     };
     this.updateFonts = this.updateFonts.bind(this);

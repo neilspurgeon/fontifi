@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import styles from './style.css';
+import SelectFont from 'components/forms/SelectFont';
+import Select from 'components/forms/Select';
+import Slider from 'components/forms/Slider';
 
 class FontControls extends Component {
   constructor(props) {
@@ -61,7 +64,6 @@ class FontControls extends Component {
   render() {
     return (
       <div className={styles.ControlPanel}>
-        <p>{this.state.body.variants}</p>
 
         <form>
           <div>
@@ -86,38 +88,28 @@ class FontControls extends Component {
             </label>
           </div>
 
-          <select
-            className={styles.inputSelect}
-            onChange={this.props.handleChange.bind(this, this.state.fontController, 'fontFamily')}
-            value={this.state.fontController === 'heading' ? this.props.heading.fontFamily : this.props.body.fontFamily}>
-            { this.state.fontList.map((fontObj, index) => {
-              return <option
-                value={fontObj.family}
-                key={index}
-                dataKey={index}>{fontObj.family}</option>;
-            })}
-          </select>
+          <SelectFont
+            handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontFamily')}
+            value={this.state.fontController === 'heading' ? this.props.heading.fontFamily : this.props.body.fontFamily}
+            options={this.state.fontList}
+            keyValue='family'
+          />
 
-          <select
-            className={styles.inputSelect}
-            onChange={this.props.handleChange.bind(this, this.state.fontController, 'fontWeight')}
-            value={this.state.fontController === 'heading' ? this.props.heading.fontWeight : this.props.body.fontWeight}>
+          <Select
+            handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontWeight')}
+            value={this.state.fontController === 'heading' ? this.props.heading.fontWeight : this.props.body.fontWeight}
+            options={this.state[this.state.fontController].variants}
+          />
 
-            { this.state[this.state.fontController].variants.map((fontWeight) => {
-              return <option value={fontWeight}>{fontWeight}</option>;
-            })}
+          <Slider
+            handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontSize')}
+            min="10"
+            max="144"
+            step="1"
+            value={this.state.fontController === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}
+          />
 
-          </select>
-
-          <select className={styles.inputSelect}
-            onChange={this.props.handleChange.bind(this, this.state.fontController, 'fontSize')}
-            value={this.state.activeFontType === 'heading' ? this.state.fontController : this.props.body.fontSize}>
-
-            { this.fontSizes.map((fontSize) => {
-              return <option value={fontSize}>{fontSize}</option>;
-            })}
-
-          </select>
+          <p>Value: {this.state.fontController === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}</p>
 
         </form>
 
