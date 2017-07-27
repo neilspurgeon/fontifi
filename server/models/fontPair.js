@@ -5,6 +5,7 @@ const fontPairSchema = new mongoose.Schema({
   heading: {
     fontFamily: String,
     fontWeight: Number,
+    fontSize: Number,
     letterSpacing: Number,
     lineHeight: Number,
     textTransform: String,
@@ -13,6 +14,7 @@ const fontPairSchema = new mongoose.Schema({
   body: {
     fontFamily: String,
     fontWeight: Number,
+    fontSize: Number,
     letterSpacing: Number,
     lineHeight: Number,
     textTransform: String,
