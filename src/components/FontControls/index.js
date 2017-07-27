@@ -4,6 +4,7 @@ import SelectFont from 'components/forms/SelectFont';
 import Select from 'components/forms/Select';
 import Slider from 'components/forms/Slider';
 import ColorPicker from 'components/forms/ColorPicker';
+import PrimaryCta from 'components/forms/PrimaryCta';
 
 class FontControls extends Component {
   constructor(props) {
@@ -132,6 +133,8 @@ class FontControls extends Component {
             step=".1"
             value={this.state.fontController === 'heading' ? this.props.heading.lineHeight : this.props.body.lineHeight}
           />
+
+          <PrimaryCta />
 
         </form>
 

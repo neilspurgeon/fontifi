@@ -23,7 +23,7 @@ function BodyFont (props) {
           return <style>@import url("{fontUrl}");</style>;
         })}
 
-        <p contentEditable="true" style={fontStyle}>{text}</p>
+        <p contentEditable="true" spellCheck="false" style={fontStyle}>{text}</p>
       </div>
     );
   }
