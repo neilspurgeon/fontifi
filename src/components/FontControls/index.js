@@ -3,6 +3,7 @@ import styles from './style.css';
 import SelectFont from 'components/forms/SelectFont';
 import Select from 'components/forms/Select';
 import Slider from 'components/forms/Slider';
+import ColorPicker from 'components/forms/ColorPicker';
 
 class FontControls extends Component {
   constructor(props) {
@@ -118,6 +119,11 @@ class FontControls extends Component {
           />
 
           <p>Value: {this.state.fontController === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}</p>
+
+          <ColorPicker
+            handleChange={this.props.handleChange.bind(this, this.state.fontController, 'color')}
+            value={this.state.fontController === 'heading' ? this.props.heading.color : this.props.body.color}
+          />
 
         </form>
 
