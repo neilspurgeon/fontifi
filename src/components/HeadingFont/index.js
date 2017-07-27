@@ -13,7 +13,8 @@ function HeadingFont (props) {
       fontSize: props.fontSize,
       fontWeight: props.fontWeight,
       letterSpacing: props.letterSpacing + 'em',
-      color: props.color
+      color: props.color,
+      lineHeight: props.lineHeight
     };
 
     return (

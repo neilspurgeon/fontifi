@@ -125,6 +125,14 @@ class FontControls extends Component {
             value={this.state.fontController === 'heading' ? this.props.heading.color : this.props.body.color}
           />
 
+          <Slider
+            handleChange={this.props.handleChange.bind(this, this.state.fontController, 'lineHeight')}
+            min="1"
+            max="3"
+            step=".1"
+            value={this.state.fontController === 'heading' ? this.props.heading.lineHeight : this.props.body.lineHeight}
+          />
+
         </form>
 
       </div>
