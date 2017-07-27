@@ -109,6 +109,14 @@ class FontControls extends Component {
             value={this.state.fontController === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}
           />
 
+          <Slider
+            handleChange={this.props.handleChange.bind(this, this.state.fontController, 'letterSpacing')}
+            min="-0.05"
+            max=".2"
+            step=".01"
+            value={this.state.fontController === 'heading' ? this.props.heading.letterSpacing : this.props.body.letterSpacing}
+          />
+
           <p>Value: {this.state.fontController === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}</p>
 
         </form>

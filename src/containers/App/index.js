@@ -76,11 +76,13 @@ class App extends Component {
               <HeadingFont
                 fontFamily={this.state.heading.fontFamily}
                 fontSize={this.state.heading.fontSize}
-                fontWeight={this.state.heading.fontWeight} />
+                fontWeight={this.state.heading.fontWeight}
+                letterSpacing={this.state.heading.letterSpacing} />
               <BodyFont
                 fontFamily={this.state.body.fontFamily}
                 fontSize={this.state.body.fontSize}
-                fontWeight={this.state.body.fontWeight} />
+                fontWeight={this.state.body.fontWeight}
+                letterSpacing={this.state.body.letterSpacing} />
             </div>
             <div className={styles.GetFonts}>
               <GetFonts triggerUpdateFonts={this.updateFonts} />

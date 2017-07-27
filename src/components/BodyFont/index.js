@@ -11,7 +11,8 @@ function BodyFont (props) {
     const fontStyle = {
       fontFamily: props.fontFamily,
       fontSize: props.fontSize,
-      fontWeight: props.fontWeight
+      fontWeight: props.fontWeight,
+      letterSpacing: props.letterSpacing + 'em'
     };
 
     return (
