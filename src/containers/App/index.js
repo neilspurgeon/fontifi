@@ -17,7 +17,8 @@ class App extends Component {
     this.state = {
       heading: {
         fontFamily: 'Poppins',
-        fontWeight: 'not selected'
+        fontWeight: 'not selected',
+        text: 'heading font'
       },
       body: {
         fontFamily: 'Open Sans',
@@ -79,7 +80,9 @@ class App extends Component {
                 fontWeight={this.state.heading.fontWeight}
                 letterSpacing={this.state.heading.letterSpacing}
                 color={this.state.heading.color}
-                lineHeight={this.state.heading.lineHeight} />
+                lineHeight={this.state.heading.lineHeight}
+                text={this.state.heading.text}
+                handleChange={this.handleFontChange.bind(this, 'heading', 'text')} />
               <BodyFont
                 fontFamily={this.state.body.fontFamily}
                 fontSize={this.state.body.fontSize}

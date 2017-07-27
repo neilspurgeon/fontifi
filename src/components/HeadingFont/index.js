@@ -22,7 +22,7 @@ function HeadingFont (props) {
         {fontUrls.map((fontUrl) => {
           return <style>@import url("{fontUrl}");</style>;
         })}
-        <h1 className={styles.heading} style={fontStyle}>Heading</h1>
+        <h1 contentEditable="true" className={styles.heading} style={fontStyle}>Heading</h1>
       </div>
     );
   }
