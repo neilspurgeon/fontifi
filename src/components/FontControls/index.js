@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styles from './style.css';
-import SelectFont from 'components/forms/SelectFont';
-import Select from 'components/forms/Select';
-import Slider from 'components/forms/Slider';
-import ColorPicker from 'components/forms/ColorPicker';
-import PrimaryCta from 'components/forms/PrimaryCta';
-import FormField from 'components/forms/FormField';
+import SelectFont from 'components/forms/selectFont';
+import Select from 'components/forms/select';
+import ComboSlider from 'components/forms/comboSlider';
+import ColorPicker from 'components/forms/colorPicker';
+import PrimaryCta from 'components/forms/primaryCta';
+import FormField from 'components/forms/formField';
 
 class FontControls extends Component {
   constructor(props) {
@@ -109,7 +109,7 @@ class FontControls extends Component {
           }/>
 
           <FormField labelText="Font Size" input={
-            <Slider
+            <ComboSlider
               handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontSize')}
               min="10"
               max="144"
@@ -120,7 +120,7 @@ class FontControls extends Component {
 
 
           <FormField labelText="Letter Spacing" input={
-            <Slider
+            <ComboSlider
               handleChange={this.props.handleChange.bind(this, this.state.fontController, 'letterSpacing')}
               min="-0.05"
               max=".2"
@@ -138,7 +138,7 @@ class FontControls extends Component {
 
           <FormField labelText="Line Height" input={
             <div>
-              <Slider
+              <ComboSlider
                 handleChange={this.props.handleChange.bind(this, this.state.fontController, 'lineHeight')}
                 min="1"
                 max="3"

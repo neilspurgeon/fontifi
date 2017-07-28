@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './style.css';
 
-function Slider(props) {
+function ComboSlider(props) {
 
   return(
     <span className={styles.ComboSlider}>
@@ -27,4 +27,4 @@ function Slider(props) {
   );
 };
 
-export default Slider;
+export default ComboSlider;

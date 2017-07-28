@@ -55,7 +55,6 @@
 .Input {
   -webkit-appearance: none;
   -moz-appearance: none;
-  /*width: 33%;*/
   border: 1px solid #E4E4E4;
   border-radius: 5px;
   background: transparent;
@@ -67,4 +66,16 @@
   display: inline-block;
 
   flex: 0 0 30px;
+}
+
+.PrimaryCta {
+  height: 60px;
+  border-radius: 10px;
+  background: #141419;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.24);
+  border: none;
+  border-radius: 10px;
+  color: #FFF;
+  width: 100%;
+  font-size: 15px;
 }
