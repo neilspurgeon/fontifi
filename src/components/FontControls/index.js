@@ -5,6 +5,7 @@ import Select from 'components/forms/Select';
 import Slider from 'components/forms/Slider';
 import ColorPicker from 'components/forms/ColorPicker';
 import PrimaryCta from 'components/forms/PrimaryCta';
+import FormField from 'components/forms/FormField';
 
 class FontControls extends Component {
   constructor(props) {
@@ -90,49 +91,62 @@ class FontControls extends Component {
             </label>
           </div>
 
-          <SelectFont
-            handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontFamily')}
-            value={this.state.fontController === 'heading' ? this.props.heading.fontFamily : this.props.body.fontFamily}
-            options={this.state.fontList}
-            keyValue='family'
-          />
+          <FormField labelText="Font Family" input={
+            <SelectFont
+              handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontFamily')}
+              value={this.state.fontController === 'heading' ? this.props.heading.fontFamily : this.props.body.fontFamily}
+              options={this.state.fontList}
+              keyValue='family'
+            />
+          }/>
 
-          <Select
-            handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontWeight')}
-            value={this.state.fontController === 'heading' ? this.props.heading.fontWeight : this.props.body.fontWeight}
-            options={this.state[this.state.fontController].variants}
-          />
+          <FormField labelText="Font Weight" input={
+            <Select
+              handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontWeight')}
+              value={this.state.fontController === 'heading' ? this.props.heading.fontWeight : this.props.body.fontWeight}
+              options={this.state[this.state.fontController].variants}
+            />
+          }/>
 
-          <Slider
-            handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontSize')}
-            min="10"
-            max="144"
-            step="1"
-            value={this.state.fontController === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}
-          />
+          <FormField labelText="Font Size" input={
+            <Slider
+              handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontSize')}
+              min="10"
+              max="144"
+              step="1"
+              value={this.state.fontController === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}
+            />
+          }/>
 
-          <Slider
-            handleChange={this.props.handleChange.bind(this, this.state.fontController, 'letterSpacing')}
-            min="-0.05"
-            max=".2"
-            step=".01"
-            value={this.state.fontController === 'heading' ? this.props.heading.letterSpacing : this.props.body.letterSpacing}
-          />
 
-          <p>Value: {this.state.fontController === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}</p>
+          <FormField labelText="Letter Spacing" input={
+            <Slider
+              handleChange={this.props.handleChange.bind(this, this.state.fontController, 'letterSpacing')}
+              min="-0.05"
+              max=".2"
+              step=".01"
+              value={this.state.fontController === 'heading' ? this.props.heading.letterSpacing : this.props.body.letterSpacing}
+            />
+          }/>
 
-          <ColorPicker
-            handleChange={this.props.handleChange.bind(this, this.state.fontController, 'color')}
-            value={this.state.fontController === 'heading' ? this.props.heading.color : this.props.body.color}
-          />
+          <FormField labelText="Color" input={
+            <ColorPicker
+              handleChange={this.props.handleChange.bind(this, this.state.fontController, 'color')}
+              value={this.state.fontController === 'heading' ? this.props.heading.color : this.props.body.color}
+            />
+          }/>
 
-          <Slider
-            handleChange={this.props.handleChange.bind(this, this.state.fontController, 'lineHeight')}
-            min="1"
-            max="3"
-            step=".1"
-            value={this.state.fontController === 'heading' ? this.props.heading.lineHeight : this.props.body.lineHeight}
-          />
+          <FormField labelText="Line Height" input={
+            <div>
+              <Slider
+                handleChange={this.props.handleChange.bind(this, this.state.fontController, 'lineHeight')}
+                min="1"
+                max="3"
+                step=".1"
+                value={this.state.fontController === 'heading' ? this.props.heading.lineHeight : this.props.body.lineHeight}
+              />
+            </div>
+          }/>
 
           <PrimaryCta />
 
