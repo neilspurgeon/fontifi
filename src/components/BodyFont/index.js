@@ -20,10 +20,10 @@ function BodyFont (props) {
     return (
       <div>
         {fontUrls.map((fontUrl) => {
-          return <style>@import url("{fontUrl}");</style>;
+          return <style key={fontUrl}>@import url("{fontUrl}");</style>;
         })}
 
-        <p contentEditable="true" spellCheck="false" style={fontStyle}>{text}</p>
+        <p contentEditable="true" spellCheck="false" style={fontStyle} dangerouslySetInnerHTML={{__html: text}} />
       </div>
     );
   }

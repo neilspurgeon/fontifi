@@ -70,7 +70,6 @@ class FontControls extends Component {
     return (
       <div className={styles.ControlPanel}>
 
-
         <button onClick={this.props.closeControls} className={styles.closeButton}>
           <img src={closeSVG} alt="close controls"/>
         </button>

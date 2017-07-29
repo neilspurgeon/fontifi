@@ -20,9 +20,9 @@ function HeadingFont (props) {
     return (
       <div>
         {fontUrls.map((fontUrl) => {
-          return <style>@import url("{fontUrl}");</style>;
+          return <style key={fontUrl}>@import url("{fontUrl}");</style>;
         })}
-        <h1 contentEditable="true" spellCheck="false" className={styles.heading} style={fontStyle}>Heading</h1>
+        <h1 contentEditable="true" spellCheck="false" className={styles.heading} style={fontStyle} dangerouslySetInnerHTML={{__html: props.text}} />
       </div>
     );
   }

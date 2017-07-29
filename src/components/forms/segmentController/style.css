@@ -1,0 +1,73 @@
+.SegmentController {
+  border: 1px solid #000;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+.segment {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  padding: 10px 0;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50px;
+}
+/*.segment:first-child:before {
+  background-color: #000;
+  content: 'as';
+  position: absolute;
+  top: 0;
+  width: 50%;
+  left: 0;
+  border-radius: 50px;
+  height: 100%;
+}*/
+
+.leftChecked {
+  background-color: #000;
+  content: 'as';
+  position: absolute;
+  top: 0;
+  width: 50%;
+  left: 0;
+  border-radius: 50px;
+  height: 100%;
+  transition: .2s ease all;
+}
+
+.rightChecked {
+  background-color: #000;
+  content: 'as';
+  position: absolute;
+  top: 0;
+  width: 50%;
+  left: auto;
+  right: 0;
+  border-radius: 50px;
+  height: 100%;
+  transition: .2s ease all;
+}
+
+.rightChecked .selectedBg {
+  left: auto;
+  /*right: 0;*/
+}
+
+/*.segment:n-child(1n)[data-checked="true"] .segment:first-child:before {
+  left: 50%;
+}*/
+
+.segment[data-checked="true"] {
+  /*background-color: #000;*/
+  color: #FFF;
+}
+
+.browserButton {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
