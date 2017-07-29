@@ -4,8 +4,14 @@
   right: 0;
   border-left: 1px solid #E2E1E3;
   padding: 30px;
+  height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+}
 
-  @media (min-width: 500px) {
-    background-color: blue;
-  }
+.BottomActions {
+  position: absolute;
+  bottom: 20px;
+  width: calc(100% - 60px);
+  overflow: hidden;
 }

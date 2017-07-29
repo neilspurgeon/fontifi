@@ -148,7 +148,9 @@ class FontControls extends Component {
             </div>
           }/>
 
-          <PrimaryCta />
+          <div className={styles.BottomActions}>
+            <PrimaryCta />
+          </div>
 
         </form>
 
