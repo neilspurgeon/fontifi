@@ -92,10 +92,9 @@ class App extends Component {
                 color={this.state.body.color}
                 lineHeight={this.state.body.lineHeight}
               />
+              <GetFonts triggerUpdateFonts={this.updateFonts} className={styles.getFonts}/>
             </div>
-            <div className={styles.GetFonts}>
-              <GetFonts triggerUpdateFonts={this.updateFonts} />
-            </div>
+
           </div>
 
           <div className={controlsClassnames}>

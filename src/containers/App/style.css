@@ -82,7 +82,7 @@
   transform: translate3d(0,0,0);
 }
 
-.GetFonts {
+.getFonts {
   position: absolute;
   bottom: 20px;
 }

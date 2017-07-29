@@ -1,15 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class GetFonts extends Component {
-  // constructor(props){
-  //   super(props);
-  // }
+function GetFonts(props) {
 
-  render() {
-    return(
-      <p>Press <button onClick={this.props.triggerUpdateFonts}>Spacebar</button> to load new fonts</p>
-    );
-  }
+  return(
+    <p className={props.className}>Press <button onClick={props.triggerUpdateFonts}>Spacebar</button> to load new fonts</p>
+  );
 }
 
 export default GetFonts;
