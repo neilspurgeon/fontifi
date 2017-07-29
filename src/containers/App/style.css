@@ -73,11 +73,9 @@
   right: 0;
   width: 375px;
   height: 100vh;
-  border-left: 1px solid #E2E1E3;
   transform: translate3d(375px, 0, 0);
   transition: .2s ease all;
   z-index: 999;
-  background: #FFF;
 }
 
 .controls.controlsOpen {
