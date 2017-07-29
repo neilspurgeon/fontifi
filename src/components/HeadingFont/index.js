@@ -10,7 +10,7 @@ function HeadingFont (props) {
     fontUrls.push(url + ':' + props.fontWeight);
     const fontStyle = {
       fontFamily: props.fontFamily,
-      fontSize: props.fontSize,
+      fontSize: props.fontSize + 'px',
       fontWeight: props.fontWeight,
       letterSpacing: props.letterSpacing + 'em',
       color: props.color,
