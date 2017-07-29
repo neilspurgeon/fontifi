@@ -7,6 +7,7 @@ import ComboSlider from 'components/forms/comboSlider';
 import ColorPicker from 'components/forms/colorPicker';
 import PrimaryCta from 'components/forms/primaryCta';
 import FormField from 'components/forms/formField';
+import SegmentController from 'components/forms/segmentController';
 
 class FontControls extends Component {
   constructor(props) {
@@ -75,27 +76,16 @@ class FontControls extends Component {
         </button>
 
         <form>
-          <div>
-            <label>
-              <input
-                type="radio"
-                name="fontType"
-                value="heading"
-                onChange={this.handleFontController}
-                checked={this.state.fontController === 'heading'} />
-              Heading
-            </label>
+          <SegmentController
+            onChange={this.handleFontController}
+            name1="fontType"
+            value1="heading"
+            checked1={this.state.fontController === 'heading'}
+            name2="fontType"
+            value2="body"
+            checked2={this.state.fontController === 'body'}
+          />
 
-            <label>
-              <input
-                type="radio"
-                name="fontType"
-                value="body"
-                onChange={this.handleFontController}
-                checked={this.state.fontController === 'body'} />
-              body
-            </label>
-          </div>
 
           <FormField labelText="Font Family" input={
             <SelectFont

@@ -3,11 +3,10 @@
   top: 15px;
   right: 15px;
   border-radius: 15px;
-  padding: 20px;
+  padding: 70px 20px 20px;
   height: calc(100vh - 30px);
   overflow-y: scroll;
   position: relative;
-
   background: #FFF;
   box-shadow: 0 2px 15px 0 rgba(0,0,0,0.12);
 }
@@ -16,7 +15,6 @@
   position: absolute;
   bottom: 20px;
   width: calc(100% - 40px);
-  /*overflow: hidden;*/
 }
 
 .closeButton {
