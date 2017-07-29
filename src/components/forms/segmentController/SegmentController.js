@@ -9,7 +9,7 @@ class SegmentController extends Component {
 
     return (
       <div className={styles.SegmentController}>
-        <div className={(leftChecked && styles.leftChecked) || styles.rightChecked }></div>
+        <div className={ leftChecked ? styles.selectedBg : [styles.selectedBg, styles.rightChecked].join(' ')} />
 
         <label
           className={styles.segment}

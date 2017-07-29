@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-around;
   position: relative;
+  margin-bottom: 30px;
 }
 
 .segment {
@@ -14,21 +15,20 @@
   text-align: center;
   cursor: pointer;
   border-radius: 50px;
+  z-index: 999;
+  transition: .2s ease all;
+  color: #141419;
+  font-weight: 600;
+  text-transform: capitalize;
 }
-/*.segment:first-child:before {
-  background-color: #000;
-  content: 'as';
-  position: absolute;
-  top: 0;
-  width: 50%;
-  left: 0;
-  border-radius: 50px;
-  height: 100%;
-}*/
 
-.leftChecked {
+.segment:hover {
+  color: #49a9ee;
+}
+
+.selectedBg {
   background-color: #000;
-  content: 'as';
+  content: ' ';
   position: absolute;
   top: 0;
   width: 50%;
@@ -39,30 +39,13 @@
 }
 
 .rightChecked {
-  background-color: #000;
-  content: 'as';
-  position: absolute;
-  top: 0;
-  width: 50%;
-  left: auto;
-  right: 0;
-  border-radius: 50px;
-  height: 100%;
-  transition: .2s ease all;
+  transform: translateX(100%)
 }
-
-.rightChecked .selectedBg {
-  left: auto;
-  /*right: 0;*/
-}
-
-/*.segment:n-child(1n)[data-checked="true"] .segment:first-child:before {
-  left: 50%;
-}*/
 
 .segment[data-checked="true"] {
   /*background-color: #000;*/
   color: #FFF;
+  opacity: 1;
 }
 
 .browserButton {
