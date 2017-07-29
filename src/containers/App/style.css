@@ -6,7 +6,7 @@
 
 .controlsButton {
   position: fixed;
-  z-index: 9999;
+  z-index: 1;
   top: 30px;
   right: 30px;
   background: transparent;

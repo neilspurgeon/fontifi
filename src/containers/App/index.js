@@ -69,7 +69,7 @@ class App extends Component {
           <img src={logo} alt="findafont logo"/>
         </Link>
         <button onClick={this.handleControlsOpen} className={styles.controlsButton}>
-          <img src={controlsIcon} alt="open/close controls"/>
+          <img src={controlsIcon} alt="open controls"/>
         </button>
 
           <div className={contentClassnames}>
@@ -100,7 +100,9 @@ class App extends Component {
             <FontControls
               heading={this.state.heading}
               body={this.state.body}
-              handleChange={this.handleFontChange} />
+              handleChange={this.handleFontChange}
+              closeControls={this.handleControlsOpen}
+            />
           </div>
 
       </div>

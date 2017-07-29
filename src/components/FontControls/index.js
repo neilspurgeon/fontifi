@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './style.css';
+import closeSVG from './close.svg';
 import SelectFont from 'components/forms/selectFont';
 import Select from 'components/forms/select';
 import ComboSlider from 'components/forms/comboSlider';
@@ -67,6 +68,11 @@ class FontControls extends Component {
   render() {
     return (
       <div className={styles.ControlPanel}>
+
+
+        <button onClick={this.props.closeControls} className={styles.closeButton}>
+          <img src={closeSVG} alt="close controls"/>
+        </button>
 
         <form>
           <div>
