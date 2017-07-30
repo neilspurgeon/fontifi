@@ -54,7 +54,7 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 .Slider {
-  flex-basis: 100%;
+  width: 100%;
   margin: 0;
   margin-right: 10px;
 }
@@ -70,5 +70,7 @@ input[type=range]::-webkit-slider-thumb:hover {
   box-shadow: 0;
   transition: all .3s;
   margin: 10px 0;
-  flex: 0 0 80px;
+  width: 80px;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
