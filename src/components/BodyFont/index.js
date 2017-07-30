@@ -23,7 +23,7 @@ function BodyFont (props) {
           return <style key={fontUrl}>@import url("{fontUrl}");</style>;
         })}
 
-        <p contentEditable="true" spellCheck="false" style={fontStyle} dangerouslySetInnerHTML={{__html: text}} />
+        <p onFocus={props.onFocus} contentEditable="true" spellCheck="false" style={fontStyle} dangerouslySetInnerHTML={{__html: text}} />
       </div>
     );
   }

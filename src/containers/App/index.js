@@ -69,7 +69,7 @@ class App extends Component {
 
   handleFontType(fontType) {
     this.setState({
-      activeFontType: 'heading'
+      activeFontType: fontType
     });
   }
 
@@ -106,6 +106,7 @@ class App extends Component {
                 letterSpacing={this.state.body.letterSpacing}
                 color={this.state.body.color}
                 lineHeight={this.state.body.lineHeight}
+                onFocus={this.handleFontType.bind(this, 'body')}
               />
               <GetFonts triggerUpdateFonts={this.updateFonts} className={styles.getFonts}/>
             </div>
