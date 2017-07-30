@@ -4,8 +4,6 @@ import styles from './style.css';
 
 function HeadingFont (props) {
 
-  const focused = props.onFocus;
-
   if (props.fontFamily) {
     const fontFamilyString = props.fontFamily.split(' ').join('+');
     const url = 'https://fonts.googleapis.com/css?family=' + fontFamilyString;
@@ -25,7 +23,7 @@ function HeadingFont (props) {
         {fontUrls.map((fontUrl) => {
           return <style key={fontUrl}>@import url("{fontUrl}");</style>;
         })}
-        <h1 onFocus={focused} contentEditable="true" spellCheck="false" className={styles.heading} style={fontStyle}>{props.text || 'Heading Font'}</h1>
+        <h1 onFocus={props.onFocus} contentEditable="true" spellCheck="false" className={styles.heading} style={fontStyle}>{props.text || 'Heading Font'}</h1>
       </div>
     );
   }
