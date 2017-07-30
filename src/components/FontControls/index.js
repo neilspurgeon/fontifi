@@ -137,15 +137,13 @@ class FontControls extends Component {
           }/>
 
           <FormField labelText="Line Height" input={
-            <div>
-              <ComboSlider
-                handleChange={this.props.handleChange.bind(this, this.state.fontController, 'lineHeight')}
-                min="1"
-                max="3"
-                step=".1"
-                value={this.state.fontController === 'heading' ? this.props.heading.lineHeight : this.props.body.lineHeight}
-              />
-            </div>
+            <ComboSlider
+              handleChange={this.props.handleChange.bind(this, this.state.fontController, 'lineHeight')}
+              min="1"
+              max="3"
+              step=".1"
+              value={this.state.fontController === 'heading' ? this.props.heading.lineHeight : this.props.body.lineHeight}
+            />
           }/>
 
           <div className={styles.BottomActions}>
