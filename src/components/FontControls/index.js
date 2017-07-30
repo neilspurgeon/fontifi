@@ -16,15 +16,22 @@ class FontControls extends Component {
 
     this.state = {
       fontController: 'heading',
-      heading: {variants: ['headingnone']},
-      body: {variants: ['bodynone']},
+      heading: {variants: ['500']},
+      body: {variants: ['regular']},
       activeFontIndex: 0,
-      activeFontWeights: ['font weights'],
-      fontList: [{"variants": ['Regular']}],
+      fontList: [
+        // Default fonts to prevent undefined state
+        {
+          family: 'Poppins',
+          variants: ['Regular']
+        }, {
+          family: 'Open Sans',
+          variants: ['Regular']
+        }
+      ],
     };
 
     this.handleFontController = this.handleFontController.bind(this);
-    this.fontSizes = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 36, 48, 64, 72, 144, 288];
   }
 
   componentDidMount() {
@@ -67,8 +74,11 @@ class FontControls extends Component {
   }
 
   render() {
+
     return (
       <div className={styles.ControlPanel}>
+
+      {this.state.heading.variants}
 
         <button onClick={this.props.closeControls} className={styles.closeButton}>
           <img src={closeSVG} alt="close controls"/>
@@ -99,7 +109,7 @@ class FontControls extends Component {
             <Select
               handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontWeight')}
               value={this.state.fontController === 'heading' ? this.props.heading.fontWeight : this.props.body.fontWeight}
-              options={this.state[this.state.fontController].variants}
+              options={this.state.fontController && this.state[this.state.fontController].variants}
             />
           }/>
 
