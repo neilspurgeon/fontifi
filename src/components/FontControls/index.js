@@ -12,8 +12,6 @@ import SegmentController from 'components/forms/segmentController';
 class FontControls extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
-
     this.state = {
       fontController: 'heading',
       heading: {variants: ['500']},
@@ -30,7 +28,6 @@ class FontControls extends Component {
         }
       ],
     };
-
     this.handleFontController = this.handleFontController.bind(this);
   }
 
@@ -77,8 +74,6 @@ class FontControls extends Component {
 
     return (
       <div className={styles.ControlPanel}>
-
-      {this.state.heading.variants}
 
         <button onClick={this.props.closeControls} className={styles.closeButton}>
           <img src={closeSVG} alt="close controls"/>
