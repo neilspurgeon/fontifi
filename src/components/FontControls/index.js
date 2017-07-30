@@ -13,7 +13,7 @@ class FontControls extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fontController: 'heading',
+      fontController: props.activeFontType,
       heading: {variants: ['500']},
       body: {variants: ['regular']},
       activeFontIndex: 0,
@@ -51,6 +51,11 @@ class FontControls extends Component {
     }
     if (nextProps.body) {
       this.setFont('body', nextProps.body.fontFamily);
+    }
+    if (nextProps.activeFontType) {
+      this.setState({
+        fontController: nextProps.activeFontType
+      });
     }
   }
 

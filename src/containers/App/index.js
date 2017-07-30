@@ -32,7 +32,8 @@ class App extends Component {
         letterSpacing: 0,
         color: '#666'
       },
-      controlsOpen: true
+      controlsOpen: true,
+      activeFontType: 'heading'
     };
     this.updateFonts = this.updateFonts.bind(this);
     this.handleControlsOpen = this.handleControlsOpen.bind(this);
@@ -66,6 +67,12 @@ class App extends Component {
     });
   }
 
+  handleFontType(fontType) {
+    this.setState({
+      activeFontType: 'heading'
+    });
+  }
+
   render() {
     let contentClassnames = ClassNames(styles.content, {[styles.controlsOpen] : this.state.controlsOpen});
     let controlsClassnames = ClassNames(styles.controls, {[styles.controlsOpen] : this.state.controlsOpen});
@@ -90,6 +97,7 @@ class App extends Component {
                 lineHeight={this.state.heading.lineHeight}
                 text={this.state.heading.text}
                 onChange={this.handleFontChange.bind(this, 'heading', 'text')}
+                onFocus={this.handleFontType.bind(this, 'heading')}
               />
               <BodyFont
                 fontFamily={this.state.body.fontFamily}
@@ -110,6 +118,7 @@ class App extends Component {
               body={this.state.body}
               handleChange={this.handleFontChange}
               closeControls={this.handleControlsOpen}
+              activeFontType={this.state.activeFontType}
             />
           </div>
 
