@@ -17,12 +17,20 @@ class App extends Component {
     this.state = {
       heading: {
         fontFamily: 'Poppins',
-        fontWeight: 'not selected',
-        text: 'heading font'
+        fontWeight: 500,
+        fontSize: 42,
+        lineHeight: 1,
+        letterSpacing: 0,
+        color: '#333',
+        text: 'Heading Font'
       },
       body: {
         fontFamily: 'Open Sans',
-        fontWeight: 'asdas'
+        fontWeight: 'regular',
+        fontSize: 16,
+        lineHeight: 1.4,
+        letterSpacing: 0,
+        color: '#666'
       },
       controlsOpen: true
     };
