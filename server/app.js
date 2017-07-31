@@ -3,9 +3,23 @@ const morgan = require('morgan');
 const path = require('path');
 const app = express();
 const db = require('./models');
-
+const jwt = require('express-jwt');
+const jwks = require('jwks-rsa');
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
+
+// Setup Auth0
+const jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: "https://neilspurgeon.auth0.com/.well-known/jwks.json"
+  }),
+  audience: 'http://fontifi.co',
+  issuer: "https://neilspurgeon.auth0.com/",
+  algorithms: ['RS256']
+});
 
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
@@ -14,7 +28,7 @@ app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:htt
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 // Routes
-app.get('/fontpairs/random', (req, res) => {
+app.get('/fontpairs/random', jwtCheck, (req, res) => {
   db.FontPair.random( (err, fontPair) => {
     if (err) {
       return res.status(400).json({error: err});
@@ -32,6 +46,7 @@ app.get('/fonts', (req, res) => {
       res.json(parsedData);
     });
 });
+
 
 app.post('/fontpairs', (req, res) => {
   // const fontPair = req.body.fontPair;
