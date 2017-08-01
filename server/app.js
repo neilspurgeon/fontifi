@@ -9,15 +9,15 @@ require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
 // Setup Auth0
-const jwtCheck = jwt({
+const authCheck = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
     jwksUri: "https://neilspurgeon.auth0.com/.well-known/jwks.json"
   }),
-  audience: 'http://fontifi.co',
-  issuer: "https://neilspurgeon.auth0.com/",
+  audience: process.env.AUTH_AUDIENCE,
+  issuer: process.env.AUTH_ISSUER,
   algorithms: ['RS256']
 });
 
@@ -28,7 +28,7 @@ app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:htt
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 // Routes
-app.get('/fontpairs/random', jwtCheck, (req, res) => {
+app.get('/fontpairs/random', (req, res) => {
   db.FontPair.random( (err, fontPair) => {
     if (err) {
       return res.status(400).json({error: err});
@@ -48,7 +48,7 @@ app.get('/fonts', (req, res) => {
 });
 
 
-app.post('/fontpairs', (req, res) => {
+app.post('/fontpairs', authCheck, (req, res) => {
   // const fontPair = req.body.fontPair;
 });
 

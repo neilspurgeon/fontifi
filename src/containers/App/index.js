@@ -10,8 +10,10 @@ import BodyFont from 'components/BodyFont';
 import GetFonts from 'components/GetFonts';
 import FontControls from 'components/FontControls';
 
+import Auth from 'utils/authService/AuthService.js';
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {

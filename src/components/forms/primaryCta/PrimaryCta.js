@@ -1,11 +1,9 @@
 import React from 'react';
 import styles from './style.css';
 
-function PrimaryCta() {
-
+function PrimaryCta(props) {
   return(
-    <button className={styles.PrimaryCta} type="submit">Submit Fonts</button>
-
+    <button className={styles.PrimaryCta} onClick={props.onClick}>{props.text}</button>
   );
 };
 

@@ -8,6 +8,7 @@ import ColorPicker from 'components/forms/colorPicker';
 import PrimaryCta from 'components/forms/primaryCta';
 import FormField from 'components/forms/formField';
 import SegmentController from 'components/forms/segmentController';
+import SubmitFonts from 'components/forms/submitFonts';
 
 class FontControls extends Component {
   constructor(props) {
@@ -152,7 +153,10 @@ class FontControls extends Component {
           }/>
 
           <div className={styles.BottomActions}>
-            <PrimaryCta />
+            <PrimaryCta
+              onClick={SubmitFonts}
+              text="Submit Fonts"
+            />
           </div>
 
         </form>
