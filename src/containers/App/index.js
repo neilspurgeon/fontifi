@@ -56,11 +56,26 @@ class App extends Component {
       });
   }
 
+  reloadState() {
+    if (sessionStorage.state) {
+      const prevState = JSON.parse(sessionStorage.state);
+      this.setState(prevState);
+    }
+  }
+
+  componentWillMount() {
+    console.log('Component will mount');
+    this.reloadState();
+  }
+
   handleFontChange(fontType, propertyName, event) {
     // fontType: 'heading' or 'body'
     const font = this.state[fontType];
     font[propertyName] = event.target.value;
     this.setState({ fontType: font });
+
+    // Store state in session to save on reload
+    sessionStorage.setItem("state", JSON.stringify(this.state));
   }
 
   handleControlsOpen() {
