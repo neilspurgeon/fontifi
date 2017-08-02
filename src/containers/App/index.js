@@ -10,8 +10,6 @@ import BodyFont from 'components/BodyFont';
 import GetFonts from 'components/GetFonts';
 import FontControls from 'components/FontControls';
 
-import Auth from 'utils/authService/AuthService.js';
-
 class App extends Component {
 
   constructor(props) {
@@ -64,7 +62,6 @@ class App extends Component {
   }
 
   componentWillMount() {
-    console.log('Component will mount');
     this.reloadState();
   }
 
@@ -72,7 +69,10 @@ class App extends Component {
     // fontType: 'heading' or 'body'
     const font = this.state[fontType];
     font[propertyName] = event.target.value;
-    this.setState({ fontType: font });
+    this.setState({
+      fontType: font,
+      activeFontType: fontType
+    });
 
     // Store state in session to save on reload
     sessionStorage.setItem("state", JSON.stringify(this.state));
@@ -123,6 +123,7 @@ class App extends Component {
                 letterSpacing={this.state.body.letterSpacing}
                 color={this.state.body.color}
                 lineHeight={this.state.body.lineHeight}
+                onChange={this.handleFontChange.bind(this, 'body', 'text')}
                 onFocus={this.handleFontType.bind(this, 'body')}
               />
               <GetFonts triggerUpdateFonts={this.updateFonts} className={styles.getFonts}/>
