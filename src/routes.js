@@ -10,7 +10,7 @@ import NotFound from './containers/NotFound';
 const Routes = (props) => (
   <Switch>
     <Route exact path="/" component={App} />
-    <Route exact path="/about" component={About} onEnter={requireAuth} />
+    <Route exact path="/about" component={About} />
     <Route exact path="/callback" component={Callback} />
     <Route component={NotFound} />
   </Switch>

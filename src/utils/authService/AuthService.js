@@ -4,10 +4,10 @@ const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
 
 const CLIENT_ID = 'Pt24k2F2XmSy7R8uq9yeayKSUdt4n3zc';
-const CLIENT_DOMAIN = 'AUTH0_DOMAIN';
-const REDIRECT = 'http://localhost:4000/callback';
+const CLIENT_DOMAIN = 'neilspurgeon.auth0.com';
+const REDIRECT = 'http://localhost:3000/callback';
 const SCOPE = 'YOUR_SCOPE';
-const AUDIENCE = 'AUDIENCE_ATTRIBUTE';
+const AUDIENCE = 'http://fontifi.co';
 
 var auth = new auth0.WebAuth({
   clientID: CLIENT_ID,

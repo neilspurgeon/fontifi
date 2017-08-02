@@ -10,6 +10,8 @@ import FormField from 'components/forms/formField';
 import SegmentController from 'components/forms/segmentController';
 import SubmitFonts from 'components/forms/submitFonts';
 
+import {isLoggedIn, logout, login} from 'utils/authService/AuthService.js';
+
 class FontControls extends Component {
   constructor(props) {
     super(props);
@@ -153,6 +155,24 @@ class FontControls extends Component {
           }/>
 
           <div className={styles.BottomActions}>
+            { isLoggedIn() ?
+              <button onClick={
+                function(e) {
+                  e.preventDefault();
+                  logout();
+                }}>
+                Log Out
+              </button>
+              :
+              <button onClick={
+                function(e) {
+                  e.preventDefault();
+                  login();
+                }}>
+                Log In
+              </button>}
+
+
             <PrimaryCta
               onClick={SubmitFonts}
               text="Submit Fonts"
