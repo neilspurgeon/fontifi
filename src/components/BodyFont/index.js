@@ -7,7 +7,12 @@ function BodyFont (props) {
     const fontFamilyString = props.fontFamily.split(' ').join('+');
     const url = 'https://fonts.googleapis.com/css?family=' + fontFamilyString;
     let fontUrls = [url];
-    fontUrls.push(url + ':' + props.fontWeight);
+
+    const weight = props.fontWeight;
+    if (weight !== 'regular' && weight !== 'normal' && weight !== '400') {
+      fontUrls.push(url + ':' + props.fontWeight);
+    }
+
     const fontStyle = {
       fontFamily: props.fontFamily,
       fontSize: props.fontSize + 'px',
