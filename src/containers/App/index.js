@@ -41,7 +41,6 @@ class App extends Component {
   };
 
   updateFonts() {
-    // this.setState({});
     fetch('/fontpairs/random', {})
       .then( function(response) {
         return response.json();
@@ -70,7 +69,7 @@ class App extends Component {
     const font = this.state[fontType];
     font[propertyName] = event.target.value;
     this.setState({
-      fontType: font,
+      [fontType]: font,
       activeFontType: fontType
     });
 
