@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { requireAuth } from 'utils/authService/AuthService.js';
 
 import App from './containers/App';
 import About from './containers/About';
