@@ -33,11 +33,13 @@ class App extends Component {
         color: '#666'
       },
       controlsOpen: true,
-      activeFontType: 'heading'
+      activeFontType: 'heading',
+      modalOpen: true
     };
     this.updateFonts = this.updateFonts.bind(this);
     this.handleControlsOpen = this.handleControlsOpen.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   };
 
   updateFonts() {
@@ -86,6 +88,12 @@ class App extends Component {
   handleFontType(fontType) {
     this.setState({
       activeFontType: fontType
+    });
+  }
+
+  toggleModal() {
+    this.setState({
+      modalOpen: !this.state.modalOpen
     });
   }
 
