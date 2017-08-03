@@ -8,10 +8,10 @@ function Modal (props) {
 
     return (
       <Portal isOpened={props.isOpen} closeOnEsc={true} >
-        <div className={[styles.overlay, isOpen].join(' ')}>
+        <div className={[styles.overlay, isOpen].join(' ')} onClick={props.closeModal}>
           <div className={styles.modal}>
             <button onClick={props.closeModal}>Close</button>
-            {props.content || 'Modal'}
+            { props.children }
           </div>
         </div>
       </Portal>
