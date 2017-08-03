@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './style.css';
 
-function SignUpModal (props) {
+function SignUpForm (props) {
 
     return (
       <div>
@@ -18,4 +18,4 @@ function SignUpModal (props) {
 }
 
 
-export default SignUpModal;
+export default SignUpForm;
