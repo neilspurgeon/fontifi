@@ -1,19 +1,21 @@
 import React from 'react';
 import styles from './style.css';
+import Portal from 'react-portal';
 
 function Modal (props) {
 
-  let show = props.show ? styles.show : styles.hide;
+  let isOpen = props.isOpen ? styles.show : styles.hide;
 
     return (
-      <div className={[styles.overlay, show].join(' ')}>
-        <div className={styles.modal}>
-          <button onClick={props.toggleModal}>Close</button>
-          {props.content || 'Modal'}
+      <Portal isOpened={props.isOpen} closeOnEsc={true} >
+        <div className={[styles.overlay, isOpen].join(' ')}>
+          <div className={styles.modal}>
+            <button onClick={props.closeModal}>Close</button>
+            {props.content || 'Modal'}
+          </div>
         </div>
-      </div>
+      </Portal>
     );
-
 }
 
 export default Modal;
