@@ -15,8 +15,8 @@
   opacity: 1;
 }
 
-.show {
-  opacity: 1;
+.overlayClose {
+  opacity: 0;
 }
 
 .modal {

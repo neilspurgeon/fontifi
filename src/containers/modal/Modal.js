@@ -16,6 +16,7 @@ function Modal (props) {
           afterOpen: styles.overlayReveal,
           beforeClose: styles.overlayClose
         }}
+      closeTimeoutMS={200}
       isOpen={props.isOpen}
       onRequestClose={props.closeModal}>
 
