@@ -1,55 +1,29 @@
-import React, {Component} from 'react';
+import React from 'react';
 import styles from './style.css';
-import Portal from 'react-portal';
-import { CSSTransitionGroup } from 'react-transition-group';
+import ReactModal from 'react-modal';
 
-class Modal extends Component {
+function Modal (props) {
 
-  constructor(props) {
-    super(props);
-    this.state = {
+  return (
+    <ReactModal
+      className={{
+          base: styles.modal,
+          afterOpen: 'myClass_after-open',
+          beforeClose: 'myClass_before-close'
+        }}
+        overlayClassName={{
+          base: styles.overlay,
+          afterOpen: styles.overlayReveal,
+          beforeClose: styles.overlayClose
+        }}
+      isOpen={props.isOpen}
+      onRequestClose={props.closeModal}>
 
-    };
-    this.overlayClassNames = [styles.overlay];
-    this.reveal = this.reveal.bind(this);
-  }
+        <button onClick={props.closeModal}>Close</button>
+        {props.children}
 
-  componentWillRecieveProps(props) {
-    console.log(props);
-  }
-
-  reveal() {
-    this.overlayClassNames.push(styles.show);
-  }
-
-
-  render() {
-
-    // let overlayClassNames = ;
-
-    return (
-
-
-        <Portal isOpened={this.props.isOpen} closeOnEsc={true}>
-
-          <CSSTransitionGroup
-          transitionName="example"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
-
-            <div key={'asdads'} className={this.overlayClassNames.join(' ')} onClick={this.props.closeModal}>
-              <div className={styles.modal}>
-                <button onClick={this.props.closeModal}>Close</button>
-                {this.props.children}
-              </div>
-            </div>
-
-          </CSSTransitionGroup>
-        </Portal>
-
-    );
-  }
-
+    </ReactModal>
+  );
 }
 
 export default Modal;

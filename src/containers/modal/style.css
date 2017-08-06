@@ -7,8 +7,12 @@
   background-color: rgba(0,0,5,.7);
   z-index: 99999;
   overflow: auto;
-  transition: 5s ease all;
+  transition: .2s ease all;
   opacity: 0;
+}
+
+.overlayReveal {
+  opacity: 1;
 }
 
 .show {

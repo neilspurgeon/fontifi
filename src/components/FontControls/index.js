@@ -5,12 +5,11 @@ import SelectFont from 'components/forms/selectFont';
 import Select from 'components/forms/select';
 import ComboSlider from 'components/forms/comboSlider';
 import ColorPicker from 'components/forms/colorPicker';
-import PrimaryCta from 'components/forms/primaryCta';
 import FormField from 'components/forms/formField';
 import SegmentController from 'components/forms/segmentController';
 import SubmitFonts from 'components/forms/submitFonts';
 
-import {isLoggedIn, logout, login} from 'utils/authService/AuthService.js';
+import { isAuthenticated } from 'utils/authService/AuthService.js';
 
 class FontControls extends Component {
   constructor(props) {
@@ -29,7 +28,7 @@ class FontControls extends Component {
           family: 'Open Sans',
           variants: ['Regular']
         }
-      ],
+      ]
     };
     this.handleFontController = this.handleFontController.bind(this);
   }
@@ -155,32 +154,10 @@ class FontControls extends Component {
           }/>
 
           <div className={styles.BottomActions}>
-            { isLoggedIn() ?
-              <button onClick={
-                function(e) {
-                  e.preventDefault();
-                  logout();
-                }}>
-                Log Out
-              </button>
-              :
-              <button onClick={
-                function(e) {
-                  e.preventDefault();
-                  login();
-                }}>
-                Log In
-              </button>}
-
-
-            <PrimaryCta
-              onClick={SubmitFonts}
-              text="Submit Fonts"
-            />
+            <SubmitFonts />
           </div>
 
         </form>
-
       </div>
     );
   }
