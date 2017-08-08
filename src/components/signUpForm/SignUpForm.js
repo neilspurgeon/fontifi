@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './style.css';
 import PrimaryCta from 'components/forms/primaryCta';
+import Input from 'components/forms/input';
 
 function SignUpForm (props) {
 

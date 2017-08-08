@@ -5,7 +5,7 @@ function Input(props) {
 
   return(
     <input
-      type="text"
+      type={props.type || 'text'}
       className={styles.input}
       onChange={props.handleChange}
       value={props.value}
