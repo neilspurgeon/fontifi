@@ -11,8 +11,8 @@ function SignUpForm (props) {
       <h1 className={styles.heading}>Create Account with</h1>
       <div className={styles.divider}>or</div>
       <form>
-        <input type="email" placeholder="Email Address" />
-        <input type="password" placeholder="Password" />
+        <Input type="email" placeholder="Email Address" />
+        <Input type="password" placeholder="Password" />
         <PrimaryCta text="Sign Up"/>
       </form>
     </div>
