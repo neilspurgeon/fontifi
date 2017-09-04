@@ -9,8 +9,6 @@ import FormField from 'components/forms/formField';
 import SegmentController from 'components/forms/segmentController';
 import SubmitFonts from 'components/forms/submitFonts';
 
-import { isAuthenticated } from 'utils/authService/AuthService.js';
-
 class FontControls extends Component {
   constructor(props) {
     super(props);

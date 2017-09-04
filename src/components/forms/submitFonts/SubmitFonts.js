@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styles from './style.css';
 import Modal from 'containers/modal';
 import SignUpForm from 'components/signUpForm';
+import Auth from 'utils/authService/AuthService.js';
 
 class SubmitFonts extends Component {
   constructor(props) {
@@ -31,10 +32,10 @@ class SubmitFonts extends Component {
 
   render() {
 
-
     return (
       <div>
-        <button className={styles.PrimaryCta} type="button" onClick={ false ? this.submit : this.openModal }>Submit Fonts</button>
+        { Auth.isAuthenticated ? 'Authenticated' : 'Not Authenticated'}
+        <button className={styles.PrimaryCta} type="button" onClick={ Auth.isAuthenticated ? this.submit : this.openModal }>Submit Fonts</button>
         <Modal isOpen={this.state.modalOpen} closeModal={this.closeModal}>
           <SignUpForm />
         </Modal>

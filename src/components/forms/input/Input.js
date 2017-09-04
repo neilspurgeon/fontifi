@@ -6,6 +6,7 @@ function Input(props) {
   return(
     <input
       type={props.type || 'text'}
+      name={props.name}
       className={styles.input}
       onChange={props.handleChange}
       value={props.value}
