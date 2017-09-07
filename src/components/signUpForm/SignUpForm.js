@@ -24,10 +24,14 @@ class SignUpForm extends React.Component {
     });
   }
 
+  errCallback(err) {
+    console.log(err);
+  }
+
   signup(e) {
     e.preventDefault();
     const auth = new Auth();
-    auth.signup(this.state.email, this.state.password);
+    auth.signup(this.state.email, this.state.password, this.errCallback);
   };
 
   render() {

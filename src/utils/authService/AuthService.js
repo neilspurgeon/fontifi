@@ -1,16 +1,3 @@
-// import decode from 'jwt-decode';
-// import auth0 from 'auth0-js';
-// import Auth0Lock from 'auth0-lock';
-
-// const ID_TOKEN_KEY = 'id_token';
-// const ACCESS_TOKEN_KEY = 'access_token';
-
-// const CLIENT_ID = 'Pt24k2F2XmSy7R8uq9yeayKSUdt4n3zc';
-// const CLIENT_DOMAIN = 'neilspurgeon.auth0.com';
-// const REDIRECT = 'http://localhost:3000/callback';
-// const SCOPE = 'YOUR_SCOPE';
-// const AUDIENCE = 'http://fontifi.co';
-
 import auth0 from 'auth0-js';
 
 export default class Auth {
@@ -45,14 +32,12 @@ export default class Auth {
     );
   }
 
-  signup(email, password) {
+  signup(email, password, errorCallback) {
     this.auth0.redirect.signupAndLogin(
       { connection: 'Username-Password-Authentication', email, password },
       function(err) {
         if (err) {
-          console.log(err);
-          alert(`Error: ${err.description}. Check the console for further details.`);
-          return;
+          return errorCallback(err.description);
         }
       }
     );

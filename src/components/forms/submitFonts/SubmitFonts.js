@@ -37,7 +37,7 @@ class SubmitFonts extends Component {
         { Auth.isAuthenticated ? 'Authenticated' : 'Not Authenticated'}
         <button className={styles.PrimaryCta} type="button" onClick={ Auth.isAuthenticated ? this.submit : this.openModal }>Submit Fonts</button>
         <Modal isOpen={this.state.modalOpen} closeModal={this.closeModal}>
-          <SignUpForm />
+          <SignUpForm message={'error message'}/>
         </Modal>
 
       </div>
