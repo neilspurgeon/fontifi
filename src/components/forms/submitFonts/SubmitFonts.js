@@ -7,7 +7,7 @@ import Auth from 'utils/authService/AuthService.js';
 class SubmitFonts extends Component {
   constructor(props) {
     super(props);
-    this.state = { modalOpen: false };
+    this.state = { modalOpen: false};
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -35,9 +35,7 @@ class SubmitFonts extends Component {
     return (
       <div>
 
-        { auth.isAuthenticated() ?
-          <button type="button" onClick={auth.logout}>Log Out</button>
-        : 'Not Authenticated'}
+        { auth.isAuthenticated() ? <button type="button" onClick={auth.logout}>Log Out</button> : null }
 
         <button
           className={styles.PrimaryCta}
