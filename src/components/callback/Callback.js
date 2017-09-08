@@ -3,11 +3,11 @@ import Auth from 'utils/authService/AuthService.js';
 
 class Callback extends Component {
 
-  // componentDidMount() {
-  //   // setAccessToken();
-  //   setIdToken();
-  //   window.location.href = "/";
-  // }
+  componentDidMount() {
+    const auth = new Auth();
+    auth.handleAuthentication();
+    window.location.href = "/";
+  }
 
   render() {
     return null;
