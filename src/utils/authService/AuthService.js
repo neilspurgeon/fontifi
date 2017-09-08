@@ -11,7 +11,7 @@ export default class Auth {
 
   constructor() {
     this.login = this.login.bind(this);
-    this.signup = this.signup.bind(this);
+    this.signupAndContinue = this.signupAndContinue.bind(this);
     this.loginWithGoogle = this.loginWithGoogle.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
@@ -32,16 +32,33 @@ export default class Auth {
     );
   }
 
-  signup(email, password, errorCallback) {
-    this.auth0.redirect.signupAndLogin(
+  signupAndContinue(email, password, errorCallback, successCallback) {
+    this.auth0.signupAndAuthorize(
       { connection: 'Username-Password-Authentication', email, password },
-      function(err) {
+      (err, authResult) => {
         if (err) {
           console.log(err.description);
           return errorCallback(err.description);
         }
+        this.setSession(authResult);
+        if (successCallback) {
+          successCallback();
+        };
       }
     );
+  }
+
+  signupAndRedirect(email, password, errorCallback, successCallback) {
+    this.auth0.redirect.signupAndLogin({
+      connection: 'Username-Password-Authentication',
+      email,
+      password
+    }, function(err) {
+        if (err) {
+          console.log(err.description);
+          return errorCallback(err.description);
+        }
+    });
   }
 
   loginWithGoogle() {

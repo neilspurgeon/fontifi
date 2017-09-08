@@ -41,10 +41,13 @@ class SignUpForm extends React.Component {
     });
   }
 
+  // optionally do something such as continue submitting form after authenticating
+  successCallback = this.props.successCallback;
+
   signup(e) {
     e.preventDefault();
     const auth = new Auth();
-    auth.signup(this.state.email, this.state.password, this.errorCallback);
+    auth.signupAndContinue(this.state.email, this.state.password, this.errorCallback, this.successCallback);
   };
 
   login(e) {
@@ -54,6 +57,7 @@ class SignUpForm extends React.Component {
   }
 
   render() {
+    console.log(this.successCallback);
     if (this.state.formType === 'signup') {
       return (
         <div>

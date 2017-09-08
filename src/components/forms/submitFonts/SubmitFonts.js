@@ -10,6 +10,7 @@ class SubmitFonts extends Component {
     this.state = { modalOpen: false};
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.closeAndSubmit = this.closeAndSubmit.bind(this);
   }
 
   submit() {
@@ -26,6 +27,11 @@ class SubmitFonts extends Component {
     this.setState({
       modalOpen: false
     });
+  }
+
+  closeAndSubmit() {
+    this.closeModal();
+    this.submit();
   }
 
   render() {
@@ -45,7 +51,7 @@ class SubmitFonts extends Component {
         </button>
 
         <Modal isOpen={this.state.modalOpen} closeModal={this.closeModal}>
-          <SignUpForm message={'error message'}/>
+          <SignUpForm message={'Please create an account or log in first'} successCallback={this.closeAndSubmit}/>
         </Modal>
 
       </div>
