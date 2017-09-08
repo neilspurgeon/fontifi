@@ -45,8 +45,16 @@ class SignUpForm extends React.Component {
         <h1 className={styles.heading}>Create Account with</h1>
         <div className={styles.divider}>or</div>
         <form onSubmit={this.signup}>
-          <Input type="email" name="email" placeholder="Email Address" handleChange={this.handleChange} />
-          <Input type="password" name="password" placeholder="Password" handleChange={this.handleChange} />
+          <Input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            handleChange={this.handleChange} />
+          <Input
+            type="password"
+            name="password"
+            placeholder="Password"
+            handleChange={this.handleChange} />
           <PrimaryCta text="Sign Up" type="submit" value="submit" />
         </form>
       </div>
