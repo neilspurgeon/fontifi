@@ -9,12 +9,14 @@ class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: null,
-      password: null
+      error: null,
+      email: '',
+      password: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.signup = this.signup.bind(this);
+    this.errorCallback = this.errorCallback.bind(this);
   }
 
   handleChange(event) {
@@ -24,20 +26,22 @@ class SignUpForm extends React.Component {
     });
   }
 
-  errCallback(err) {
-    console.log(err);
+  errorCallback(error) {
+    this.setState({
+      error: error
+    });
   }
 
   signup(e) {
     e.preventDefault();
     const auth = new Auth();
-    auth.signup(this.state.email, this.state.password, this.errCallback);
+    auth.signup(this.state.email, this.state.password, this.errorCallback);
   };
 
   render() {
     return (
       <div>
-        <p>{this.props.message}</p>
+        <p>{this.state.error || this.props.message }</p>
         <h1 className={styles.heading}>Create Account with</h1>
         <div className={styles.divider}>or</div>
         <form onSubmit={this.signup}>

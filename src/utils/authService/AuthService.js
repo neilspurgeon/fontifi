@@ -37,6 +37,7 @@ export default class Auth {
       { connection: 'Username-Password-Authentication', email, password },
       function(err) {
         if (err) {
+          console.log(err.description);
           return errorCallback(err.description);
         }
       }
