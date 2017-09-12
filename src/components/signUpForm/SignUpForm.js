@@ -53,11 +53,10 @@ class SignUpForm extends React.Component {
   login(e) {
     e.preventDefault();
     const auth = new Auth();
-    auth.login(this.state.email, this.state.password);
+    auth.login(this.state.email, this.state.password, this.successCallback);
   }
 
   render() {
-    console.log(this.successCallback);
     if (this.state.formType === 'signup') {
       return (
         <div>

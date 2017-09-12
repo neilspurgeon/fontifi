@@ -18,7 +18,7 @@ export default class Auth {
     this.isAuthenticated = this.isAuthenticated.bind(this);
   }
 
-  login(username, password) {
+  login(username, password, successCallback) {
     this.auth0.client.login(
       { realm: 'Username-Password-Authentication', username, password },
       (err, authResult) => {
@@ -28,6 +28,9 @@ export default class Auth {
           return;
         }
         this.setSession(authResult);
+        if (successCallback) {
+          successCallback();
+        };
       }
     );
   }
