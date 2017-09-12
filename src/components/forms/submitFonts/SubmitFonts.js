@@ -50,7 +50,10 @@ class SubmitFonts extends Component {
           Submit Fonts
         </button>
 
-        <Modal isOpen={this.state.modalOpen} closeModal={this.closeModal}>
+        <Modal
+          isOpen={this.state.modalOpen}
+          closeModal={this.closeModal}
+          contentLabel="Sign Up or Log In">
           <SignUpForm message={'Please create an account or log in first'} successCallback={this.closeAndSubmit}/>
         </Modal>
 
