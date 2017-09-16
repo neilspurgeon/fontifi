@@ -97,6 +97,22 @@ class App extends Component {
     });
   }
 
+  submitFonts() {
+    console.log('submiting...');
+    fetch('/fontpairs', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+      },
+      body: JSON.stringify({
+        headingFont: 'yourValue',
+        bodyFont: 'yourOtherValue',
+      })
+    });
+  }
+
   render() {
     let contentClassnames = ClassNames(styles.content, {[styles.controlsOpen] : this.state.controlsOpen});
     let controlsClassnames = ClassNames(styles.controls, {[styles.controlsOpen] : this.state.controlsOpen});
@@ -134,6 +150,8 @@ class App extends Component {
                 onFocus={this.handleFontType.bind(this, 'body')}
               />
               <GetFonts triggerUpdateFonts={this.updateFonts} className={styles.getFonts}/>
+
+               <button onClick={this.submitFonts}>Submit Fonts</button>
             </div>
 
           </div>
@@ -146,6 +164,7 @@ class App extends Component {
               closeControls={this.handleControlsOpen}
               activeFontType={this.state.activeFontType}
             />
+
           </div>
 
       </div>

@@ -5,7 +5,7 @@ export default class Auth {
     domain: 'neilspurgeon.auth0.com',
     clientID: 'Rh9DN85Fd5FFhM037ZE0IGegzk33y46Q',
     redirectUri: 'http://localhost:3000/callback',
-    audience: `https://neilspurgeon.auth0.com/userinfo`,
+    audience: `http://fontifi.co`,
     responseType: 'token id_token'
   });
 
@@ -27,6 +27,7 @@ export default class Auth {
           alert(`Error: ${err.description}. Check the console for further details.`);
           return;
         }
+        console.log(authResult);
         this.setSession(authResult);
         if (successCallback) {
           successCallback();

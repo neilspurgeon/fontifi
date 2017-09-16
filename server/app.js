@@ -50,6 +50,7 @@ app.get('/fonts', (req, res) => {
 
 app.post('/fontpairs', authCheck, (req, res) => {
   // const fontPair = req.body.fontPair;
+  console.log('authorized');
 });
 
 // Always return the main index.html, so react-router render the route in the client
