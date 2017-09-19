@@ -1,12 +1,13 @@
-const FontPair = require('../models/fontPair');
+const db = require('../models');
 
 // Create Font Pair
 exports.createFontPair = (req, res) => {
+  console.log('create font pair');
 
   const heading = req.body.heading;
   const body = req.body.body;
 
-  const fontPair = new FontPair({
+  const fontPair = new db.FontPair({
     heading: {
       fontFamily: heading.fontFamily,
       fontWeight: heading.fontWeight,
@@ -25,5 +26,10 @@ exports.createFontPair = (req, res) => {
     }
   });
 
-  console.log(fontPair);
+  fontPair.save((err) => {
+    if (err) {
+      return res.send(err);
+    }
+    res.status(200).send('Thanks for contributing.');
+  });
 };

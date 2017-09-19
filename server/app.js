@@ -57,7 +57,6 @@ app.get('/fonts', (req, res) => {
     });
 });
 
-
 app.post('/fontpairs', authCheck, fontPairController.createFontPair);
 
 // Always return the main index.html, so react-router render the route in the client
