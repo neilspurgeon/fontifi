@@ -5,6 +5,7 @@ const app = express();
 const db = require('./models');
 const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
+const bodyParser = require('body-parser');
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
@@ -26,6 +27,12 @@ app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:htt
 
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 
 // Routes
 app.get('/fontpairs/random', (req, res) => {
@@ -51,6 +58,7 @@ app.get('/fonts', (req, res) => {
 app.post('/fontpairs', authCheck, (req, res) => {
   // const fontPair = req.body.fontPair;
   console.log('authorized');
+  console.log(req.body);
 });
 
 // Always return the main index.html, so react-router render the route in the client
