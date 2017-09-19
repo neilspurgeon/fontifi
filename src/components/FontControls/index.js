@@ -152,7 +152,7 @@ class FontControls extends Component {
           }/>
 
           <div className={styles.BottomActions}>
-            <SubmitFonts />
+            <SubmitFonts onSubmit={this.props.onSubmit} />
           </div>
 
         </form>

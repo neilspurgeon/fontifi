@@ -98,7 +98,7 @@ class App extends Component {
   }
 
   submitFonts() {
-    console.log('submiting...');
+    console.log('submiting fonts...');
     fetch('/fontpairs', {
       method: 'POST',
       headers: {
@@ -151,7 +151,7 @@ class App extends Component {
               />
               <GetFonts triggerUpdateFonts={this.updateFonts} className={styles.getFonts}/>
 
-               <button onClick={this.submitFonts}>Submit Fonts</button>
+
             </div>
 
           </div>
@@ -163,6 +163,7 @@ class App extends Component {
               handleChange={this.handleFontChange}
               closeControls={this.handleControlsOpen}
               activeFontType={this.state.activeFontType}
+              onSubmit={this.submitFonts}
             />
 
           </div>

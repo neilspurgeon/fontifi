@@ -13,9 +13,7 @@ class SubmitFonts extends Component {
     this.closeAndSubmit = this.closeAndSubmit.bind(this);
   }
 
-  submit() {
-    console.log('submitting fonts');
-  }
+  submit = this.props.onSubmit;
 
   openModal() {
     this.setState({
