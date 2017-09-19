@@ -40,6 +40,7 @@ class App extends Component {
     this.handleControlsOpen = this.handleControlsOpen.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.submitFonts = this.submitFonts.bind(this);
   };
 
   updateFonts() {
@@ -107,8 +108,8 @@ class App extends Component {
         'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
       },
       body: JSON.stringify({
-        headingFont: 'yourValue',
-        bodyFont: 'yourOtherValue',
+        heading: this.state.heading,
+        body: this.state.body,
       })
     });
   }
