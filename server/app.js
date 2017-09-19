@@ -9,6 +9,9 @@ const bodyParser = require('body-parser');
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
+// Require Controllers
+const fontPairController = require('./controllers/fontPairController');
+
 // Setup Auth0
 const authCheck = jwt({
   secret: jwks.expressJwtSecret({
@@ -55,11 +58,7 @@ app.get('/fonts', (req, res) => {
 });
 
 
-app.post('/fontpairs', authCheck, (req, res) => {
-  // const fontPair = req.body.fontPair;
-  console.log('authorized');
-  console.log(req.body);
-});
+app.post('/fontpairs', authCheck, fontPairController.createFontPair);
 
 // Always return the main index.html, so react-router render the route in the client
 app.get('*', (req, res) => {
