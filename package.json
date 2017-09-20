@@ -61,7 +61,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "npm run build && npm start:server",
+    "start": "npm run build && npm run start:server",
     "start:devServer": "node scripts/start.js",
     "start:server": "node server/index.js",
     "build": "node scripts/build.js",
