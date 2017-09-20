@@ -10,5 +10,3 @@ ReactDOM.render((
     <Routes />
   </BrowserRouter>
 ), document.getElementById('root'));
-
-registerServiceWorker();
