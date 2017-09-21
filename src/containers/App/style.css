@@ -1,9 +1,3 @@
-.siteLogo {
-  position: fixed;
-  left: 30px;
-  top: 25px;
-}
-
 .controlsButton {
   position: fixed;
   z-index: 1;

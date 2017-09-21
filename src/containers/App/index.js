@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import ClassNames from 'classnames';
-import logo from './fontifi-logo.svg';
 import controlsIcon from './controls-icon.svg';
 import styles from './style.css';
 
@@ -9,6 +7,7 @@ import HeadingFont from 'components/HeadingFont';
 import BodyFont from 'components/BodyFont';
 import GetFonts from 'components/GetFonts';
 import FontControls from 'components/FontControls';
+import Navigation from 'components/navigation';
 
 class App extends Component {
 
@@ -120,9 +119,9 @@ class App extends Component {
 
     return (
       <div>
-        <Link to={'/'} className={styles.siteLogo}>
-          <img src={logo} alt="findafont logo" width="60px"/>
-        </Link>
+
+        <Navigation controlsOpen={this.state.controlsOpen} />
+
         <button onClick={this.handleControlsOpen} className={styles.controlsButton}>
           <img src={controlsIcon} alt="open controls"/>
         </button>

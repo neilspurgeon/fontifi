@@ -1,0 +1,27 @@
+.siteLogo {
+  position: fixed;
+  left: 30px;
+  top: 25px;
+}
+
+.nav {
+  position: fixed;
+  width: 100%;
+  max-width: 760px;
+  top: 30px;
+  left: 150px;
+  text-align: left;
+  transition: .2s ease all;
+}
+
+@media (min-width: 1000px) {
+  .nav {
+    left: calc(50vw - 380px);
+  }
+}
+
+@media (min-width: 1000px) {
+  .nav.controlsOpen {
+    transform: translateX(-190px);
+  }
+}
