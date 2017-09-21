@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './style.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from './fontifi-logo.svg';
 import ClassNames from 'classnames';
 
@@ -17,9 +17,36 @@ class Navigation extends React.Component {
         </Link>
 
         <nav className={navClassnames}>
-          <Link to={'/'}>Generator</Link>
-          <Link to={'/'}>My Collection</Link>
-          <Link to={'/about'}>About</Link>
+          <ul className={styles.navUl}>
+            <li className={styles.navLi}>
+              <NavLink
+                exact
+                activeStyle={{borderBottom: '1px solid #000'}}
+                className={styles.navLink}
+                to={'/'}>
+                Generator
+              </NavLink>
+            </li>
+
+            <li className={styles.navLi}>
+              <NavLink
+                activeStyle={{borderBottom: '1px solid #000'}}
+                className={styles.navLink}
+                to={'/collection'}>
+                My Collection
+              </NavLink>
+            </li>
+
+            <li className={styles.navLi}>
+              <NavLink
+                activeStyle={{borderBottom: '1px solid #000'}}
+                className={styles.navLink}
+                to={'/about'}>
+                About
+              </NavLink>
+            </li>
+
+          </ul>
         </nav>
 
       </div>
