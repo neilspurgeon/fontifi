@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ClassNames from 'classnames';
-import logo from './findafont-logo.svg';
+import logo from './fontifi-logo.svg';
 import controlsIcon from './controls-icon.svg';
 import styles from './style.css';
 
@@ -121,7 +121,7 @@ class App extends Component {
     return (
       <div>
         <Link to={'/'} className={styles.siteLogo}>
-          <img src={logo} alt="findafont logo"/>
+          <img src={logo} alt="findafont logo" width="60px"/>
         </Link>
         <button onClick={this.handleControlsOpen} className={styles.controlsButton}>
           <img src={controlsIcon} alt="open controls"/>
