@@ -120,7 +120,7 @@ class App extends Component {
     return (
       <div>
 
-        <Navigation controlsOpen={this.state.controlsOpen} />
+        <Navigation />
 
         <button onClick={this.handleControlsOpen} className={styles.controlsButton}>
           <img src={controlsIcon} alt="open controls"/>

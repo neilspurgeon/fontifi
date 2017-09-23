@@ -14,15 +14,9 @@
   transition: .2s ease all;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1440px) {
   .nav {
-    left: calc(50vw - 380px);
-  }
-}
-
-@media (min-width: 1000px) {
-  .nav.controlsOpen {
-    transform: translateX(-190px);
+    left: calc(50vw - 380px - 190px);
   }
 }
 

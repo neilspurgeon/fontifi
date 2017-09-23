@@ -2,13 +2,10 @@ import React from 'react';
 import styles from './style.css';
 import { Link, NavLink } from 'react-router-dom';
 import logo from './fontifi-logo.svg';
-import ClassNames from 'classnames';
 
 class Navigation extends React.Component {
 
   render() {
-
-    let navClassnames = ClassNames(styles.nav, {[styles.controlsOpen] : this.props.controlsOpen});
 
     return (
       <div>
@@ -16,7 +13,7 @@ class Navigation extends React.Component {
           <img src={logo} alt="findafont logo" width="60px"/>
         </Link>
 
-        <nav className={navClassnames}>
+        <nav className={styles.nav}>
           <ul className={styles.navUl}>
             <li className={styles.navLi}>
               <NavLink
