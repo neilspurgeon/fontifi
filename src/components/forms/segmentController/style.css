@@ -1,3 +1,5 @@
+@import '../../../variables.css';
+
 .SegmentController {
   border: 1px solid #000;
   border-radius: 50px;
@@ -17,13 +19,13 @@
   border-radius: 50px;
   z-index: 999;
   transition: .2s ease all;
-  color: #141419;
+  color: var(--primary-dark-color);
   font-weight: 600;
   text-transform: capitalize;
 }
 
 .segment:hover {
-  color: #49a9ee;
+  color: var(--primary-ui-color);
 }
 
 .selectedBg {

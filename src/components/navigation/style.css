@@ -1,3 +1,5 @@
+@import '../../variables.css';
+
 .siteLogo {
   position: fixed;
   left: 30px;
@@ -36,7 +38,7 @@
 }
 
 .navLink {
-  color: #000;
+  color: var(--primary-text-color);
   font-size: 15px;
   text-decoration: none;
   font-weight: 600;

@@ -1,3 +1,5 @@
+@import '../../../variables.css';
+
 /* Globally remove browser styles */
 input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
@@ -35,7 +37,7 @@ input[type=range]::-webkit-slider-thumb {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #49a9ee;
+  background-color: var(--primary-ui-color);
   cursor: pointer;
   transition: .2s ease all;
 }
