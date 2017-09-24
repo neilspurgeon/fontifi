@@ -1,7 +1,7 @@
 @import '../../variables.css';
 
 .text {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--light-text-color);
 }
 
@@ -12,10 +12,19 @@
   border-radius: 7px;
   margin: .5em;
   padding: 5px 15px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 400;
   cursor: pointer;
   transition: .3s ease all;
+}
+
+@media (min-width: 500px) {
+  .spacebarButton {
+    font-size: 14px;
+  }
+  .text {
+    font-size: 14px;
+  }
 }
 
 .spacebarButton:hover {
