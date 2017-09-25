@@ -1,0 +1,16 @@
+@import '../../variables.css';
+
+.body {
+  padding: 20px;
+  transition: .2s ease background-color;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.body.isActive {
+  border: var(--active-font-border);
+}
+
+.body:hover {
+  background-color: var(--font-hover-background);
+}

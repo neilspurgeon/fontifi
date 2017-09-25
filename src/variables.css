@@ -7,4 +7,6 @@
   --border-color: #E4E4E4;
   --primary-cta-bg-color: #141419;
   --cta-text-color: #FFF;
+  --font-hover-background: #F0F0F5;
+  --active-font-border: 1px solid #F0F0F5;
 }

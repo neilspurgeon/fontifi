@@ -40,6 +40,8 @@ class App extends Component {
     this.handleFontChange = this.handleFontChange.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.submitFonts = this.submitFonts.bind(this);
+    this.handleFontType = this.handleFontType.bind(this);
+    this.handleFontTypeEvent = this.handleFontTypeEvent.bind(this);
   };
 
   updateFonts() {
@@ -91,6 +93,12 @@ class App extends Component {
     });
   }
 
+  handleFontTypeEvent(event) {
+    this.setState({
+      activeFontType: event.target.value
+    });
+  }
+
   toggleModal() {
     this.setState({
       modalOpen: !this.state.modalOpen
@@ -138,6 +146,7 @@ class App extends Component {
                 text={this.state.heading.text}
                 onChange={this.handleFontChange.bind(this, 'heading', 'text')}
                 onFocus={this.handleFontType.bind(this, 'heading')}
+                activeFontType={this.state.activeFontType}
               />
               <BodyFont
                 fontFamily={this.state.body.fontFamily}
@@ -148,6 +157,7 @@ class App extends Component {
                 lineHeight={this.state.body.lineHeight}
                 onChange={this.handleFontChange.bind(this, 'body', 'text')}
                 onFocus={this.handleFontType.bind(this, 'body')}
+                activeFontType={this.state.activeFontType}
               />
               <GetFonts triggerUpdateFonts={this.updateFonts} className={styles.getFonts}/>
 
@@ -164,6 +174,7 @@ class App extends Component {
               closeControls={this.handleControlsOpen}
               activeFontType={this.state.activeFontType}
               onSubmit={this.submitFonts}
+              handleFontType={this.handleFontTypeEvent}
             />
 
           </div>

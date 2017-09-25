@@ -86,7 +86,7 @@ class FontControls extends Component {
 
         <form>
           <SegmentController
-            onChange={this.handleFontController}
+            onChange={this.props.handleFontType.bind(this)}
             name1="fontType"
             value1="heading"
             checked1={this.state.fontController === 'heading'}
