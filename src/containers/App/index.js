@@ -7,7 +7,7 @@ import HeadingFont from 'components/HeadingFont';
 import BodyFont from 'components/BodyFont';
 import GetFonts from 'components/GetFonts';
 import FontControls from 'components/FontControls';
-import Navigation from 'components/navigation';
+import Navigation from 'containers/navigation';
 
 class App extends Component {
 

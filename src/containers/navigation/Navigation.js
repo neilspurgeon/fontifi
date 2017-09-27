@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './style.css';
 import { Link, NavLink } from 'react-router-dom';
 import logo from './fontifi-logo.svg';
+import Account from 'components/account';
 
 class Navigation extends React.Component {
 
@@ -44,6 +45,7 @@ class Navigation extends React.Component {
             </li>
 
           </ul>
+          <Account />
         </nav>
 
       </div>

@@ -1,0 +1,32 @@
+@import '../../variables.css';
+
+.account {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--primary-dark-color);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.account::before {
+  content: '';
+  width: 33%;
+  height: 33%;
+  position: absolute;
+  top: 20%;
+  left: 33%;
+  border: 1px solid var(--primary-dark-color);
+  border-radius: 50%;
+}
+
+.account::after{
+  content: '';
+  width: 95%;
+  height: 75%;
+  position: absolute;
+  top: 65%;
+  left: 2.5%;
+  border: 1px solid var(--primary-dark-color);
+  border-radius: 50%;
+}
