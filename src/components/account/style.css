@@ -2,6 +2,11 @@
 
 .accountContainer {
   display: inline-block;
+  position: relative;
+}
+
+.accountContainer.isActive {
+  padding-bottom: 30px;
 }
 
 .accountIcon {
@@ -11,6 +16,7 @@
   border-radius: 50%;
   position: relative;
   overflow: hidden;
+  margin: 5px;
 }
 
 .accountIcon::before {
@@ -43,16 +49,19 @@
   padding: 15px;
   border-radius: 6px;
   display: inline-block;
-  position: relative;
+  position: absolute;
   z-index: 0;
-  margin-top: 14px;
-  display: none;
-  right: 0;
+  margin-top: 10px;
+  visibility: hidden;
+  right: -5px;
   white-space: nowrap;
+  opacity: 0;
+  transition: opacity .5s ease;
 }
 
 .accountDropdown.isActive {
-  display: inline-block;
+  opacity: 1;
+  visibility: visible;
 }
 
 .accountDropdown::before {
