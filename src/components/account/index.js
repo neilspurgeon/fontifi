@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './style.css';
 import ClassNames from 'classnames';
+import Auth from 'utils/authService/AuthService.js';
 
 class Account extends React.Component {
 
@@ -25,8 +26,12 @@ class Account extends React.Component {
     });
   }
 
+  signupModal() {
+    console.log('open sign up modal');
+  };
 
   render() {
+    const auth = new Auth();
     let dropdownStyles = ClassNames(styles.accountDropdown, {[styles.isActive] : this.state.active });
     let accountContainerStyles = ClassNames(styles.accountContainer, {[styles.isActive] : this.state.active });
 
@@ -36,9 +41,9 @@ class Account extends React.Component {
         <div className={dropdownStyles} onMouseOut={this.closeMenu}>
           <div className={styles.background}></div>
           <ul className={styles.accountUl}>
-            <li>Log Out</li>
-            <li>Log In</li>
-            <li>Sign Up</li>
+            { auth.isAuthenticated() ? <li><a onClick={auth.logout}>Log Out</a></li> : null }
+            { auth.isAuthenticated() ? null : <li><a onClick={this.signupModal}>Log In</a></li> }
+           { auth.isAuthenticated() ? null : <li>Sign Up</li> }
           </ul>
 
         </div>
