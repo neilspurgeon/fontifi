@@ -2,16 +2,19 @@ import React from 'react';
 import styles from './style.css';
 import ClassNames from 'classnames';
 import Auth from 'utils/authService/AuthService.js';
+import AuthModal from 'components/authModal';
 
 class Account extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      active: false
+      active: false,
+      authModalOpen: false
     };
     this.openMenu = this.openMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
+    this.toggleAuthModal = this.toggleAuthModal.bind(this);
   }
 
   openMenu() {
@@ -26,8 +29,11 @@ class Account extends React.Component {
     });
   }
 
-  signupModal() {
+  toggleAuthModal() {
     console.log('open sign up modal');
+    this.setState({
+      authModalOpen: !this.state.authModalOpen
+    });
   };
 
   render() {
@@ -35,18 +41,24 @@ class Account extends React.Component {
     let dropdownStyles = ClassNames(styles.accountDropdown, {[styles.isActive] : this.state.active });
     let accountContainerStyles = ClassNames(styles.accountContainer, {[styles.isActive] : this.state.active });
 
-    return (
+    if (auth.isAuthenticated()) {
+      return (
       <div className={accountContainerStyles} onMouseOver={this.openMenu} onMouseOut={this.closeMenu}>
         <div className={styles.accountIcon}></div>
         <div className={dropdownStyles} onMouseOut={this.closeMenu}>
           <div className={styles.background}></div>
           <ul className={styles.accountUl}>
-            { auth.isAuthenticated() ? <li><a onClick={auth.logout}>Log Out</a></li> : null }
-            { auth.isAuthenticated() ? null : <li><a onClick={this.signupModal}>Log In</a></li> }
-           { auth.isAuthenticated() ? null : <li>Sign Up</li> }
+            <li><a onClick={auth.logout}>Log Out</a></li>
           </ul>
-
         </div>
+      </div>
+      );
+    }
+
+    return (
+      <div>
+        <a onClick={this.toggleAuthModal}>Sign Up / Log In</a>
+        <AuthModal modalOpen={this.state.authModalOpen} closeModal={this.toggleAuthModal}/>
       </div>
     );
   }
