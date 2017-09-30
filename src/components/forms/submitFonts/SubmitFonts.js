@@ -39,8 +39,6 @@ class SubmitFonts extends Component {
     return (
       <div>
 
-        { auth.isAuthenticated() ? <button type="button" onClick={auth.logout}>Log Out</button> : null }
-
         <button
           className={styles.PrimaryCta}
           type="button"
