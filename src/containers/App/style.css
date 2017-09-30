@@ -73,20 +73,10 @@
 
 .controls {
   position: fixed;
-  top: 45px;
-  right: 30px;
+  top: 0;
+  right: 0;
   width: 375px;
-  height: calc(100vh - 75px);
-  transform: translate3d(405px, 0, 0);
-  transition: .2s ease all;
-  z-index: 999;
-
-  width: calc(100% - 20px);
-
-  @media screen and (min-width: 400px) {
-    width: 375px;
-    right: 0;
-  }
+  height: 100vh;
 }
 
 .controls.controlsOpen {

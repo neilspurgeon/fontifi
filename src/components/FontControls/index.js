@@ -6,7 +6,6 @@ import Select from 'components/forms/select';
 import ComboSlider from 'components/forms/comboSlider';
 import ColorPicker from 'components/forms/colorPicker';
 import FormField from 'components/forms/formField';
-import SegmentController from 'components/forms/segmentController';
 import SubmitFonts from 'components/forms/submitFonts';
 
 class FontControls extends Component {
@@ -80,21 +79,7 @@ class FontControls extends Component {
     return (
       <div className={styles.ControlPanel}>
 
-        <button onClick={this.props.closeControls} className={styles.closeButton}>
-          <img src={closeSVG} alt="close controls"/>
-        </button>
-
         <form>
-          <SegmentController
-            onChange={this.props.handleFontType.bind(this)}
-            name1="fontType"
-            value1="heading"
-            checked1={this.state.fontController === 'heading'}
-            name2="fontType"
-            value2="body"
-            checked2={this.state.fontController === 'body'}
-          />
-
 
           <FormField labelText="Font Family" input={
             <SelectFont
