@@ -4,6 +4,7 @@ import ClassNames from 'classnames';
 import Auth from 'utils/authService/AuthService.js';
 import AuthModal from 'components/authModal';
 import DropDown from 'containers/dropDown';
+import Button from 'components/forms/button';
 
 class Account extends React.Component {
 
@@ -52,7 +53,7 @@ class Account extends React.Component {
 
     return (
       <div>
-        <a onClick={this.toggleAuthModal}>Sign Up / Log In</a>
+        <Button onClick={this.toggleAuthModal} text="Sign Up / Log In" />
         <AuthModal modalOpen={this.state.authModalOpen} closeModal={this.toggleAuthModal}/>
       </div>
     );
