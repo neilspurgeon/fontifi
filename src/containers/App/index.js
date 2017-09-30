@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ClassNames from 'classnames';
-import controlsIcon from './controls-icon.svg';
 import styles from './style.css';
 
 import HeadingFont from 'components/HeadingFont';
@@ -89,7 +88,8 @@ class App extends Component {
 
   handleFontType(fontType) {
     this.setState({
-      activeFontType: fontType
+      activeFontType: fontType,
+      controlsOpen: true
     });
   }
 
@@ -129,10 +129,6 @@ class App extends Component {
       <div>
 
         <Navigation />
-
-        <button onClick={this.handleControlsOpen} className={styles.controlsButton}>
-          <img src={controlsIcon} alt="open controls"/>
-        </button>
 
           <div className={contentClassnames}>
             <div className={styles.fonts}>
