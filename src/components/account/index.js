@@ -3,6 +3,7 @@ import styles from './style.css';
 import ClassNames from 'classnames';
 import Auth from 'utils/authService/AuthService.js';
 import AuthModal from 'components/authModal';
+import DropDown from 'containers/dropDown';
 
 class Account extends React.Component {
 
@@ -12,20 +13,13 @@ class Account extends React.Component {
       active: false,
       authModalOpen: false
     };
-    this.openMenu = this.openMenu.bind(this);
-    this.closeMenu = this.closeMenu.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
     this.toggleAuthModal = this.toggleAuthModal.bind(this);
   }
 
-  openMenu() {
+  toggleDropdown() {
     this.setState({
-      active: true
-    });
-  }
-
-  closeMenu() {
-    this.setState({
-      active: false
+      active: !this.state.active
     });
   }
 
@@ -38,19 +32,20 @@ class Account extends React.Component {
 
   render() {
     const auth = new Auth();
-    let dropdownStyles = ClassNames(styles.accountDropdown, {[styles.isActive] : this.state.active });
     let accountContainerStyles = ClassNames(styles.accountContainer, {[styles.isActive] : this.state.active });
 
     if (auth.isAuthenticated()) {
       return (
-      <div className={accountContainerStyles} onMouseOver={this.openMenu} onMouseOut={this.closeMenu}>
-        <div className={styles.accountIcon}></div>
-        <div className={dropdownStyles} onMouseOut={this.closeMenu}>
+      <div className={accountContainerStyles}>
+        <div className={styles.accountIcon} onClick={this.toggleDropdown}></div>
+        <DropDown isOpen={this.state.active} closeModal={this.toggleDropdown}>
+        <div className={styles.accountDropdown}>
           <div className={styles.background}></div>
           <ul className={styles.accountUl}>
             <li><a onClick={auth.logout}>Log Out</a></li>
           </ul>
         </div>
+        </DropDown>
       </div>
       );
     }

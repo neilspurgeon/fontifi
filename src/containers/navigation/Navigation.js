@@ -45,8 +45,11 @@ class Navigation extends React.Component {
             </li>
 
           </ul>
-          <Account />
         </nav>
+
+        <div className={styles.account}>
+          <Account />
+        </div>
 
       </div>
     );

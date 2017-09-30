@@ -58,3 +58,11 @@
     font-size: 15px;
   }
 }
+
+.account {
+  display: inline-block;
+  position: absolute;
+  top: 28px;
+  right: 30px;
+  font-size: 14px;
+}

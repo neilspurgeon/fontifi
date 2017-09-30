@@ -11,7 +11,7 @@
   cursor: pointer;
 
   @media screen and (min-width: 500px) {
-    top: 30px;
+    /*top: 30px;*/
     right: 30px;
   }
 }
@@ -73,10 +73,10 @@
 
 .controls {
   position: fixed;
-  top: 0;
-  right: 10px;
+  top: 45px;
+  right: 30px;
   width: 375px;
-  height: 100vh;
+  height: calc(100vh - 75px);
   transform: translate3d(405px, 0, 0);
   transition: .2s ease all;
   z-index: 999;
