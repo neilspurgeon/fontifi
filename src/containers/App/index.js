@@ -70,7 +70,14 @@ class App extends Component {
   handleFontChange(fontType, propertyName, event) {
     // fontType: 'heading' or 'body'
     const font = this.state[fontType];
-    font[propertyName] = event.target.value;
+    let newValue = event.target.value;
+
+    // convert string to integer
+    if (event.target.type === 'number' || event.target.type === 'range') {
+      newValue = Number(event.target.value);
+    }
+
+    font[propertyName] = newValue;
     this.setState({
       [fontType]: font,
       activeFontType: fontType
