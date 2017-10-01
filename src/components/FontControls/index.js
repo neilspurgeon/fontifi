@@ -95,6 +95,7 @@ class FontControls extends Component {
               handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontWeight')}
               value={this.state.fontController === 'heading' ? this.props.heading.fontWeight : this.props.body.fontWeight}
               options={this.state.fontController && this.state[this.state.fontController].variants}
+              setFontValue={this.props.setFontValue.bind(this, this.state.fontController, 'fontWeight')}
             />
           }/>
 
@@ -105,6 +106,7 @@ class FontControls extends Component {
               max="144"
               step="1"
               value={this.state.fontController === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}
+              setFontValue={this.props.setFontValue.bind(this, this.state.fontController, 'fontSize')}
             />
           }/>
 
@@ -116,6 +118,7 @@ class FontControls extends Component {
               max=".2"
               step=".01"
               value={this.state.fontController === 'heading' ? this.props.heading.letterSpacing : this.props.body.letterSpacing}
+              setFontValue={this.props.setFontValue.bind(this, this.state.fontController, 'letterSpacing')}
             />
           }/>
 
@@ -133,6 +136,7 @@ class FontControls extends Component {
               max="3"
               step=".1"
               value={this.state.fontController === 'heading' ? this.props.heading.lineHeight : this.props.body.lineHeight}
+              setFontValue={this.props.setFontValue.bind(this, this.state.fontController, 'lineHeight')}
             />
           }/>
 

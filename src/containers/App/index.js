@@ -41,6 +41,7 @@ class App extends Component {
     this.submitFonts = this.submitFonts.bind(this);
     this.handleFontType = this.handleFontType.bind(this);
     this.handleFontTypeEvent = this.handleFontTypeEvent.bind(this);
+    this.setFontValue = this.setFontValue.bind(this);
   };
 
   updateFonts() {
@@ -67,9 +68,20 @@ class App extends Component {
     this.reloadState();
   }
 
-  handleFontChange(fontType, propertyName, event) {
+  setFontValue(fontType, propertyName, value) {
     // fontType: 'heading' or 'body'
     const font = this.state[fontType];
+
+    font[propertyName] = value;
+
+    this.setState({
+      [fontType]: font,
+      activeFontType: fontType
+    });
+  }
+
+  handleFontChange(fontType, propertyName, event) {
+    // fontType: 'heading' or 'body'
     let newValue = event.target.value;
 
     // convert string to integer
@@ -77,11 +89,7 @@ class App extends Component {
       newValue = Number(event.target.value);
     }
 
-    font[propertyName] = newValue;
-    this.setState({
-      [fontType]: font,
-      activeFontType: fontType
-    });
+    this.setFontValue(fontType, propertyName, newValue);
 
     // Store state in session to save on reload
     sessionStorage.setItem("state", JSON.stringify(this.state));
@@ -178,6 +186,7 @@ class App extends Component {
               activeFontType={this.state.activeFontType}
               onSubmit={this.submitFonts}
               handleFontType={this.handleFontTypeEvent}
+              setFontValue={this.setFontValue}
             />
 
           </div>
