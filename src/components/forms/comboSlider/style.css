@@ -65,6 +65,7 @@ input[type=number]::-webkit-outer-spin-button {
 .ComboSlider {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .Slider {
@@ -87,4 +88,52 @@ input[type=number]::-webkit-outer-spin-button {
   width: 80px;
   flex-grow: 0;
   flex-shrink: 0;
+}
+
+.stepUp, .stepDown {
+  position: absolute;
+  right: 0;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  outline: none;
+  transition: .2s ease transform;
+  cursor: pointer;
+}
+
+.stepUp:hover, .stepDown:hover {
+  transform: scale(1.3);
+}
+
+.stepUp {
+  top: 10px;
+}
+
+.stepDown {
+  bottom: 10px;
+}
+
+.stepUp:before {
+  content: ' ';
+  position: absolute;
+  top: 10px;
+  right: 9px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 4px 4px 4px;
+  border-color: transparent transparent var(--primary-ui-color) transparent;
+}
+
+.stepDown:before {
+  content: ' ';
+  position: absolute;
+  top: 6px;
+  right: 9px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 4px 0 4px;
+  border-color: var(--primary-ui-color) transparent transparent transparent;
 }
