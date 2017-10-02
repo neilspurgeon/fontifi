@@ -52,7 +52,7 @@ class Navigation extends React.Component {
 
             <li className={styles.navLi}>
               <NavLink
-                activeStyle={{borderBottom: '1px solid #000'}}
+                activeStyle={{opacity: 1}}
                 className={styles.navLink}
                 to={'/collection'}>
                 My Collection
@@ -61,7 +61,7 @@ class Navigation extends React.Component {
 
             <li className={styles.navLi}>
               <NavLink
-                activeStyle={{borderBottom: '1px solid #000'}}
+                activeStyle={{opacity: 1}}
                 className={styles.navLink}
                 to={'/about'}>
                 About
