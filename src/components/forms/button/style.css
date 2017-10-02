@@ -5,19 +5,18 @@
   border-radius: 2em;
   padding: 0em 1.25em;
   background: none;
-  border: 1px solid var(--primary-text-color);
   border: 1px solid color(var(--primary-text-color) alpha(-50%));
   color: var(--primary-text-color);
   font-size: 12px;
   cursor: pointer;
-  transition: .5s ease border;
+  transition: .3s ease border;
 }
 
 .button:focus {
   outline: none;
-  border: 1px solid color(var(--primary-text-color));
+  border: 1px solid var(--primary-ui-color);
 }
 
 .button:hover {
-  border: 1px solid color(var(--primary-text-color));
+  border: 1px solid var(--primary-ui-color);
 }

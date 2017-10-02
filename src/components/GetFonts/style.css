@@ -8,14 +8,14 @@
 .spacebarButton {
   outline: none;
   background: none;
-  border: 1px rgba(230,230,230,1) solid;
+  border: 1px solid rgba(230,230,230,1);
   border-radius: 7px;
   margin: .5em;
   padding: 5px 15px;
   font-size: 12px;
   font-weight: 400;
   cursor: pointer;
-  transition: .3s ease all;
+  transition: .3s ease border;
 }
 
 @media (min-width: 500px) {
@@ -28,16 +28,12 @@
 }
 
 .spacebarButton:hover {
-  box-shadow: 0 3px 20px -3px rgba(0,0,0,0.2);
-  transform: scale(1.02);
+  border: 1px solid var(--primary-ui-color);
 }
 
 .spacebarButton:active {
-  transform: scale(.97);
 }
 
 .spacebarButton:focus {
-  box-shadow: 0 3px 20px -3px rgba(0,0,0,0.2);
-  transform: scale(1.02);
 }
 
