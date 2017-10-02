@@ -13,6 +13,7 @@
   transition: all .3s;
   margin: 10px 0;
   display: inline-block;
+  cursor: pointer;
 }
 
 .Select:hover {
@@ -22,4 +23,22 @@
 .Select:focus {
   outline: none ;
   box-shadow: 0 0 0 2px #49a9ee;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.selectWrapper:after {
+  position: absolute;
+  top: 30px;
+  right: 9px;
+  width: 0;
+  height: 0;
+  content: ' ';
+  display: inline-block;
+  border-style: solid;
+  border-width: 4px 4px 0 4px;
+  border-color: var(--primary-ui-color) transparent transparent transparent;
+  pointer-events: none;
 }
