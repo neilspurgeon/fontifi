@@ -32,7 +32,7 @@ class App extends Component {
       },
       controlsOpen: true,
       activeFontType: 'heading',
-      modalOpen: true
+      modalOpen: false
     };
     this.updateFonts = this.updateFonts.bind(this);
     this.handleControlsOpen = this.handleControlsOpen.bind(this);
@@ -42,7 +42,24 @@ class App extends Component {
     this.handleFontType = this.handleFontType.bind(this);
     this.handleFontTypeEvent = this.handleFontTypeEvent.bind(this);
     this.setFontValue = this.setFontValue.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   };
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyPress);
+  }
+
+  handleKeyPress() {
+    const el = document.activeElement;
+
+    if (el.tagName !== 'INPUT' && el.isContentEditable !== true) {
+      console.log('keypress');
+    }
+  }
 
   updateFonts() {
     fetch('/fontpairs/random', {})
