@@ -53,11 +53,11 @@ class App extends Component {
     document.removeEventListener('keydown', this.handleKeyPress);
   }
 
-  handleKeyPress() {
+  handleKeyPress(e) {
     const el = document.activeElement;
 
-    if (el.tagName !== 'INPUT' && el.isContentEditable !== true) {
-      console.log('keypress');
+    if (el.tagName !== 'INPUT' && el.isContentEditable !== true && e.code === 'Space') {
+      this.updateFonts();
     }
   }
 
