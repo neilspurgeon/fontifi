@@ -1,0 +1,30 @@
+@import '../../variables.css';
+
+.emptyStateContainer {
+  max-width: 300px;
+  margin: 30vh auto auto;
+  text-align: center;
+}
+
+.graphic {
+  margin-left: 25px;
+  /* Prevent image from being selected */
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.heading {
+  font-size: 18px;
+  color: var(--primary-text-color);
+  margin: 1em 0 0;
+}
+
+.bodyText {
+  font-size: 14px;
+  color: #CCB7B7;
+  margin-top: .5em;
+}
+
