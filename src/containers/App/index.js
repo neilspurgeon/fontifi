@@ -129,11 +129,21 @@ class App extends Component {
       this.setFontValue(fontType, propertyName, newValue);
 
     } else if (propertyName === 'fontFamily') {
-      // Make sure set fontweight is available
-      var availWeights = this.state.fontList;
-      var currWeight = this.state[fontType];
 
-      console.log('Font Family Change:' + '');
+      // Make sure set fontweight is available
+      const currWeight = this.state[fontType].fontWeight;
+      const newFont = this.state.fontList.find((obj) => {
+        return obj.family === newValue;
+      });
+      const hasWeight = newFont.variants.find((el) => {
+        return el === currWeight;
+      });
+
+      if (!hasWeight) {
+        // set to new font weight if not available
+        this.setFontValue(fontType, 'fontWeight', newFont.variants[0]);
+      }
+
       this.setFontValue(fontType, propertyName, newValue);
 
     } else {
