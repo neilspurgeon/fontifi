@@ -24,30 +24,39 @@ class HeadingFont extends React.Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    WebFont.load({
-      google: {
-        families: [nextProps.fontFamily + ':' + nextProps.fontWeight]
-      },
-      loading: this.hide(),
-      active: this.reveal()
-    });
+    // Only run if props are different
+    if ((nextProps.fontFamily !== this.props.fontFamily) || (nextProps.fontWeight !== this.props.fontWeight)) {
+      WebFont.load({
+        google: {
+          families: [nextProps.fontFamily + ':' + nextProps.fontWeight]
+        },
+        loading: this.hide(),
+        active: this.reveal()
+      });
+    }
   }
 
   hide = () => {
     this.setState({
       isLoading: true
     });
+    console.log('hide');
   };
 
   reveal = () => {
-    this.setState({
-      isLoading: false
-    });
+    // This is not very accurate way to prevent FOUT but helps in most cases.
+    // Need to look into properly hiding the text as soon the font is changed, then showing it once the font web font callback is triggered.
+    window.setTimeout( () => {
+      this.setState({
+        isLoading: false
+      });
+      console.log('reveal');
+    }, 200);
   };
 
 
   render() {
-    let headingClasses = ClassNames(styles.heading, {[styles.isActive] : this.props.activeFontType === 'heading'});
+    let headingClasses = ClassNames(styles.heading, {[styles.isActive] : this.props.activeFontType === 'heading'}, {[styles.isLoading] : this.state.isLoading === true });
 
     const fontStyle = {
       fontFamily: this.props.fontFamily,
