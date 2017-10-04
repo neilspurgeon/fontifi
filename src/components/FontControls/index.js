@@ -13,25 +13,27 @@ class FontControls extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fontController: props.activeFontType,
-      heading: {variants: ['500']},
-      body: {variants: ['regular']},
-      activeFontIndex: 0
+      heading: {variants: ['']},
+      body: {variants: ['']}
     };
-    this.handleFontController = this.handleFontController.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.heading) {
+    console.log(nextProps.heading);
+    console.log(this.props.heading);
+    if (nextProps.heading !== this.props.heading) {
       this.setFont('heading', nextProps.heading.fontFamily);
     }
-    if (nextProps.body) {
+    if (nextProps.body !== this.props.body) {
       this.setFont('body', nextProps.body.fontFamily);
     }
-    if (nextProps.activeFontType) {
+    if (nextProps.activeFontType !== this.props.activeFontType) {
       this.setState({
         fontController: nextProps.activeFontType
       });
+    }
+    if (nextProps.fontList !== this.props.fontList) {
+      // console.log(nextProps);
     }
   }
 
@@ -45,12 +47,6 @@ class FontControls extends Component {
     });
   }
 
-  handleFontController(event) {
-    this.setState({
-      fontController: event.target.value
-    });
-  }
-
   render() {
 
     return (
@@ -60,8 +56,8 @@ class FontControls extends Component {
 
           <FormField labelText="Font Family" input={
             <SelectFont
-              handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontFamily')}
-              value={this.state.fontController === 'heading' ? this.props.heading.fontFamily : this.props.body.fontFamily}
+              handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'fontFamily')}
+              value={this.props.activeFontType === 'heading' ? this.props.heading.fontFamily : this.props.body.fontFamily}
               options={this.props.fontList}
               keyValue='family'
             />
@@ -69,51 +65,51 @@ class FontControls extends Component {
 
           <FormField labelText="Font Weight" input={
             <SelectWeight
-              handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontWeight')}
-              value={this.state.fontController === 'heading' ? this.props.heading.fontWeight : this.props.body.fontWeight}
-              options={this.state.fontController && this.state[this.state.fontController].variants}
-              setFontValue={this.props.setFontValue.bind(this, this.state.fontController, 'fontWeight')}
+              handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'fontWeight')}
+              value={this.props.activeFontType === 'heading' ? this.props.heading.fontWeight : this.props.body.fontWeight}
+              options={this.props.activeFontType && this.state[this.props.activeFontType].variants}
+              setFontValue={this.props.setFontValue.bind(this, this.props.activeFontType, 'fontWeight')}
             />
           }/>
 
           <FormField labelText="Font Size" input={
             <ComboSlider
-              handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontSize')}
+              handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'fontSize')}
               min="10"
               max="144"
               step="1"
-              value={this.state.fontController === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}
-              setFontValue={this.props.setFontValue.bind(this, this.state.fontController, 'fontSize')}
+              value={this.props.activeFontType === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}
+              setFontValue={this.props.setFontValue.bind(this, this.props.activeFontType, 'fontSize')}
             />
           }/>
 
 
           <FormField labelText="Letter Spacing" input={
             <ComboSlider
-              handleChange={this.props.handleChange.bind(this, this.state.fontController, 'letterSpacing')}
+              handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'letterSpacing')}
               min="-0.05"
               max=".2"
               step=".01"
-              value={this.state.fontController === 'heading' ? this.props.heading.letterSpacing : this.props.body.letterSpacing}
-              setFontValue={this.props.setFontValue.bind(this, this.state.fontController, 'letterSpacing')}
+              value={this.props.activeFontType === 'heading' ? this.props.heading.letterSpacing : this.props.body.letterSpacing}
+              setFontValue={this.props.setFontValue.bind(this, this.props.activeFontType, 'letterSpacing')}
             />
           }/>
 
           <FormField labelText="Color" input={
             <ColorPicker
-              handleChange={this.props.handleChange.bind(this, this.state.fontController, 'color')}
-              value={this.state.fontController === 'heading' ? this.props.heading.color : this.props.body.color}
+              handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'color')}
+              value={this.props.activeFontType === 'heading' ? this.props.heading.color : this.props.body.color}
             />
           }/>
 
           <FormField labelText="Line Height" input={
             <ComboSlider
-              handleChange={this.props.handleChange.bind(this, this.state.fontController, 'lineHeight')}
+              handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'lineHeight')}
               min="1"
               max="3"
               step=".1"
-              value={this.state.fontController === 'heading' ? this.props.heading.lineHeight : this.props.body.lineHeight}
-              setFontValue={this.props.setFontValue.bind(this, this.state.fontController, 'lineHeight')}
+              value={this.props.activeFontType === 'heading' ? this.props.heading.lineHeight : this.props.body.lineHeight}
+              setFontValue={this.props.setFontValue.bind(this, this.props.activeFontType, 'lineHeight')}
             />
           }/>
 
