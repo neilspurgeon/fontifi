@@ -10,7 +10,6 @@ function SelectWeight(props) {
         onChange={props.handleChange}
         value={props.value}>
         { props.options.map((text, index) => {
-          console.log(text);
 
           if (!text.match('italic')) {
             return (
