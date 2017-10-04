@@ -30,6 +30,16 @@ class App extends Component {
         letterSpacing: 0,
         color: '#666'
       },
+      fontList: [
+        // Default fonts to prevent undefined state
+        {
+          family: 'Poppins',
+          variants: ['Regular']
+        }, {
+          family: 'Open Sans',
+          variants: ['Regular']
+        }
+      ],
       controlsOpen: true,
       activeFontType: 'heading',
       modalOpen: false
@@ -47,6 +57,18 @@ class App extends Component {
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
+
+    fetch('/fonts')
+      .then((response) => {
+        return response.json();
+      })
+      .then((parsedData) => {
+        this.setState({
+          fontList: parsedData.items,
+        });
+        // this.setFont('heading', this.props.heading.fontFamily);
+        // this.setFont('body', this.props.body.fontFamily);
+      });
   }
 
   componentWillUnmount() {
@@ -95,21 +117,28 @@ class App extends Component {
       [fontType]: font,
       activeFontType: fontType
     });
+
+    // Store state in session to save on reload
+    sessionStorage.setItem("state", JSON.stringify(this.state));
   }
 
   handleFontChange(fontType, propertyName, event) {
     // fontType: 'heading' or 'body'
     let newValue = event.target.value;
 
-    // convert string to integer
     if (event.target.type === 'number' || event.target.type === 'range') {
+      // convert string to integer
       newValue = Number(event.target.value);
+      this.setFontValue(fontType, propertyName, newValue);
+
+    } else if (propertyName === 'fontFamily') {
+      // Make sure set fontweight is available
+      console.log('Font Family Change!');
+      this.setFontValue(fontType, propertyName, newValue);
+
+    } else {
+      this.setFontValue(fontType, propertyName, newValue);
     }
-
-    this.setFontValue(fontType, propertyName, newValue);
-
-    // Store state in session to save on reload
-    sessionStorage.setItem("state", JSON.stringify(this.state));
   }
 
   handleControlsOpen() {
@@ -189,7 +218,6 @@ class App extends Component {
               />
               <GetFonts triggerUpdateFonts={this.updateFonts} className={styles.getFonts}/>
 
-
             </div>
 
           </div>
@@ -204,6 +232,7 @@ class App extends Component {
               onSubmit={this.submitFonts}
               handleFontType={this.handleFontTypeEvent}
               setFontValue={this.setFontValue}
+              fontList={this.state.fontList}
             />
 
           </div>

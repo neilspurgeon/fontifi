@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import styles from './style.css';
-import closeSVG from './close.svg';
+// import closeSVG from './close.svg';
 import SelectFont from 'components/forms/selectFont';
-import Select from 'components/forms/select';
+// import Select from 'components/forms/select';
 import ComboSlider from 'components/forms/comboSlider';
 import ColorPicker from 'components/forms/colorPicker';
 import FormField from 'components/forms/formField';
 import SubmitFonts from 'components/forms/submitFonts';
+import SelectWeight from 'components/forms/selectWeight';
 
 class FontControls extends Component {
   constructor(props) {
@@ -15,34 +16,10 @@ class FontControls extends Component {
       fontController: props.activeFontType,
       heading: {variants: ['500']},
       body: {variants: ['regular']},
-      activeFontIndex: 0,
-      fontList: [
-        // Default fonts to prevent undefined state
-        {
-          family: 'Poppins',
-          variants: ['Regular']
-        }, {
-          family: 'Open Sans',
-          variants: ['Regular']
-        }
-      ]
+      activeFontIndex: 0
     };
     this.handleFontController = this.handleFontController.bind(this);
   }
-
-  componentDidMount() {
-    fetch('/fonts')
-      .then((response) => {
-        return response.json();
-      })
-      .then((parsedData) => {
-        this.setState({
-          fontList: parsedData.items,
-        });
-        this.setFont('heading', this.props.heading.fontFamily);
-        this.setFont('body', this.props.body.fontFamily);
-      });
-  };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.heading) {
@@ -59,7 +36,7 @@ class FontControls extends Component {
   }
 
   setFont(fontType, fontFamily) {
-    const fontList = this.state.fontList;
+    const fontList = this.props.fontList;
     const font = fontList.find((obj) => {
       return obj.family === fontFamily;
     });
@@ -85,13 +62,13 @@ class FontControls extends Component {
             <SelectFont
               handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontFamily')}
               value={this.state.fontController === 'heading' ? this.props.heading.fontFamily : this.props.body.fontFamily}
-              options={this.state.fontList}
+              options={this.props.fontList}
               keyValue='family'
             />
           }/>
 
           <FormField labelText="Font Weight" input={
-            <Select
+            <SelectWeight
               handleChange={this.props.handleChange.bind(this, this.state.fontController, 'fontWeight')}
               value={this.state.fontController === 'heading' ? this.props.heading.fontWeight : this.props.body.fontWeight}
               options={this.state.fontController && this.state[this.state.fontController].variants}
