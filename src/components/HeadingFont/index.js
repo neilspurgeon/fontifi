@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './style.css';
 import ClassNames from 'classnames';
+import WebFont from 'webfontloader';
 
 
 function HeadingFont (props) {
@@ -8,14 +9,14 @@ function HeadingFont (props) {
   let headingClasses = ClassNames(styles.heading, {[styles.isActive] : props.activeFontType === 'heading'});
 
   if (props.fontFamily) {
-    const fontFamilyString = props.fontFamily.split(' ').join('+');
-    const url = 'https://fonts.googleapis.com/css?family=' + fontFamilyString;
-    let fontUrls = [url];
 
     const weight = props.fontWeight;
-    if (weight !== 'regular' && weight !== 'normal' && weight !== '400') {
-      fontUrls.push(url + ':' + props.fontWeight);
-    }
+
+    WebFont.load({
+      google: {
+        families: [props.fontFamily + ':' + props.fontWeight]
+      }
+    });
 
     const fontStyle = {
       fontFamily: props.fontFamily,
@@ -28,9 +29,7 @@ function HeadingFont (props) {
 
     return (
       <div>
-        {fontUrls.map((fontUrl) => {
-          return <style key={fontUrl}>@import url("{fontUrl}");</style>;
-        })}
+        {props.fontWeight}
         <h1 onFocus={props.onFocus} contentEditable="true" spellCheck="false" className={headingClasses} style={fontStyle}>{props.text || 'Heading Font'}</h1>
       </div>
     );
