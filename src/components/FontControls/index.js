@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import styles from './style.css';
-// import closeSVG from './close.svg';
 import SelectFont from 'components/forms/selectFont';
-// import Select from 'components/forms/select';
 import ComboSlider from 'components/forms/comboSlider';
 import ColorPicker from 'components/forms/colorPicker';
 import FormField from 'components/forms/formField';
@@ -19,26 +17,15 @@ class FontControls extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.heading);
-    console.log(this.props.heading);
-    if (nextProps.heading !== this.props.heading) {
-      this.setFont('heading', nextProps.heading.fontFamily);
-    }
-    if (nextProps.body !== this.props.body) {
-      this.setFont('body', nextProps.body.fontFamily);
-    }
-    if (nextProps.activeFontType !== this.props.activeFontType) {
-      this.setState({
-        fontController: nextProps.activeFontType
-      });
-    }
-    if (nextProps.fontList !== this.props.fontList) {
-      // console.log(nextProps);
-    }
+    const fontList = nextProps.fontList;
+    const headingFamily = nextProps.heading.fontFamily;
+    const bodyFamily = nextProps.body.fontFamily;
+
+    this.setFont('heading', headingFamily, fontList);
+    this.setFont('body', bodyFamily, fontList);
   }
 
-  setFont(fontType, fontFamily) {
-    const fontList = this.props.fontList;
+  setFont(fontType, fontFamily, fontList) {
     const font = fontList.find((obj) => {
       return obj.family === fontFamily;
     });
@@ -67,7 +54,7 @@ class FontControls extends Component {
             <SelectWeight
               handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'fontWeight')}
               value={this.props.activeFontType === 'heading' ? this.props.heading.fontWeight : this.props.body.fontWeight}
-              options={this.props.activeFontType && this.state[this.props.activeFontType].variants}
+              options={this.state[this.props.activeFontType].variants}
               setFontValue={this.props.setFontValue.bind(this, this.props.activeFontType, 'fontWeight')}
             />
           }/>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ClassNames from 'classnames';
 import styles from './style.css';
-
 import HeadingFont from 'components/HeadingFont';
 import BodyFont from 'components/BodyFont';
 import GetFonts from 'components/GetFonts';
@@ -66,8 +65,6 @@ class App extends Component {
         this.setState({
           fontList: parsedData.items,
         });
-        // this.setFont('heading', this.props.heading.fontFamily);
-        // this.setFont('body', this.props.body.fontFamily);
       });
   }
 
@@ -133,7 +130,10 @@ class App extends Component {
 
     } else if (propertyName === 'fontFamily') {
       // Make sure set fontweight is available
-      console.log('Font Family Change!');
+      var availWeights = this.state.fontList;
+      var currWeight = this.state[fontType];
+
+      console.log('Font Family Change:' + '');
       this.setFontValue(fontType, propertyName, newValue);
 
     } else {
