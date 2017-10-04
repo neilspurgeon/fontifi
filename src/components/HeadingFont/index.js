@@ -4,42 +4,66 @@ import ClassNames from 'classnames';
 import WebFont from 'webfontloader';
 
 
-function HeadingFont (props) {
+class HeadingFont extends React.Component {
 
-  let headingClasses = ClassNames(styles.heading, {[styles.isActive] : props.activeFontType === 'heading'});
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false
+    };
+  };
 
-  if (props.fontFamily) {
-
-    const weight = props.fontWeight;
-
+  componentDidMount() {
     WebFont.load({
       google: {
-        families: [props.fontFamily + ':' + props.fontWeight]
-      }
+        families: [this.props.fontFamily + ':' + this.props.fontWeight]
+      },
+      loading: this.hide(),
+      active: this.reveal()
     });
+  };
+
+  componentWillReceiveProps(nextProps) {
+    WebFont.load({
+      google: {
+        families: [nextProps.fontFamily + ':' + nextProps.fontWeight]
+      },
+      loading: this.hide(),
+      active: this.reveal()
+    });
+  }
+
+  hide = () => {
+    this.setState({
+      isLoading: true
+    });
+  };
+
+  reveal = () => {
+    this.setState({
+      isLoading: false
+    });
+  };
+
+
+  render() {
+    let headingClasses = ClassNames(styles.heading, {[styles.isActive] : this.props.activeFontType === 'heading'});
 
     const fontStyle = {
-      fontFamily: props.fontFamily,
-      fontSize: props.fontSize + 'px',
-      fontWeight: props.fontWeight,
-      letterSpacing: props.letterSpacing + 'em',
-      color: props.color,
-      lineHeight: props.lineHeight
+      fontFamily: this.props.fontFamily,
+      fontSize: this.props.fontSize + 'px',
+      fontWeight: this.props.fontWeight,
+      letterSpacing: this.props.letterSpacing + 'em',
+      color: this.props.color,
+      lineHeight: this.props.lineHeight
     };
 
     return (
       <div>
-        {props.fontWeight}
-        <h1 onFocus={props.onFocus} contentEditable="true" spellCheck="false" className={headingClasses} style={fontStyle}>{props.text || 'Heading Font'}</h1>
+        <h1 onFocus={this.props.onFocus} contentEditable="true" spellCheck="false" className={headingClasses} style={fontStyle}>{this.props.text || 'Heading Font'}</h1>
       </div>
     );
   }
-
-  return (
-    <div>
-      <h1 className={styles.heading}>Heading</h1>
-    </div>
-  );
 }
 
 export default HeadingFont;
