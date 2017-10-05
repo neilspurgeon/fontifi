@@ -40,7 +40,6 @@ class HeadingFont extends React.Component {
     this.setState({
       isLoading: true
     });
-    console.log('hide');
   };
 
   reveal = () => {
@@ -50,7 +49,6 @@ class HeadingFont extends React.Component {
       this.setState({
         isLoading: false
       });
-      console.log('reveal');
     }, 200);
   };
 
@@ -70,7 +68,7 @@ class HeadingFont extends React.Component {
 
     return (
       <div>
-        <h1 onFocus={this.props.onFocus} contentEditable="true" spellCheck="false" className={headingClasses} style={fontStyle}>{text}</h1>
+        <h1 onFocus={this.props.onFocus} contentEditable={true} suppressContentEditableWarning={true} spellCheck={false} className={headingClasses} style={fontStyle}>{text}</h1>
       </div>
     );
   }
