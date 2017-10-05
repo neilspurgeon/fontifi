@@ -14,20 +14,19 @@ class App extends Component {
     this.state = {
       heading: {
         fontFamily: 'Poppins',
-        fontWeight: 500,
-        fontSize: 42,
-        lineHeight: 1,
+        fontWeight: 200,
+        fontSize: 50,
+        lineHeight: 1.3,
         letterSpacing: 0,
-        color: '#333',
-        text: 'Heading Font'
+        color: '#333'
       },
       body: {
-        fontFamily: 'Open Sans',
+        fontFamily: 'Crimson Text',
         fontWeight: 'regular',
-        fontSize: 16,
-        lineHeight: 1.4,
-        letterSpacing: 0,
-        color: '#666'
+        fontSize: 18,
+        lineHeight: 1.8,
+        letterSpacing: 0.01,
+        color: '#444'
       },
       fontList: [
         // Default fonts to prevent undefined state

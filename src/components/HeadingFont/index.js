@@ -57,6 +57,7 @@ class HeadingFont extends React.Component {
 
   render() {
     let headingClasses = ClassNames(styles.heading, {[styles.isActive] : this.props.activeFontType === 'heading'}, {[styles.isLoading] : this.state.isLoading === true });
+    const text = 'Generate & Collect the Best Google Font Pairings';
 
     const fontStyle = {
       fontFamily: this.props.fontFamily,
@@ -69,7 +70,7 @@ class HeadingFont extends React.Component {
 
     return (
       <div>
-        <h1 onFocus={this.props.onFocus} contentEditable="true" spellCheck="false" className={headingClasses} style={fontStyle}>{this.props.text || 'Heading Font'}</h1>
+        <h1 onFocus={this.props.onFocus} contentEditable="true" spellCheck="false" className={headingClasses} style={fontStyle}>{this.props.text || text}</h1>
       </div>
     );
   }

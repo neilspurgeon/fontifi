@@ -6,7 +6,7 @@ function BodyFont (props) {
 
   let bodyClasses = ClassNames(styles.body, {[styles.isActive] : props.activeFontType === 'body'});
 
-  const text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+  const text = 'Press spacebar or click the button below to load new font combinations. Use the editor panel on the right to fine tune or to manually pick new fonts. When you find something you like, save your font pair for easy reference later. All this text is editable and can be replaced with whatever you want.';
 
   if (props.fontFamily) {
     const fontFamilyString = props.fontFamily.split(' ').join('+');
