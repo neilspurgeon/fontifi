@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const fontPairSchema = new mongoose.Schema({
   heading: {
     fontFamily: String,
-    fontWeight: Number,
+    fontWeight: String,
     fontSize: Number,
     letterSpacing: Number,
     lineHeight: Number,
@@ -13,7 +13,7 @@ const fontPairSchema = new mongoose.Schema({
   },
   body: {
     fontFamily: String,
-    fontWeight: Number,
+    fontWeight: String,
     fontSize: Number,
     letterSpacing: Number,
     lineHeight: Number,
