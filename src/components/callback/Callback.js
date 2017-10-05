@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Auth from 'utils/authService/AuthService.js';
 
-class Callback extends Component {
+class Callback extends React.Component {
 
   componentDidMount() {
     const auth = new Auth();
