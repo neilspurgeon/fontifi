@@ -70,7 +70,7 @@ class HeadingFont extends React.Component {
 
     return (
       <div>
-        <h1 onFocus={this.props.onFocus} contentEditable="true" spellCheck="false" className={headingClasses} style={fontStyle}>{this.props.text || text}</h1>
+        <h1 onFocus={this.props.onFocus} contentEditable="true" spellCheck="false" className={headingClasses} style={fontStyle}>{text}</h1>
       </div>
     );
   }

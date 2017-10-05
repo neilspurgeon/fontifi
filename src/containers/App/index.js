@@ -209,8 +209,6 @@ class App extends Component {
                 letterSpacing={this.state.heading.letterSpacing}
                 color={this.state.heading.color}
                 lineHeight={this.state.heading.lineHeight}
-                text={this.state.heading.text}
-                onChange={this.handleFontChange.bind(this, 'heading', 'text')}
                 onFocus={this.handleFontType.bind(this, 'heading')}
                 activeFontType={this.state.activeFontType}
               />
@@ -221,7 +219,6 @@ class App extends Component {
                 letterSpacing={this.state.body.letterSpacing}
                 color={this.state.body.color}
                 lineHeight={this.state.body.lineHeight}
-                onChange={this.handleFontChange.bind(this, 'body', 'text')}
                 onFocus={this.handleFontType.bind(this, 'body')}
                 activeFontType={this.state.activeFontType}
               />
