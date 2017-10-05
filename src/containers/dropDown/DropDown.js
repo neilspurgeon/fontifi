@@ -6,7 +6,7 @@ function DropDown (props) {
 
   return (
     <ReactModal
-      contentLabel={props.contentLabel}
+      contentLabel='dropw down'
       className={{
           base: styles.modal,
           afterOpen: 'myClass_after-open',
