@@ -33,3 +33,11 @@ exports.createFontPair = (req, res) => {
     res.status(200).send('Thanks for contributing.');
   });
 };
+
+// Submit Font Pair
+exports.submitFontPair = (req, res) => {
+  console.log('submitting font pair');
+
+  const heading = req.body.heading;
+  const body = req.body.body;
+};

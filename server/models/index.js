@@ -13,4 +13,5 @@ const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB Error'));
 
-module.exports.FontPair = require('./fontPair')
+module.exports.FontPair = require('./fontPair');
+module.exports.FontPairSubmission = require('./fontPairSubmission');
