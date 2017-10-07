@@ -54,7 +54,7 @@
   visibility: hidden;
 }*/
 
-.content.controlsOpen {
+.content.isOpen {
   /*width: 100%;*/
 
   @media screen and (min-width: 1000px) {
@@ -62,7 +62,7 @@
   }
 }
 
-.content.controlsOpen::before {
+.content.isOpen::before {
 /*  visibility: visible;
   opacity: .5;*/
 
@@ -77,10 +77,20 @@
   right: 0;
   width: 375px;
   height: 100vh;
+  transition: .3s ease transform;
+  transform: translateX(100%);
+  z-index: 9999;
+
+  @media screen and (min-width: 670px) {
+    z-index: 1;
+  }
+  @media screen and (min-width: 890px) {
+    z-index: 0;
+  }
 }
 
-.controls.controlsOpen {
-  /*transform: translate3d(0,0,0);*/
+.controls.isOpen {
+  transform: translate3d(0,0,0);
 }
 
 .getFonts {

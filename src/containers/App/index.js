@@ -192,8 +192,8 @@ class App extends Component {
   }
 
   render() {
-    let contentClassnames = ClassNames(styles.content, {[styles.controlsOpen] : this.state.controlsOpen});
-    let controlsClassnames = ClassNames(styles.controls, {[styles.controlsOpen] : this.state.controlsOpen});
+    let contentClassnames = ClassNames(styles.content, {[styles.isOpen] : this.state.controlsOpen});
+    let controlsClassnames = ClassNames(styles.controls, {[styles.isOpen] : this.state.controlsOpen});
 
     return (
       <div>

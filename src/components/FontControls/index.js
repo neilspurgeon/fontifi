@@ -6,6 +6,7 @@ import ColorPicker from 'components/forms/colorPicker';
 import FormField from 'components/forms/formField';
 import SubmitFonts from 'components/forms/submitFonts';
 import SelectWeight from 'components/forms/selectWeight';
+import closeIcon from './close.svg';
 
 class FontControls extends Component {
   constructor(props) {
@@ -35,9 +36,10 @@ class FontControls extends Component {
   }
 
   render() {
-
     return (
       <div className={styles.ControlPanel}>
+
+        <img onClick={this.props.closeControls} className={styles.closeButton} src={closeIcon} alt="close" />
 
         <form>
 
