@@ -34,7 +34,7 @@ class ComboSlider extends React.Component {
   render() {
     // set slider fill percentage
     const sliderFillWidth = {width:  ((this.props.value - this.props.min) / (this.props.max - this.props.min)) * 100  + '%'};
-    console.log(sliderFillWidth);
+
     return(
       <span className={styles.ComboSlider}>
         <div className={styles.sliderContainer}>
