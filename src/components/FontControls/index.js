@@ -62,8 +62,8 @@ class FontControls extends Component {
           <FormField labelText="Font Size" input={
             <ComboSlider
               handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'fontSize')}
-              min="10"
-              max="144"
+              min="14"
+              max="100"
               step="1"
               value={this.props.activeFontType === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}
               setFontValue={this.props.setFontValue.bind(this, this.props.activeFontType, 'fontSize')}
