@@ -1,5 +1,5 @@
 const express = require('express');
-const routes  = require('./routes');
+const router  = require('./router');
 const morgan = require('morgan');
 const path = require('path');
 const app = express();
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Routes
-app.use('/',routes);
+router(app);
 
 // Always return the main index.html, so react-router render the route in the client
 app.get('*', (req, res) => {
