@@ -47,7 +47,7 @@ class SignUpForm extends React.Component {
   signup(e) {
     e.preventDefault();
     const auth = new Auth();
-    auth.signupAndContinue(this.state.email, this.state.password, this.errorCallback, this.successCallback);
+    auth.signup(this.state.email, this.state.password, this.errorCallback, this.successCallback);
   };
 
   login(e) {

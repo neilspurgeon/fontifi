@@ -3,9 +3,11 @@ const crypto = require('crypto');
 const User = require('../models/user');
 const config = require('../config/main');
 
+const tokenExp = 10080;
+
 function generateToken(user) {
   return jwt.sign(user, config.secret, {
-    expiresIn: 10080 // in seconds
+    expiresIn: tokenExp // in seconds
   });
 };
 
@@ -13,8 +15,6 @@ function generateToken(user) {
 function setUserInfo(request) {
   return {
     _id: request._id,
-    firstName: request.profile.firstName,
-    lastName: request.profile.lastName,
     email: request.email,
     role: request.role
   };
@@ -29,6 +29,7 @@ exports.login = function(req, res, next) {
 
   res.status(200).json({
     token: 'JWT ' + generateToken(userInfo),
+    expiresIn: tokenExp,
     user: userInfo
   });
 };
@@ -40,18 +41,11 @@ exports.login = function(req, res, next) {
 exports.register = function(req, res, next) {
   // Check for registration errors
   const email = req.body.email;
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
   const password = req.body.password;
 
   // Return error if no email provided
   if (!email) {
     return res.status(422).send({ error: 'You must enter an email address.'});
-  }
-
-  // Return error if full name not provided
-  if (!firstName || !lastName) {
-    return res.status(422).send({ error: 'You must enter your full name.'});
   }
 
   // Return error if no password provided
@@ -70,8 +64,7 @@ exports.register = function(req, res, next) {
       // If email is unique and password was provided, create account
       let user = new User({
         email: email,
-        password: password,
-        profile: { firstName: firstName, lastName: lastName }
+        password: password
       });
 
       user.save(function(err, user) {
@@ -86,6 +79,7 @@ exports.register = function(req, res, next) {
 
         res.status(201).json({
           token: 'JWT ' + generateToken(userInfo),
+          expiresIn: tokenExp,
           user: userInfo
         });
       });

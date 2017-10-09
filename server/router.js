@@ -7,7 +7,7 @@ const passport = require('passport');
 
 // Require Controllers
 const FontPairController = require('./controllers/fontPairController');
-const AuthenticationController = require('./controllers/authenticationController');
+const AuthenticationController = require('./controllers/authenticationControll');
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });
