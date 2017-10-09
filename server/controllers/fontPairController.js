@@ -2,12 +2,12 @@ const db = require('../models');
 
 // Create Font Pair
 exports.createFontPair = (req, res) => {
+  console.log(db.Users);
   console.log('create font pair');
-
   const heading = req.body.heading;
   const body = req.body.body;
 
-  const fontPair = new db.FontPair({
+  const fontPair = {
     heading: {
       fontFamily: heading.fontFamily,
       fontWeight: heading.fontWeight,
@@ -24,20 +24,16 @@ exports.createFontPair = (req, res) => {
       lineHeight: body.lineHeight,
       color: body.color
     }
-  });
+  };
 
-  fontPair.save((err) => {
-    if (err) {
-      return res.send(err);
+  db.Users.update(
+    { _id: req.user._id},
+    { $push: {fontPairs: fontPair}},
+    (err) => {
+      if (err) {
+        return res.send(err);
+      }
+      res.status(200).send('Font pair added to "My Collection"');
     }
-    res.status(200).send('Thanks for contributing.');
-  });
-};
-
-// Submit Font Pair
-exports.submitFontPair = (req, res) => {
-  console.log('submitting font pair');
-
-  const heading = req.body.heading;
-  const body = req.body.body;
+  );
 };

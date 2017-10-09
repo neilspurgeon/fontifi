@@ -2,6 +2,29 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
 
 // Define schema
+const fontPairSchema = new mongoose.Schema({
+  heading: {
+    fontFamily: String,
+    fontWeight: String,
+    fontSize: Number,
+    letterSpacing: Number,
+    lineHeight: Number,
+    textTransform: String,
+    color: String
+  },
+  body: {
+    fontFamily: String,
+    fontWeight: String,
+    fontSize: Number,
+    letterSpacing: Number,
+    lineHeight: Number,
+    textTransform: String,
+    color: String
+  },
+  createdAt: Date,
+  updatedAt: Date
+});
+
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -19,7 +42,8 @@ const userSchema = new mongoose.Schema({
     default: 'Member'
   },
   resetPasswordToken: { type: String },
-  resetPasswordExpires: { type: Date }
+  resetPasswordExpires: { type: Date },
+  fontPairs: [fontPairSchema]
 }, {
   timestamps: true
 });

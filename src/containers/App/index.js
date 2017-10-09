@@ -46,7 +46,7 @@ class App extends Component {
     this.handleControlsOpen = this.handleControlsOpen.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
-    this.submitFonts = this.submitFonts.bind(this);
+    this.saveFonts = this.saveFonts.bind(this);
     this.handleFontType = this.handleFontType.bind(this);
     this.handleFontTypeEvent = this.handleFontTypeEvent.bind(this);
     this.setFontValue = this.setFontValue.bind(this);
@@ -175,14 +175,14 @@ class App extends Component {
     });
   }
 
-  submitFonts() {
-    console.log('submiting fonts...');
-    fetch('/fontpairs', {
+  saveFonts() {
+    console.log('saving fonts...');
+    fetch('/api/auth/fontpairs', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+        'Authorization': localStorage.getItem('token'),
       },
       body: JSON.stringify({
         heading: this.state.heading,
@@ -235,7 +235,7 @@ class App extends Component {
               handleChange={this.handleFontChange}
               closeControls={this.handleControlsOpen}
               activeFontType={this.state.activeFontType}
-              onSubmit={this.submitFonts}
+              onSubmit={this.saveFonts}
               handleFontType={this.handleFontTypeEvent}
               setFontValue={this.setFontValue}
               fontList={this.state.fontList}

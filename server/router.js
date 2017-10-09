@@ -25,6 +25,11 @@ module.exports = function(app) {
   authRoutes.post('/fontpairs', requireAuth, FontPairController.createFontPair);
   authRoutes.post('/mycollection', requireAuth, FontPairController.createFontPair);
 
+  authRoutes.post('/test', requireLogin, (req, res) => {
+    console.log('test route');
+    res.json('success');
+  });
+
   app.use('/api', apiRoutes);
 
 
