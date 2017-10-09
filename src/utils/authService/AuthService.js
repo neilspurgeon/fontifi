@@ -29,6 +29,9 @@ export default class Auth {
       }
       this.setSession(parsedData);
       return successCb ? successCb() : null;
+    })
+    .catch((err) => {
+      return errorCb ? errorCb('Password is incorrect.') : null;
     });
   };
 
@@ -54,6 +57,9 @@ export default class Auth {
       }
       this.setSession(parsedData);
       return successCb ? successCb() : null;
+    })
+    .catch((err) => {
+      return errorCb ? errorCb('Something went wrong. Please try again.') : null;
     });
   };
 

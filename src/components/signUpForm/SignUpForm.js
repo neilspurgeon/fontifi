@@ -29,7 +29,6 @@ class SignUpForm extends React.Component {
   }
 
   handleFormType(type) {
-    console.log('handling formType...');
     this.setState({
       formType: type
     });
@@ -53,7 +52,7 @@ class SignUpForm extends React.Component {
   login(e) {
     e.preventDefault();
     const auth = new Auth();
-    auth.login(this.state.email, this.state.password, this.successCallback);
+    auth.login(this.state.email, this.state.password, this.errorCallback, this.successCallback);
   }
 
   render() {
