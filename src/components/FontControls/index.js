@@ -4,7 +4,7 @@ import SelectFont from 'components/forms/selectFont';
 import ComboSlider from 'components/forms/comboSlider';
 import ColorPicker from 'components/forms/colorPicker';
 import FormField from 'components/forms/formField';
-import SubmitFonts from 'components/forms/submitFonts';
+import SaveFonts from 'components/forms/saveFonts';
 import SelectWeight from 'components/forms/selectWeight';
 import closeIcon from './close.svg';
 
@@ -103,7 +103,7 @@ class FontControls extends Component {
           }/>
 
           <div className={styles.BottomActions}>
-            <SubmitFonts onSubmit={this.props.onSubmit} />
+            <SaveFonts onSubmit={this.props.onSubmit} />
           </div>
 
         </form>

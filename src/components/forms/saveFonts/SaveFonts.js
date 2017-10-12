@@ -4,7 +4,7 @@ import Modal from 'containers/modal';
 import SignUpForm from 'components/signUpForm';
 import Auth from 'utils/authService/AuthService.js';
 
-class SubmitFonts extends Component {
+class SaveFonts extends Component {
   constructor(props) {
     super(props);
     this.state = { modalOpen: false};
@@ -43,7 +43,7 @@ class SubmitFonts extends Component {
           className={styles.PrimaryCta}
           type="button"
           onClick={ auth.isAuthenticated() ? this.submit : this.openModal }>
-          Submit Fonts
+          Save Font Pair
         </button>
 
         <Modal
@@ -58,4 +58,4 @@ class SubmitFonts extends Component {
   }
 }
 
-export default SubmitFonts;
+export default SaveFonts;

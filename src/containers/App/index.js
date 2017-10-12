@@ -6,7 +6,6 @@ import BodyFont from 'components/BodyFont';
 import GetFonts from 'components/GetFonts';
 import FontControls from 'components/FontControls';
 import Navigation from 'containers/navigation';
-
 class App extends Component {
 
   constructor(props) {
@@ -51,6 +50,7 @@ class App extends Component {
     this.handleFontTypeEvent = this.handleFontTypeEvent.bind(this);
     this.setFontValue = this.setFontValue.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.notifySaveSuccess = this.notifySaveSuccess.bind(this);
   };
 
   componentDidMount() {
@@ -188,7 +188,13 @@ class App extends Component {
         heading: this.state.heading,
         body: this.state.body,
       })
+    }).then((res) => {
+      this.notifySaveSuccess();
     });
+  }
+
+  notifySaveSuccess () {
+    console.log('saved');
   }
 
   render() {
