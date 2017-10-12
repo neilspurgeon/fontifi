@@ -12,7 +12,7 @@ const fontSchema = new mongoose.Schema({
   }
 });
 
-// Return one random document
+// // Return one random document
 fontSchema.statics.random = function(callback) {
   this.count(function(err, count) {
     if (err) {

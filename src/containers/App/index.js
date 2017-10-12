@@ -177,7 +177,7 @@ class App extends Component {
 
   saveFonts() {
     console.log('saving fonts...');
-    fetch('/api/auth/fontpairs', {
+    fetch('/api/auth/mycollection', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

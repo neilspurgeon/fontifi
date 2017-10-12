@@ -6,8 +6,8 @@ require('./config/passport');
 const passport = require('passport');
 
 // Require Controllers
-const FontPairController = require('./controllers/fontPairController');
 const AuthenticationController = require('./controllers/authenticationController');
+const UserController = require('./controllers/userController');
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });
@@ -22,8 +22,7 @@ module.exports = function(app) {
 
   authRoutes.post('/register', AuthenticationController.register);
   authRoutes.post('/login', requireLogin, AuthenticationController.login);
-  authRoutes.post('/fontpairs', requireAuth, FontPairController.createFontPair);
-  authRoutes.post('/mycollection', requireAuth, FontPairController.createFontPair);
+  authRoutes.post('/mycollection', requireAuth, UserController.createFontPair);
 
   authRoutes.post('/test', requireLogin, (req, res) => {
     console.log('test route');
@@ -34,7 +33,7 @@ module.exports = function(app) {
 
 
   app.get('/fontpairs/random', (req, res) => {
-    db.FontPair.random( (err, fontPair) => {
+    db.Fonts.random( (err, fontPair) => {
       if (err) {
         return res.status(400).json({error: err});
       }
