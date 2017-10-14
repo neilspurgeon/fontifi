@@ -3,10 +3,6 @@ import styles from './style.css';
 
 class ComboSlider extends React.Component {
 
-  // setFocus = () => {
-  //   this.refs.myInput.focus();
-  // };
-
   stepUp = () => {
     const currValue = this.props.value;
     const stepAmount = Number(this.props.step);
@@ -15,6 +11,7 @@ class ComboSlider extends React.Component {
 
     if (newValue >= this.props.min && newValue <= this.props.max) {
       this.props.setFontValue(roundNewValue);
+      this.refs.numberInput.focus();
     }
   };
 
@@ -26,9 +23,9 @@ class ComboSlider extends React.Component {
 
     if (newValue >= this.props.min && newValue <= this.props.max) {
       this.props.setFontValue(roundNewValue);
+      this.refs.numberInput.focus();
     }
   };
-
 
 
   render() {
@@ -41,6 +38,7 @@ class ComboSlider extends React.Component {
           <input
             className={styles.Slider}
             type="range"
+            tabIndex="-1"
             min={this.props.min}
             max={this.props.max}
             step={this.props.step}
@@ -50,7 +48,7 @@ class ComboSlider extends React.Component {
           <div className={styles.sliderFill} style={sliderFillWidth} />
         </div>
         <input
-          ref="myInput"
+          ref="numberInput"
           className={styles.Input}
           onChange={this.props.handleChange}
           type="number"

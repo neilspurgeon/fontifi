@@ -130,6 +130,17 @@ input[type=number]::-webkit-outer-spin-button {
   width: 80px;
   flex-grow: 0;
   flex-shrink: 0;
+  transition: .3s ease border, .3s ease box-shadow;
+}
+
+.Input:hover {
+  border: 1px solid #49a9ee;
+}
+
+.Input:focus {
+  outline: none ;
+  border: 1px solid #49a9ee;
+  box-shadow: 0 0 1px 1px #49a9ee;
 }
 
 .stepUp, .stepDown {
