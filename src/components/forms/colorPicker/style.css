@@ -8,6 +8,17 @@
   display: flex;
   align-items: center;
   margin: 10px 0;
+  transition: .3s ease border, .3s ease box-shadow;
+}
+
+.ColorPicker.isHovered {
+  border: 1px solid #49a9ee;
+}
+
+.ColorPicker.isFocused {
+  outline: none ;
+  border: 1px solid #49a9ee;
+  box-shadow: 0 0 1px 1px #49a9ee;
 }
 
 .NativeColorSwatch {
