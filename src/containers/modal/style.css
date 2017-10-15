@@ -30,7 +30,6 @@
   transform: translate(-50%, -50%);
   outline: none;
   border-radius: 5px;
-  text-align: center;
 }
 
 .show {
@@ -39,4 +38,51 @@
 
 .hide {
   visibility: hidden;
+}
+
+.closeButtonContainer {
+  width: 100%;
+  background: blue;
+}
+
+.closeButton {
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 7px;
+  right: 9px;
+  opacity: .5;
+  transition: .2s ease opacity;
+}
+
+.closeButton:hover {
+  opacity: .8;
+}
+
+.closeButton::before {
+  content: ' ';
+  position: absolute;
+  background: #4A4A4A;
+  height: 12px;
+  width: 0;
+  border-radius: 2px;
+  border: 1px solid black;
+  transform: rotate(45deg);
+  top: 4px;
+}
+
+.closeButton::after {
+  content: ' ';
+  position: absolute;
+  background: #4A4A4A;
+  height: 12px;
+  width: 0;
+  border-radius: 2px;
+  border: 1px solid black;
+  transform: rotate(-45deg);
+  top: 4px;
 }

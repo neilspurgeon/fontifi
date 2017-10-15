@@ -21,7 +21,8 @@ function Modal (props) {
       isOpen={props.isOpen}
       onRequestClose={props.closeModal}>
 
-        <button onClick={props.closeModal}>Close</button>
+        <button className={styles.closeButton} onClick={props.closeModal} alt="Close" />
+
         {props.children}
 
     </ReactModal>
