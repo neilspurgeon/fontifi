@@ -6,12 +6,14 @@ import Auth from 'utils/authService/AuthService.js';
 import config from 'config.js';
 import WebFont from 'webfontloader';
 import trashIcon from './trash-icon.svg';
+// import ClassNames from 'classnames';
 
 class MyCollection extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      savedFonts: []
+      savedFonts: [],
+      confirmModalId: null
     };
   }
 
@@ -58,6 +60,19 @@ class MyCollection extends Component {
     });
   }
 
+  openConfirmDelete = (id) => {
+    this.setState({
+      confirmModalId: id
+    });
+  }
+
+  closeConfirmDelete = (id) => {
+    this.setState({
+      confirmModalId: null
+    });
+  }
+
+
   delete = (fontPairId, index) => {
     fetch('/api/auth/mycollection', {
       method: 'DELETE',
@@ -81,7 +96,6 @@ class MyCollection extends Component {
   }
 
   render() {
-
     if (this.state.savedFonts[0]) {
       return (
         <div className={styles.content}>
@@ -102,14 +116,21 @@ class MyCollection extends Component {
               };
 
               return (
-                <div className={styles.fontPair} key={obj._id}>
-                  <div className={styles.actions}>
-                    <a className={styles.delete}>
-                      <img onClick={() => {this.delete(obj._id, index);}} src={trashIcon} alt="Delete" />
-                    </a>
+                <div className={styles.fontPair} key={obj._id} ref={obj._id}>
+                  <div className={this.state.confirmModalId === obj._id ? [styles.confirmDelete, styles.isOpen].join(' ') : styles.confirmDelete} onMouseLeave={this.closeConfirmDelete}>
+                    <p>Are you sure you want to delete this font pair?</p>
+                    <button onClick={() => {this.delete(obj._id, index);}}>Delete</button>
+                    <button onClick={this.closeConfirmDelete}>Cancel</button>
                   </div>
-                  <h1 style={headingStyle}>{heading.fontFamily + ' & ' + body.fontFamily}</h1>
-                  <p style={bodyStyle}>{config.savedBodyText}</p>
+                  <div className={styles.actions}>
+                    <button className={styles.delete}>
+                      <img onClick={() => {this.openConfirmDelete(obj._id);}} src={trashIcon} alt="Delete" />
+                    </button>
+                  </div>
+                  <div className={this.state.confirmModalId === obj._id ? [styles.fontPairInnerContainer, styles.blur].join(' ') : styles.fontPairInnerContainer}>
+                    <h1 style={headingStyle}>{heading.fontFamily + ' & ' + body.fontFamily}</h1>
+                    <p style={bodyStyle}>{config.savedBodyText}</p>
+                  </div>
                 </div>
               );
             })}
