@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './style.css';
 import ClassNames from 'classnames';
 import WebFont from 'webfontloader';
-
+import config from 'config';
 
 class HeadingFont extends React.Component {
 
@@ -55,7 +55,7 @@ class HeadingFont extends React.Component {
 
   render() {
     let headingClasses = ClassNames(styles.heading, {[styles.isActive] : this.props.activeFontType === 'heading'}, {[styles.isLoading] : this.state.isLoading === true });
-    const text = 'Generate & Collect the Best Google Font Pairings';
+    const text = config.defaultHeadingText;
 
     const fontStyle = {
       fontFamily: this.props.fontFamily,

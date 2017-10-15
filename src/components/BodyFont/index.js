@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './style.css';
 import ClassNames from 'classnames';
+import config from 'config';
 
 function BodyFont (props) {
 
   let bodyClasses = ClassNames(styles.body, {[styles.isActive] : props.activeFontType === 'body'});
 
-  const text = 'Press spacebar or click the button below to load new font combinations. Use the editor panel on the right to fine tune or to manually pick new fonts. When you find something you like, save your font pair for easy reference later. All this text is editable and can be replaced with whatever you want.';
+  const text = config.defaultBodyText;
 
   if (props.fontFamily) {
     const fontFamilyString = props.fontFamily.split(' ').join('+');
