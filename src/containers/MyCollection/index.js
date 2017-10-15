@@ -36,7 +36,9 @@ class MyCollection extends Component {
       this.setState({
         savedFonts: json
       });
-      this.loadFonts(this.state.savedFonts);
+      if(this.state.savedFonts[0]) {
+        this.loadFonts(this.state.savedFonts);
+      }
     });
   }
 
