@@ -56,6 +56,28 @@ class MyCollection extends Component {
     });
   }
 
+  delete = (fontPairId, index) => {
+    fetch('/api/auth/mycollection', {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token'),
+      },
+      body: JSON.stringify({
+        fontId: fontPairId
+      })
+    })
+    .then((err, res) => {
+      const savedFontsArr = this.state.savedFonts;
+      savedFontsArr.splice(index, 1);
+
+      this.setState({
+        savedFonts: savedFontsArr
+      });
+    });
+  }
+
   render() {
 
     if (this.state.savedFonts[0]) {
@@ -78,9 +100,11 @@ class MyCollection extends Component {
               };
 
               return (
-                <div className={styles.fontPair} key={index}>
+                <div className={styles.fontPair} key={obj._id}>
                   <div className={styles.actions}>
-                    <a className={styles.delete}><img src={trashIcon} alt="Delete" /></a>
+                    <a className={styles.delete}>
+                      <img onClick={() => {this.delete(obj._id, index);}} src={trashIcon} alt="Delete" />
+                    </a>
                   </div>
                   <h1 style={headingStyle}>{heading.fontFamily + ' & ' + body.fontFamily}</h1>
                   <p style={bodyStyle}>{config.savedBodyText}</p>

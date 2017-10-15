@@ -47,3 +47,14 @@ exports.getFonts = (req, res) => {
     res.status(200).json(foundUser.fontPairs);
   });
 };
+
+exports.deleteFont = (req, res) => {
+  const user = req.user;
+  const fontPairId = req.body.fontId;
+
+  db.Users.findById(user._id, (err, foundUser) => {
+    foundUser.fontPairs.pull(fontPairId);
+    foundUser.save();
+    res.status(200).send('Font pair deleted');
+  });
+};
