@@ -1,15 +1,17 @@
 @import '../../../variables.css';
 
 .primaryCta {
-  height: 48px;
+  height: 46px;
   border-radius: 10px;
   background: var(--primary-cta-bg-color);
-  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.24);
   border: none;
-  border-radius: 10px;
+  border-radius: 23px;
   color: #FFF;
-  width: 100%;
   font-size: 14px;
+  font-weight: 500;
+  padding: 0 30px;
+  margin: 10px 0;
+  cursor: pointer;
 }
 
 .primaryCtaSmall {

@@ -1,9 +1,27 @@
-.heading {
-  font-size: 20px;
-  font-weight: 800;
+@import '../../variables.css';
+
+.formContainer {
+  transition: 5s ease all;
 }
 
-.submit {
-  height: 28px;
-  font-size: 14px;
+.heading {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.submitContainer {
+  padding-top: 10px;
+}
+
+.footer {
+  margin-top: 10px;
+  padding-top: 5px;
+  border-top: 1px solid var(--border-color);
+
+}
+
+.footerMessage {
+  font-size: 12px;
+  margin-bottom: 0;
+  color: var(--medium-text-color);
 }

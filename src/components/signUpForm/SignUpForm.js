@@ -58,10 +58,9 @@ class SignUpForm extends React.Component {
   render() {
     if (this.state.formType === 'signup') {
       return (
-        <div>
+        <div className={styles.formContainer}>
           <p>{this.state.error || this.props.message }</p>
-          <h1 className={styles.heading}>Create Account with</h1>
-          <div className={styles.divider}>or</div>
+          <h1 className={styles.heading}>Sign Up</h1>
           <form onSubmit={this.signup}>
             <Input
               type="email"
@@ -73,17 +72,20 @@ class SignUpForm extends React.Component {
               name="password"
               placeholder="Password"
               handleChange={this.handleChange} />
-            <PrimaryCta text="Sign Up" type="submit" value="submit" />
+            <div className={styles.submitContainer}>
+              <PrimaryCta text="Create Account" type="submit" value="submit" />
+            </div>
           </form>
-          <p>Already have an account? <a onClick={() => { this.handleFormType('login'); }}>Log In</a></p>
+          <div className={styles.footer}>
+            <p className={styles.footerMessage}>Already have an account? <a onClick={() => { this.handleFormType('login'); }}>Log In</a></p>
+          </div>
         </div>
       );
     } else if (this.state.formType === 'login') {
       return (
-        <div>
+        <div className={styles.formContainer}>
           <p>{this.state.error}</p>
-          <h1 className={styles.heading}>Log In with</h1>
-          <div className={styles.divider}>or</div>
+          <h1 className={styles.heading}>Log In</h1>
           <form onSubmit={this.login}>
             <Input
               type="email"
@@ -95,9 +97,13 @@ class SignUpForm extends React.Component {
               name="password"
               placeholder="Password"
               handleChange={this.handleChange} />
-            <PrimaryCta text="Log In" type="submit" value="submit" />
+            <div className={styles.submitContainer}>
+              <PrimaryCta text="Log In" type="submit" value="submit" />
+            </div>
           </form>
-          <p>Not yet registered? <a onClick={() => { this.handleFormType('signup'); }}>Sign Up</a></p>
+          <div className={styles.footer}>
+            <p className={styles.footerMessage}>Don't have an account? <a onClick={() => { this.handleFormType('signup'); }}>Sign Up</a></p>
+          </div>
         </div>
       );
     }

@@ -8,7 +8,18 @@
   font-size: 14px;
   box-shadow: 0;
   transition: all .3s;
-  margin: 10px 0;
-  display: inline-block;
+  margin: 5px 0;
   width: 100%;
+  transition: .3s ease border, .3s ease box-shadow;
+  display: inline-block;
+}
+
+.input:hover {
+  border: 1px solid #49a9ee;
+}
+
+.input:focus {
+  outline: none ;
+  border: 1px solid #49a9ee;
+  box-shadow: 0 0 1px 1px #49a9ee;
 }
