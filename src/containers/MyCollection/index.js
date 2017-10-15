@@ -4,6 +4,30 @@ import graphic from './empty-folder.svg';
 import styles from './style.css';
 
 class MyCollection extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      savedFonts: []
+    };
+  }
+
+  componentDidMount() {
+    fetch('/api/auth/mycollection', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token'),
+      }
+    }).then((res) => {
+      return res.json();
+    }).then((json) => {
+      this.setState({
+        savedFonts: json
+      });
+    });
+  }
+
   render() {
     return(
       <div>

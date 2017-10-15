@@ -23,6 +23,7 @@ module.exports = function(app) {
   authRoutes.post('/register', AuthenticationController.register);
   authRoutes.post('/login', requireLogin, AuthenticationController.login);
   authRoutes.post('/mycollection', requireAuth, UserController.createFontPair);
+  authRoutes.get('/mycollection', requireAuth, UserController.getFonts);
 
   authRoutes.post('/test', requireLogin, (req, res) => {
     console.log('test route');

@@ -36,3 +36,14 @@ exports.createFontPair = (req, res) => {
     }
   );
 };
+
+exports.getFonts = (req, res) => {
+  const user = req.user;
+  db.Users.findById(user._id, (err, foundUser) => {
+    if (err) {
+      console.log(err);
+      return res.send(err);
+    }
+    res.status(200).json(foundUser.fontPairs);
+  });
+};
