@@ -5,6 +5,7 @@ import styles from './style.css';
 import Auth from 'utils/authService/AuthService.js';
 import config from 'config.js';
 import WebFont from 'webfontloader';
+import trashIcon from './trash-icon.svg';
 
 class MyCollection extends Component {
   constructor(props) {
@@ -78,6 +79,9 @@ class MyCollection extends Component {
 
               return (
                 <div className={styles.fontPair} key={index}>
+                  <div className={styles.actions}>
+                    <a className={styles.delete}><img src={trashIcon} alt="Delete" /></a>
+                  </div>
                   <h1 style={headingStyle}>{heading.fontFamily + ' & ' + body.fontFamily}</h1>
                   <p style={bodyStyle}>{config.savedBodyText}</p>
                 </div>

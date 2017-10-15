@@ -23,11 +23,34 @@
 }
 
 .fontPair {
+  position: relative;
   border: 1px solid #E4E4E4;
   border-radius: 10px;
   padding: 20px 30px;
   margin: 0 0 50px;
+  transition: .3s ease border;
 }
+
+.fontPair:hover {
+  border: 1px solid var(--primary-ui-color);
+}
+
+.actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 15px 0 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: .3s ease all;
+}
+
+.fontPair:hover .actions {
+  visibility: visible;
+  opacity: 1;
+}
+
+
 
 .emptyStateContainer {
   max-width: 300px;

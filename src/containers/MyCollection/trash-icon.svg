@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="19px" viewBox="0 0 15 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>trash-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-913.000000, -439.000000)" stroke="#F44336">
+            <g id="trash-icon" transform="translate(914.000000, 440.000000)">
+                <path d="M0,2.06155281 L13,2.06155281" id="Path-3" stroke-linecap="round"></path>
+                <path d="M5,14.5 L5,4.06155281" id="Path-4" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M8,14.5 L8,4" id="Path-4" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polyline id="Path-2" stroke-linecap="round" stroke-linejoin="round" points="1 4 1.5 16.5615528 11.5 16.5615528 12 4"></polyline>
+                <path d="M3.5,2.06155281 L3.5,2.06155281 L3.5,2.06155281 C3.5,0.922988633 4.42298863,2.09150847e-16 5.56155281,0 L7.43876288,0 L7.43876288,4.4408921e-16 C8.57732708,2.34938361e-16 9.50031572,0.922988644 9.50031572,2.06155284 L9.50031572,2.06155284" id="Path-5"></path>
+            </g>
+        </g>
+    </g>
+</svg>
