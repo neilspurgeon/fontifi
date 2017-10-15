@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navigation from 'containers/navigation';
 import graphic from './empty-folder.svg';
 import styles from './style.css';
+import Auth from 'utils/authService/AuthService.js';
 
 class MyCollection extends Component {
   constructor(props) {
@@ -12,6 +13,13 @@ class MyCollection extends Component {
   }
 
   componentDidMount() {
+    const auth = new Auth();
+    if (auth.isAuthenticated()) {
+      this.getSavedFonts();
+    }
+  }
+
+  getSavedFonts = () => {
     fetch('/api/auth/mycollection', {
       method: 'GET',
       headers: {
@@ -29,6 +37,26 @@ class MyCollection extends Component {
   }
 
   render() {
+
+    if (this.state.savedFonts[0]) {
+      return (
+        <div>
+          <Navigation />
+          <div className={styles.savedFontsContainer}>
+            { this.state.savedFonts.map((obj, index) => {
+              return (
+                <div className={styles.fontPair}>
+                  <h1 fontFamily={obj.heading.fontFamily}>Heading Font</h1>
+                  <p fontFamily={obj.body.fontFamily}>Body Font</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+
+    // Empty State
     return(
       <div>
         <Navigation />
