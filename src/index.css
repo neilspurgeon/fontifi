@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,800');
 @import url('https://fonts.googleapis.com/css?family=Noticia+Text');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
