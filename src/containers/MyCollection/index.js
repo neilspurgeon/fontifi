@@ -3,6 +3,8 @@ import Navigation from 'containers/navigation';
 import graphic from './empty-folder.svg';
 import styles from './style.css';
 import Auth from 'utils/authService/AuthService.js';
+import config from 'config.js';
+import WebFont from 'webfontloader';
 
 class MyCollection extends Component {
   constructor(props) {
@@ -33,6 +35,23 @@ class MyCollection extends Component {
       this.setState({
         savedFonts: json
       });
+      this.loadFonts(this.state.savedFonts);
+    });
+  }
+
+  loadFonts = (savedFonts) => {
+    const fontsArr = [];
+
+    savedFonts.map((obj, key) => {
+      const heading = obj.heading.fontFamily + ':' + obj.heading.fontWeight;
+      const body = obj.body.fontFamily + ':' + obj.body.fontWeight;
+      return fontsArr.push(heading) && fontsArr.push(body);
+    });
+
+    WebFont.load({
+      google: {
+        families: fontsArr
+      }
     });
   }
 
@@ -40,14 +59,27 @@ class MyCollection extends Component {
 
     if (this.state.savedFonts[0]) {
       return (
-        <div>
+        <div className={styles.content}>
+
           <Navigation />
+
           <div className={styles.savedFontsContainer}>
             { this.state.savedFonts.map((obj, index) => {
+              const heading = obj.heading;
+              const body = obj.body;
+              const headingStyle = {
+                fontFamily: heading.fontFamily,
+                fontWeight: heading.fontWeight
+              };
+              const bodyStyle = {
+                fontFamily: body.fontFamily,
+                fontWeight: body.fontWeight
+              };
+
               return (
-                <div className={styles.fontPair}>
-                  <h1 fontFamily={obj.heading.fontFamily}>Heading Font</h1>
-                  <p fontFamily={obj.body.fontFamily}>Body Font</p>
+                <div className={styles.fontPair} key={index}>
+                  <h1 style={headingStyle}>{heading.fontFamily + ' & ' + body.fontFamily}</h1>
+                  <p style={bodyStyle}>{config.savedBodyText}</p>
                 </div>
               );
             })}
