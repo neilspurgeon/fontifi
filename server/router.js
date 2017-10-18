@@ -8,6 +8,7 @@ const passport = require('passport');
 // Require Controllers
 const AuthenticationController = require('./controllers/authenticationController');
 const UserController = require('./controllers/userController');
+const FontController = require('./controllers/fontController');
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });
@@ -19,6 +20,7 @@ module.exports = function(app) {
         authRoutes = express.Router();
 
   apiRoutes.use('/auth', authRoutes);
+  // authRoutes.use(AuthenticationController.middleWare);
 
   authRoutes.post('/register', AuthenticationController.register);
   authRoutes.post('/login', requireLogin, AuthenticationController.login);
@@ -34,7 +36,7 @@ module.exports = function(app) {
   app.use('/api', apiRoutes);
 
 
-  app.get('/fontpairs/random', (req, res) => {
+  app.get('/fonts/random', (req, res) => {
     db.Fonts.random( (err, fontPair) => {
       if (err) {
         return res.status(400).json({error: err});
@@ -43,7 +45,9 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/fonts', (req, res) => {
+  app.get('/admin/fonts', FontController.getFonts);
+
+  app.get('/googlefonts', (req, res) => {
     fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=' + process.env.GOOGLE_FONTS_KEY )
       .then((fonts) => {
         return fonts.json();

@@ -26,3 +26,14 @@ exports.submitFont = (req, res) => {
   // const heading = req.body.heading;
   // const body = req.body.body;
 };
+
+exports.getFonts = (req, res) => {
+  db.Fonts.find({}, (err, fonts) => {
+    console.log(fonts);
+    if (err) {
+      console.log(err);
+      return res.send(err);
+    }
+    res.status(200).json(fonts);
+  });
+};
