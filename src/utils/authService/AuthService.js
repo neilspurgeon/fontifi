@@ -75,10 +75,13 @@ export default class Auth {
   }
 
   setSession(authResult) {
+    console.log(authResult);
     // Set the time that the access token will expire at
     let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+    let user = JSON.stringify(authResult.user);
+
     localStorage.setItem('token', authResult.token);
-    localStorage.setItem('user', authResult.user);
+    localStorage.setItem('user', user);
     localStorage.setItem('expires_at', expiresAt);
   }
 
@@ -95,5 +98,13 @@ export default class Auth {
     // access token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
+  }
+
+  isAdminUser() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user.role === 'Admin') {
+      return true;
+    }
+    return false;
   }
 }
