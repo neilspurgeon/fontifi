@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 
 // Define schema
 const fontSchema = new mongoose.Schema({
-  heading: {
+  fontFamily: {
     fontFamily: String,
-    fontWeight: String
+    unique: true
   },
-  body: {
-    fontFamily: String,
-    fontWeight: String
-  }
+  fontPairs: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Font'
+  }]
 });
 
 // // Return one random document
