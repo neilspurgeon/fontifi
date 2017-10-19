@@ -2,21 +2,26 @@ const db = require('../models');
 
 // Create Font Pair
 exports.createFont = (req, res) => {
-  // console.log('create font pair');
+  const role = req.user.role;
 
-  // const heading = req.body.heading;
-  // const body = req.body.body;
+  if (role !== 'Admin') {
+    return res.status(403).send('user not authorized');
+  }
 
-  // const font = new db.Fonts({
+  // Get _id of each paired font here
+  const pairedFontArr = [];
 
-  // });
+  const newFont = new db.Fonts({
+    fontFamily: req.fontFamily,
+    pairedFonts: pairedFontArr
+  });
 
-  // fontPair.save((err) => {
-  //   if (err) {
-  //     return res.send(err);
-  //   }
-  //   res.status(200).send('Thanks for contributing.');
-  // });
+  newFont.save((err, font) => {
+    if (err) {
+      return res.send(err);
+    }
+    res.status(200).send('Font successfully added');
+  });
 };
 
 // Submit Font

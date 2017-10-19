@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // Define schema
 const fontSchema = new mongoose.Schema({
   fontFamily: {
-    fontFamily: String,
+    type: String,
     unique: true
   },
   fontPairs: [{
