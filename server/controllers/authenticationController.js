@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const User = require('../models/user');
 const config = require('../config/main');
 
-const tokenExp = 900; // in seconds. 900s = 15mins
+const tokenExp = 9000; // in seconds. 900s = 15mins
 
 function generateToken(user) {
   return jwt.sign(user, config.secret, {
