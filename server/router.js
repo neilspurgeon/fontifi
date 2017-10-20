@@ -28,6 +28,7 @@ module.exports = function(app) {
   authRoutes.delete('/mycollection', requireAuth, UserController.deleteFont);
 
   app.post('/fonts', requireAuth, FontController.createFont);
+  app.put('/fonts/:id', requireAuth, FontController.addFontPair);
 
   app.use('/api', apiRoutes);
 

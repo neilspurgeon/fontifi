@@ -23,6 +23,21 @@ exports.createFont = (req, res) => {
   });
 };
 
+exports.addFontPair = (req, res) => {
+  const parentId = req.params.id;
+  const fontPair = req.body.fontPair;
+  db.Fonts.update(
+    { _id: parentId},
+    { $push: {fontPairs: fontPair}},
+    (err) => {
+      if (err) {
+        return res.status(403).send(err);
+      }
+      res.status(200).send('Font pair successfully added');
+    }
+  );
+};
+
 // Submit Font
 exports.submitFont = (req, res) => {
   // console.log('submitting font pair');
