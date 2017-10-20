@@ -4,11 +4,15 @@ const mongoose = require('mongoose');
 const fontSchema = new mongoose.Schema({
   fontFamily: {
     type: String,
+    required: true,
     unique: true
   },
   fontPairs: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Font'
+    fontFamily: {
+      type: String,
+      required: true,
+      unique: true
+    }
   }]
 });
 
