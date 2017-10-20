@@ -3,17 +3,16 @@ const db = require('../models');
 // Create Font Pair
 exports.createFont = (req, res) => {
   const role = req.user.role;
+  const fontFamily = req.body.fontFamily;
+  const fontPairs = req.body.fontPairs;
 
   if (role !== 'Admin') {
     return res.status(403).send('user not authorized');
   }
 
-  // Get _id of each paired font here
-  const pairedFontArr = [];
-
   const newFont = new db.Fonts({
-    fontFamily: req.fontFamily,
-    pairedFonts: pairedFontArr
+    fontFamily: fontFamily,
+    fontPairs: fontPairs
   });
 
   newFont.save((err, font) => {
