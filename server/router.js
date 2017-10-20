@@ -29,6 +29,7 @@ module.exports = function(app) {
 
   app.post('/fonts', requireAuth, FontController.createFont);
   app.put('/fonts/:id', requireAuth, FontController.addFontPair);
+  app.delete('/fonts/:fontId/fontPairs/:pairId', requireAuth, FontController.deleteFontPair);
 
   app.use('/api', apiRoutes);
 

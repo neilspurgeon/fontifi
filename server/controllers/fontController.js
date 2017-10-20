@@ -44,6 +44,28 @@ exports.addFontPair = (req, res) => {
   );
 };
 
+exports.deleteFontPair = (req, res) => {
+  const role = req.user.role;
+  const fontId = req.params.fontId;
+  const pairId = req.params.pairId;
+
+  if (role !== 'Admin') {
+    return res.status(403).send('user not authorized');
+  }
+
+  db.Fonts.update(
+    { _id: fontId},
+    { $pull: {fontPairs: {_id: pairId}}},
+    (err) => {
+      if (err) {
+        console.log(err);
+        return res.status(403).send(err);
+      }
+      res.status(200).send('font pair successfully deleted');
+    }
+  );
+};
+
 // Submit Font
 exports.submitFont = (req, res) => {
   // console.log('submitting font pair');
