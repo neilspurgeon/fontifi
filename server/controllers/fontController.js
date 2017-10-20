@@ -24,8 +24,14 @@ exports.createFont = (req, res) => {
 };
 
 exports.addFontPair = (req, res) => {
+  const role = req.user.role;
   const parentId = req.params.id;
   const fontPair = req.body.fontPair;
+
+  if (role !== 'Admin') {
+    return res.status(403).send('user not authorized');
+  }
+
   db.Fonts.update(
     { _id: parentId},
     { $push: {fontPairs: fontPair}},
