@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './style.css';
 import ClassNames from 'classnames';
+import WebFont from 'webfontloader';
 
 class FontListItem extends React.Component {
   constructor(props) {
@@ -14,6 +15,11 @@ class FontListItem extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const fonts = this.getFontNames();
+    this.loadFonts(fonts);
+  }
+
   getFontNames = () => {
     const fontPairs = this.state.fontPairs;
     // Create font name array of main font + font pairs
@@ -23,6 +29,15 @@ class FontListItem extends React.Component {
       let font = fontPairs[0].fontFamily;
       fontNames.push(font);
     }
+    return fontNames;
+  }
+
+  loadFonts = (fontsArr) => {
+    WebFont.load({
+      google: {
+        families: fontsArr
+      }
+    });
   }
 
   render() {
