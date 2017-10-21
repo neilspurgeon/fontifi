@@ -1,5 +1,5 @@
 import React from 'react';
-import FontListItem from 'components/adminPanel/FontListItem';
+import FontList from 'components/adminPanel/FontList';
 import styles from './style.css';
 import Header from 'components/adminPanel/Header';
 
@@ -8,7 +8,7 @@ class AdminPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fontList: []
+      fonts: []
     };
   }
 
@@ -23,7 +23,7 @@ class AdminPanel extends React.Component {
       })
       .then((parsedFonts) => {
         this.setState({
-          fontList: parsedFonts
+          fonts: parsedFonts
         });
       });
   };
@@ -31,29 +31,18 @@ class AdminPanel extends React.Component {
   render() {
     this.headerTitle = 'Fonts';
 
-    if (this.state.fontList.length === 1) {
+    if (this.state.fonts && this.state.fonts.length === 1) {
       this.headerTitle = 'Font';
     };
 
-    if (!this.state) {
+    if (!this.state.fonts) {
       return (<h1>Empty State</h1>);
     }
 
     return (
       <div className={styles.mainContent}>
-
-        <Header title={ this.state.fontList.length + ' ' + this.headerTitle} />
-        <div>
-          { this.state.fontList.map((font, index) => {
-            return (
-              <FontListItem
-                fontFamily={font.fontFamily}
-                fontPairs={font.fontPairs}
-                key={font.fontFamily}
-              />
-            );
-          })}
-        </div>
+        <Header title={ this.state.fonts.length + ' ' + this.headerTitle} />
+        <FontList fonts={this.state.fonts} />
       </div>
     );
   }
