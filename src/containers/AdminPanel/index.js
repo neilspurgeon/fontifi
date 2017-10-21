@@ -1,6 +1,7 @@
 import React from 'react';
 import FontListItem from 'components/adminPanel/FontListItem';
 import styles from './style.css';
+import Header from 'components/adminPanel/Header';
 
 class AdminPanel extends React.Component {
 
@@ -28,12 +29,20 @@ class AdminPanel extends React.Component {
   };
 
   render() {
+    this.headerTitle = 'Fonts';
+
+    if (this.state.fontList.length === 1) {
+      this.headerTitle = 'Font';
+    };
+
     if (!this.state) {
       return (<h1>Empty State</h1>);
     }
+
     return (
       <div className={styles.mainContent}>
-        <h1>Font List</h1>
+
+        <Header title={ this.state.fontList.length + ' ' + this.headerTitle} />
         <div>
           { this.state.fontList.map((font, index) => {
             return (
