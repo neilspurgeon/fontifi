@@ -6,22 +6,26 @@ class FontListItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false
+      active: false,
+      // Set initial state.
+      // We want this change indepently of parent state to allow editing.
+      fontFamily: props.fontFamily,
+      fontList: props.fontList
     };
   }
 
   render() {
-    let containerClasses = ClassNames(styles.container, {[styles.isActive] : this.props.isActive === true});
+    let containerClasses = ClassNames(styles.container, {[styles.isActive] : this.state.isActive === true});
     let fontStyle = {
-      fontFamily: this.props.fontFamily
+      fontFamily: this.state.fontFamily
     };
 
     return (
       <div className={containerClasses}>
         <h2 style={fontStyle} className={styles.fontFamilyName}>
-          {this.props.fontFamily}
+          {this.state.fontFamily}
         </h2>
-        {this.props.fontPairs ? this.props.fontPairs.map((f, index) => {
+        {this.state.fontPairs ? this.state.fontPairs.map((f, index) => {
           return (
             <div className={styles.fontPair} key={f.fontFamily}>
               <span>{f.fontFamily}</span>
