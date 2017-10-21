@@ -10,8 +10,19 @@ class FontListItem extends React.Component {
       // Set initial state.
       // We want this change indepently of parent state to allow editing.
       fontFamily: props.fontFamily,
-      fontList: props.fontList
+      fontPairs: props.fontPairs
     };
+  }
+
+  getFontNames = () => {
+    const fontPairs = this.state.fontPairs;
+    // Create font name array of main font + font pairs
+    const fontNames = [this.state.fontFamily];
+
+    for (let i=0; i<fontPairs.length; i++) {
+      let font = fontPairs[0].fontFamily;
+      fontNames.push(font);
+    }
   }
 
   render() {
