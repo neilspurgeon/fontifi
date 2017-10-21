@@ -30,11 +30,11 @@ class FontListItem extends React.Component {
 
     return (
       <div className={containerClasses} >
-        <h2 style={fontStyle}>{this.props.fontFamily}</h2>
+        <h2 style={fontStyle} className={styles.fontFamilyName}>{this.props.fontFamily}</h2>
         {fontPairs ? fontPairs.map((font, index) => {
           return (
-            <div>
-              <p>{font.fontFamily}</p>
+            <div className={styles.fontPair}>
+              <span>{font.fontFamily}</span>
             </div>
           );
         }) : null}

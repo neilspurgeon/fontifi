@@ -1,1 +1,21 @@
 @import '../../../variables.css';
+
+.container {
+  border-top: 1px solid var(--divider-color);
+  border-bottom: 1px solid var(--divider-color);
+  padding: 50px 0;
+}
+
+.fontFamilyName {
+  text-transform: capitalize;
+  font-size: 30px;
+}
+
+.fontPair {
+  display: inline-block;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 12px 22px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
