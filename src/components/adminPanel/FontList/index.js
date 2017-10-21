@@ -16,7 +16,7 @@ const FontList = ({fonts}) => {
             fontPairs={f.fontPairs}
             key={f.fontFamily} />
         );
-      })};
+      })}
     </div>);
 };
 
