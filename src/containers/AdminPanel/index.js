@@ -1,4 +1,5 @@
 import React from 'react';
+import FontListItem from 'components/adminPanel/FontListItem';
 
 class AdminPanel extends React.Component {
 
@@ -33,8 +34,13 @@ class AdminPanel extends React.Component {
       <div>
         <h1>Font List</h1>
           <div>
-            { this.state.fontList.map((obj, index) => {
-              return (<div>{obj.fontFamily}</div>);
+            { this.state.fontList.map((font, index) => {
+              return (
+                <FontListItem
+                  fontFamily={'poppins'}
+                  fontPairs={font.fontPairs}
+                />
+              );
             })}
           </div>
       </div>
