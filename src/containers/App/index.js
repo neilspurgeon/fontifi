@@ -56,7 +56,7 @@ class App extends Component {
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
 
-    fetch('/fonts')
+    fetch('/fontlist')
       .then((response) => {
         return response.json();
       })
