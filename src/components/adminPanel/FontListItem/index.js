@@ -33,7 +33,7 @@ class FontListItem extends React.Component {
         <h2 style={fontStyle} className={styles.fontFamilyName}>{this.props.fontFamily}</h2>
         {fontPairs ? fontPairs.map((font, index) => {
           return (
-            <div className={styles.fontPair}>
+            <div className={styles.fontPair} key={font.fontFamily}>
               <span>{font.fontFamily}</span>
             </div>
           );

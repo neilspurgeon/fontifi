@@ -8,7 +8,7 @@ class AdminPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fontList: ['asdasd']
+      fontList: []
     };
   }
 
@@ -47,8 +47,9 @@ class AdminPanel extends React.Component {
           { this.state.fontList.map((font, index) => {
             return (
               <FontListItem
-                fontFamily={'poppins'}
+                fontFamily={font.fontFamily}
                 fontPairs={font.fontPairs}
+                key={font.fontFamily}
               />
             );
           })}
