@@ -27,6 +27,7 @@ module.exports = function(app) {
   authRoutes.get('/mycollection', requireAuth, UserController.getFonts);
   authRoutes.delete('/mycollection', requireAuth, UserController.deleteFont);
 
+  app.get('/fonts', FontController.getFonts);
   app.post('/fonts', requireAuth, FontController.createFont);
   app.put('/fonts/:id', requireAuth, FontController.addFontPair);
   app.delete('/fonts/:fontId/fontPairs/:pairId', requireAuth, FontController.deleteFontPair);
@@ -42,9 +43,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/admin/fonts', FontController.getFonts);
-
-  app.get('/fonts', (req, res) => {
+  app.get('/fontlist', (req, res) => {
     fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=' + process.env.GOOGLE_FONTS_KEY )
       .then((fonts) => {
         return fonts.json();
