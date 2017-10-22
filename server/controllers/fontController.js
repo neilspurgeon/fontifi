@@ -3,75 +3,25 @@ const db = require('../models');
 // Create Font Pair
 exports.createFont = (req, res) => {
   const role = req.user.role;
-  const fontFamily = req.body.fontFamily;
-  const fontPairs = req.body.fontPairs;
+  const font = req.body.font;
 
   if (role !== 'Admin') {
     return res.status(403).send('user not authorized');
   }
 
   const newFont = new db.Fonts({
-    fontFamily: fontFamily,
-    fontPairs: fontPairs
+    family: font.amily,
+    category: font.category,
+    variants: font.variants,
+    version: font.version
   });
 
   newFont.save((err, font) => {
     if (err) {
       return res.send(err);
     }
-    res.status(200).send('Font successfully added');
+    res.status(200).send('Font successfully added to database');
   });
-};
-
-exports.addFontPair = (req, res) => {
-  const role = req.user.role;
-  const parentId = req.params.id;
-  const fontPair = req.body.fontPair;
-
-  if (role !== 'Admin') {
-    return res.status(403).send('user not authorized');
-  }
-
-  db.Fonts.update(
-    { _id: parentId},
-    { $push: {fontPairs: fontPair}},
-    (err) => {
-      if (err) {
-        return res.status(403).send(err);
-      }
-      res.status(200).send('Font pair successfully added');
-    }
-  );
-};
-
-exports.deleteFontPair = (req, res) => {
-  const role = req.user.role;
-  const fontId = req.params.fontId;
-  const pairId = req.params.pairId;
-
-  if (role !== 'Admin') {
-    return res.status(403).send('user not authorized');
-  }
-
-  db.Fonts.update(
-    { _id: fontId},
-    { $pull: {fontPairs: {_id: pairId}}},
-    (err) => {
-      if (err) {
-        console.log(err);
-        return res.status(403).send(err);
-      }
-      res.status(200).send('font pair successfully deleted');
-    }
-  );
-};
-
-// Submit Font
-exports.submitFont = (req, res) => {
-  // console.log('submitting font pair');
-
-  // const heading = req.body.heading;
-  // const body = req.body.body;
 };
 
 exports.getFonts = (req, res) => {

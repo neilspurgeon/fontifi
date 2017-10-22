@@ -2,18 +2,21 @@ const mongoose = require('mongoose');
 
 // Define schema
 const fontSchema = new mongoose.Schema({
-  fontFamily: {
+  family: {
     type: String,
     required: true,
     unique: true
   },
-  fontPairs: [{
-    fontFamily: {
-      type: String,
-      required: true,
-      unique: true
-    }
-  }]
+  category: {
+    type: String,
+    enum: ['Member', 'Admin'],
+    required: true
+  },
+  variants: {
+    type: Array,
+    required: true
+  },
+  version: String,
 });
 
 // // Return one random document
