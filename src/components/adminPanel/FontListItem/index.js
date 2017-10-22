@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './style.css';
 import ClassNames from 'classnames';
 import WebFont from 'webfontloader';
+import PrimaryCta from 'components/forms/primaryCta';
+import SelectFont from 'components/forms/selectFont';
 
 class FontListItem extends React.Component {
   constructor(props) {
@@ -58,6 +60,11 @@ class FontListItem extends React.Component {
             </div>
           );
         }) : null}
+
+        <div className={styles.addFontPairContainer}>
+          <SelectFont options={this.props.options} />
+          <PrimaryCta text={'Save'} />
+        </div>
       </div>
     );
   }

@@ -8,12 +8,23 @@ class AdminPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fonts: []
+      fonts: [],
+      availableFonts: []
     };
   }
 
   componentDidMount = () => {
     this.setFontList();
+
+    fetch('/fontlist')
+      .then((response) => {
+        return response.json();
+      })
+      .then((parsedData) => {
+        this.setState({
+          availableFonts: parsedData.items,
+        });
+      });
   };
 
   setFontList = () => {
@@ -42,7 +53,7 @@ class AdminPanel extends React.Component {
     return (
       <div className={styles.mainContent}>
         <Header title={ this.state.fonts.length + ' ' + this.headerTitle} />
-        <FontList fonts={this.state.fonts} />
+        <FontList fonts={this.state.fonts} apiFontList={this.state.availableFonts} />
       </div>
     );
   }
