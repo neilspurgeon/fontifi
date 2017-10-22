@@ -32,16 +32,8 @@ module.exports = function(app) {
 
   app.use('/api', apiRoutes);
 
-  app.get('/fonts/random', (req, res) => {
-    db.Fonts.random( (err, fontPair) => {
-      if (err) {
-        return res.status(400).json({error: err});
-      }
-      res.json(fontPair);
-    });
-  });
-
-  app.get('/fontlist', (req, res) => {
+  // Not currently being used.
+  app.get('/googlefonts', (req, res) => {
     fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=' + process.env.GOOGLE_FONTS_KEY )
       .then((fonts) => {
         return fonts.json();
