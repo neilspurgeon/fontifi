@@ -9,7 +9,7 @@ const fontSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['Member', 'Admin'],
+    enum: ['sans-serif', 'serif', 'display'],
     required: true
   },
   variants: {
