@@ -20,7 +20,7 @@ class App extends Component {
         color: '#333'
       },
       body: {
-        fontFamily: 'Crimson Text',
+        fontFamily: 'Poppins',
         fontWeight: 'regular',
         fontSize: 18,
         lineHeight: 1.8,
@@ -56,13 +56,13 @@ class App extends Component {
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
 
-    fetch('/fontlist')
+    fetch('/fonts')
       .then((response) => {
         return response.json();
       })
       .then((parsedData) => {
         this.setState({
-          fontList: parsedData.items,
+          fontList: parsedData,
         });
       });
   }
@@ -246,7 +246,6 @@ class App extends Component {
               setFontValue={this.setFontValue}
               fontList={this.state.fontList}
             />
-
           </div>
 
       </div>

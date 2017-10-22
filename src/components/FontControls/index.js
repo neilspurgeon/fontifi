@@ -26,9 +26,9 @@ class FontControls extends Component {
     this.setFont('body', bodyFamily, fontList);
   }
 
-  setFont(fontType, fontFamily, fontList) {
+  setFont(fontType, family, fontList) {
     const font = fontList.find((obj) => {
-      return obj.family === fontFamily;
+      return obj.family === family;
     });
     this.setState({
       [fontType]: font
