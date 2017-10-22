@@ -3,7 +3,7 @@ const db = require('../models');
 // Create Font Pair
 exports.createFont = (req, res) => {
   const role = req.user.role;
-  const font = req.body.font;
+  const font = req.body;
 
   if (role !== 'Admin') {
     return res.status(403).send('user not authorized');
