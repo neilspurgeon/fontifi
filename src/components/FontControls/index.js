@@ -48,8 +48,7 @@ class FontControls extends Component {
               handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'fontFamily')}
               value={this.props.activeFontType === 'heading' ? this.props.heading.fontFamily : this.props.body.fontFamily}
               options={this.props.fontList}
-              keyValue='family'
-            />
+               />
           }/>
 
           <FormField labelText="Font Weight" input={

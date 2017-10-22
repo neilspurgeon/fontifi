@@ -11,9 +11,9 @@ function SelectFont(props) {
         value={props.value}>
         { props.options.map((obj, index) => {
           return <option
-            value={obj[props.keyValue]}
+            value={obj.family}
             key={index}
-            data={index}>{obj[props.keyValue]}</option>;
+            data={index}>{obj.family}</option>;
         })}
       </select>
     </div>
