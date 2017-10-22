@@ -10,7 +10,7 @@ exports.createFont = (req, res) => {
   }
 
   const newFont = new db.Fonts({
-    family: font.amily,
+    family: font.family,
     category: font.category,
     variants: font.variants,
     version: font.version
