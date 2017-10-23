@@ -112,13 +112,20 @@ class App extends Component {
     if (fontType === 'body' && randomFont.category === 'Display') {
       return this.getRandomFont();
     };
+    console.log(randomFont);
     return randomFont;
   }
 
   updateFonts() {
+    const headingObj = this.state.heading;
+    headingObj['font'] = this.getRandomFont('heading');
+
+    const bodyObj = this.state.body;
+    bodyObj['font'] = this.getRandomFont('body');
+
     this.setState({
-      heading: this.getRandomFont('heading'),
-      body: this.getRandomFont('body')
+      heading: headingObj,
+      body: bodyObj
     });
   }
 
