@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './style.css';
 import SelectFont from 'components/forms/selectFont';
 import ComboSlider from 'components/forms/comboSlider';
@@ -8,107 +8,79 @@ import SaveFonts from 'components/forms/saveFonts';
 import SelectWeight from 'components/forms/selectWeight';
 import closeIcon from './close.svg';
 
-class FontControls extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      heading: {variants: ['']},
-      body: {variants: ['']}
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const fontList = nextProps.fontList;
-    const headingFamily = nextProps.heading.fontFamily;
-    const bodyFamily = nextProps.body.fontFamily;
-
-    this.setFont('heading', headingFamily, fontList);
-    this.setFont('body', bodyFamily, fontList);
-  }
-
-  setFont(fontType, family, fontList) {
-    const font = fontList.find((obj) => {
-      return obj.family === family;
-    });
-    this.setState({
-      [fontType]: font
-    });
-  }
-
-  render() {
+const FontControls = (props) => {
     return (
       <div className={styles.ControlPanel}>
 
-        <img onClick={this.props.closeControls} className={styles.closeButton} src={closeIcon} alt="close" />
+        <img onClick={props.closeControls} className={styles.closeButton} src={closeIcon} alt="close" />
 
         <form>
 
           <FormField labelText="Font Family" input={
             <SelectFont
-              handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'fontFamily')}
-              value={this.props.activeFontType === 'heading' ? this.props.heading.fontFamily : this.props.body.fontFamily}
-              options={this.props.fontList}
+              handleChange={props.handleChange.bind(this, props.activeFontType, 'font')}
+              value={props.activeFontType === 'heading' ? props.heading.font : props.body.font}
+              options={props.fontList}
                />
           }/>
 
           <FormField labelText="Font Weight" input={
             <SelectWeight
-              handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'fontWeight')}
-              value={this.props.activeFontType === 'heading' ? this.props.heading.fontWeight : this.props.body.fontWeight}
-              options={this.state[this.props.activeFontType].variants}
-              setFontValue={this.props.setFontValue.bind(this, this.props.activeFontType, 'fontWeight')}
+              handleChange={props.handleChange.bind(this, props.activeFontType, 'fontWeight')}
+              value={props.activeFontType === 'heading' ? props.heading.fontWeight : props.body.fontWeight}
+              options={props[props.activeFontType].font.variants}
+              setFontValue={props.setFontValue.bind(this, props.activeFontType, 'fontWeight')}
             />
           }/>
 
           <FormField labelText="Font Size" input={
             <ComboSlider
-              handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'fontSize')}
+              handleChange={props.handleChange.bind(this, props.activeFontType, 'fontSize')}
               min="14"
               max="100"
               step="1"
-              value={this.props.activeFontType === 'heading' ? this.props.heading.fontSize : this.props.body.fontSize}
-              setFontValue={this.props.setFontValue.bind(this, this.props.activeFontType, 'fontSize')}
+              value={props.activeFontType === 'heading' ? props.heading.fontSize : props.body.fontSize}
+              setFontValue={props.setFontValue.bind(this, props.activeFontType, 'fontSize')}
             />
           }/>
 
 
           <FormField labelText="Letter Spacing" input={
             <ComboSlider
-              handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'letterSpacing')}
+              handleChange={props.handleChange.bind(this, props.activeFontType, 'letterSpacing')}
               min="-0.05"
               max=".2"
               step=".01"
-              value={this.props.activeFontType === 'heading' ? this.props.heading.letterSpacing : this.props.body.letterSpacing}
-              setFontValue={this.props.setFontValue.bind(this, this.props.activeFontType, 'letterSpacing')}
+              value={props.activeFontType === 'heading' ? props.heading.letterSpacing : props.body.letterSpacing}
+              setFontValue={props.setFontValue.bind(this, props.activeFontType, 'letterSpacing')}
             />
           }/>
 
           <FormField labelText="Color" input={
             <ColorPicker
-              handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'color')}
-              value={this.props.activeFontType === 'heading' ? this.props.heading.color : this.props.body.color}
+              handleChange={props.handleChange.bind(this, props.activeFontType, 'color')}
+              value={props.activeFontType === 'heading' ? props.heading.color : props.body.color}
             />
           }/>
 
           <FormField labelText="Line Height" input={
             <ComboSlider
-              handleChange={this.props.handleChange.bind(this, this.props.activeFontType, 'lineHeight')}
+              handleChange={props.handleChange.bind(this, props.activeFontType, 'lineHeight')}
               min="1"
               max="3"
               step=".1"
-              value={this.props.activeFontType === 'heading' ? this.props.heading.lineHeight : this.props.body.lineHeight}
-              setFontValue={this.props.setFontValue.bind(this, this.props.activeFontType, 'lineHeight')}
+              value={props.activeFontType === 'heading' ? props.heading.lineHeight : props.body.lineHeight}
+              setFontValue={props.setFontValue.bind(this, props.activeFontType, 'lineHeight')}
             />
           }/>
 
           <div className={styles.BottomActions}>
-            <SaveFonts onSubmit={this.props.onSubmit} />
+            <SaveFonts onSubmit={props.onSubmit} />
           </div>
 
         </form>
       </div>
     );
-  }
 };
 
 export default FontControls;

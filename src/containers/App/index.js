@@ -12,7 +12,10 @@ class App extends Component {
     super(props);
     this.state = {
       heading: {
-        fontFamily: 'Poppins',
+        font: {
+          family: 'Poppins',
+          variants: ['regular']
+        },
         fontWeight: 200,
         fontSize: 50,
         lineHeight: 1.3,
@@ -20,7 +23,10 @@ class App extends Component {
         color: '#333'
       },
       body: {
-        fontFamily: 'Poppins',
+        font: {
+          family: 'Poppins',
+          variants: ['regular']
+        },
         fontWeight: 'regular',
         fontSize: 18,
         lineHeight: 1.8,
@@ -64,7 +70,21 @@ class App extends Component {
         this.setState({
           fontList: parsedData,
         });
+        this.setFont('heading', this.state.heading.font.family, parsedData);
+        this.setFont('body', this.state.body.font.family, parsedData);
       });
+  }
+
+  setFont(fontType, family, fontList) {
+    const fontObj = fontList.find((obj) => {
+      return obj.family === family;
+    });
+    const fontTypeObj = this.state[fontType];
+    fontTypeObj['font'] = fontObj;
+
+    this.setState({
+      [fontType]: fontTypeObj
+    });
   }
 
   componentWillUnmount() {
@@ -79,17 +99,27 @@ class App extends Component {
     }
   }
 
+  getRandomFont(fontType) {
+    const fontArr = this.state.fontList;
+    const randomIndex = Math.floor(Math.random()*fontArr.length);
+    const randomFont = fontArr[randomIndex];
+
+    // Recursively run function if random font is the same as current
+    if (randomFont.family === this.state[fontType].font.family) {
+      return this.getRandomFont(fontType);
+    };
+
+    if (fontType === 'body' && randomFont.category === 'Display') {
+      return this.getRandomFont();
+    };
+    return randomFont;
+  }
+
   updateFonts() {
-    fetch('/fontpairs/random', {})
-      .then( function(response) {
-        return response.json();
-      })
-      .then( (parsedData) => {
-        this.setState({
-          heading: parsedData.heading,
-          body: parsedData.body
-        });
-      });
+    this.setState({
+      heading: this.getRandomFont('heading'),
+      body: this.getRandomFont('body')
+    });
   }
 
   reloadState() {
@@ -127,13 +157,11 @@ class App extends Component {
       newValue = Number(event.target.value);
       this.setFontValue(fontType, propertyName, newValue);
 
-    } else if (propertyName === 'fontFamily') {
+    } else if (propertyName === 'font') {
 
       // Make sure set fontweight is available
       const currWeight = this.state[fontType].fontWeight;
-      const newFont = this.state.fontList.find((obj) => {
-        return obj.family === newValue;
-      });
+      const newFont = JSON.parse(newValue);
       const hasWeight = newFont.variants.find((el) => {
         return el === currWeight;
       });
@@ -143,7 +171,7 @@ class App extends Component {
         this.setFontValue(fontType, 'fontWeight', newFont.variants[0]);
       }
 
-      this.setFontValue(fontType, propertyName, newValue);
+      this.setFontValue(fontType, propertyName, newFont);
 
     } else {
       this.setFontValue(fontType, propertyName, newValue);
@@ -176,7 +204,6 @@ class App extends Component {
   }
 
   saveFonts() {
-    console.log('saving fonts...');
     fetch('/api/auth/mycollection', {
       method: 'POST',
       headers: {
@@ -209,7 +236,7 @@ class App extends Component {
           <div className={contentClassnames}>
             <div className={styles.fonts}>
               <HeadingFont
-                fontFamily={this.state.heading.fontFamily}
+                fontFamily={this.state.heading.font.family}
                 fontSize={this.state.heading.fontSize}
                 fontWeight={this.state.heading.fontWeight}
                 letterSpacing={this.state.heading.letterSpacing}
@@ -219,7 +246,7 @@ class App extends Component {
                 activeFontType={this.state.activeFontType}
               />
               <BodyFont
-                fontFamily={this.state.body.fontFamily}
+                fontFamily={this.state.body.font.family}
                 fontSize={this.state.body.fontSize}
                 fontWeight={this.state.body.fontWeight}
                 letterSpacing={this.state.body.letterSpacing}
@@ -246,6 +273,7 @@ class App extends Component {
               setFontValue={this.setFontValue}
               fontList={this.state.fontList}
             />
+
           </div>
 
       </div>
