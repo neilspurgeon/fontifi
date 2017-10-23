@@ -211,6 +211,9 @@ class App extends Component {
   }
 
   saveFonts() {
+    const heading = this.state.heading;
+    const body = this.state.body;
+
     fetch('/api/auth/mycollection', {
       method: 'POST',
       headers: {
@@ -219,8 +222,22 @@ class App extends Component {
         'Authorization': localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        heading: this.state.heading,
-        body: this.state.body,
+        heading: {
+          fontFamily: heading.font.family,
+          fontWeight: heading.fontWeight,
+          fontSize: heading.fontSize,
+          letterSpacing: heading.letterSpacing,
+          lineHeight: heading.lineHeight,
+          color: heading.color
+        },
+        body: {
+          fontFamily: body.font.family,
+          fontWeight: body.fontWeight,
+          fontSize: body.fontSize,
+          letterSpacing: body.letterSpacing,
+          lineHeight: body.lineHeight,
+          color: body.color
+        }
       })
     }).then((res) => {
       this.notifySaveSuccess();
