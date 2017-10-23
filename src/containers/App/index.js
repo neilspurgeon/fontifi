@@ -47,16 +47,6 @@ class App extends Component {
       activeFontType: 'heading',
       modalOpen: false
     };
-    this.updateFonts = this.updateFonts.bind(this);
-    this.handleControlsOpen = this.handleControlsOpen.bind(this);
-    this.handleFontChange = this.handleFontChange.bind(this);
-    this.toggleModal = this.toggleModal.bind(this);
-    this.saveFonts = this.saveFonts.bind(this);
-    this.handleFontType = this.handleFontType.bind(this);
-    this.handleFontTypeEvent = this.handleFontTypeEvent.bind(this);
-    this.setFontValue = this.setFontValue.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.notifySaveSuccess = this.notifySaveSuccess.bind(this);
   };
 
   componentDidMount() {
@@ -75,7 +65,7 @@ class App extends Component {
       });
   }
 
-  setFont(fontType, family, fontList) {
+  setFont = (fontType, family, fontList) => {
     const fontObj = fontList.find((obj) => {
       return obj.family === family;
     });
@@ -91,7 +81,7 @@ class App extends Component {
     document.removeEventListener('keydown', this.handleKeyPress);
   }
 
-  handleKeyPress(e) {
+  handleKeyPress = (e) => {
     const el = document.activeElement;
 
     if (el.tagName !== 'INPUT' && el.isContentEditable !== true && e.code === 'Space') {
@@ -99,7 +89,7 @@ class App extends Component {
     }
   }
 
-  getRandomFont(fontType) {
+  getRandomFont = (fontType) => {
     const fontArr = this.state.fontList;
     const randomIndex = Math.floor(Math.random()*fontArr.length);
     const randomFont = fontArr[randomIndex];
@@ -116,7 +106,7 @@ class App extends Component {
     return randomFont;
   }
 
-  updateFonts() {
+  updateFonts = () => {
     const headingObj = this.state.heading;
     headingObj['font'] = this.getRandomFont('heading');
 
@@ -129,18 +119,18 @@ class App extends Component {
     });
   }
 
-  reloadState() {
+  reloadState = () => {
     if (sessionStorage.state) {
       const prevState = JSON.parse(sessionStorage.state);
       this.setState(prevState);
     }
   }
 
-  componentWillMount() {
+  componentWillMount = () => {
     this.reloadState();
   }
 
-  setFontValue(fontType, propertyName, value) {
+  setFontValue = (fontType, propertyName, value) => {
     // fontType: 'heading' or 'body'
     const font = this.state[fontType];
 
@@ -155,7 +145,7 @@ class App extends Component {
     sessionStorage.setItem("state", JSON.stringify(this.state));
   }
 
-  handleFontChange(fontType, propertyName, event) {
+  handleFontChange = (fontType, propertyName, event) => {
     // fontType: 'heading' or 'body'
     let newValue = event.target.value;
 
@@ -185,32 +175,32 @@ class App extends Component {
     }
   }
 
-  handleControlsOpen() {
+  handleControlsOpen = () => {
     this.setState({
       controlsOpen: !this.state.controlsOpen
     });
   }
 
-  handleFontType(fontType) {
+  handleFontType = (fontType) => {
     this.setState({
       activeFontType: fontType,
       controlsOpen: true
     });
   }
 
-  handleFontTypeEvent(event) {
+  handleFontTypeEvent = (event) => {
     this.setState({
       activeFontType: event.target.value
     });
   }
 
-  toggleModal() {
+  toggleModal = () => {
     this.setState({
       modalOpen: !this.state.modalOpen
     });
   }
 
-  saveFonts() {
+  saveFonts = () => {
     const heading = this.state.heading;
     const body = this.state.body;
 
@@ -244,7 +234,7 @@ class App extends Component {
     });
   }
 
-  notifySaveSuccess () {
+  notifySaveSuccess = () => {
     console.log('saved');
   }
 
