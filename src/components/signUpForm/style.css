@@ -4,6 +4,10 @@
   transition: 5s ease all;
 }
 
+.message {
+  font-size: 12px;
+}
+
 .heading {
   font-size: 30px;
   font-weight: 700;
