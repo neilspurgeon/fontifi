@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './style.css';
 import ClassNames from 'classnames';
+import onClickOutside from 'react-onclickoutside';
 
 class SelectFontDropDown extends React.Component {
 
@@ -17,6 +18,10 @@ class SelectFontDropDown extends React.Component {
     });
   }
 
+  handleClickOutside = () => {
+    this.toggleOpen();
+  }
+
   render() {
     let optionsWrapperClasses = ClassNames(
       styles.optionsWrapper,
@@ -30,11 +35,14 @@ class SelectFontDropDown extends React.Component {
           onClick={this.toggleOpen}>
           <span className={styles.dropDownLabel}>{this.props.value.family}</span>
         </div>
-        <div className={optionsWrapperClasses}>
+        <div
+          className={optionsWrapperClasses}
+          onClick={this.toggleOpen}>
           {this.props.options.map((font, index) => {
             return (
               <div
                 className={styles.option}
+                key={index}
                 onClick={this.props.handleChange.bind(this, font)}>
                 {font.family}
               </div>
@@ -47,4 +55,4 @@ class SelectFontDropDown extends React.Component {
 
 }
 
-export default SelectFontDropDown;
+export default onClickOutside(SelectFontDropDown);
