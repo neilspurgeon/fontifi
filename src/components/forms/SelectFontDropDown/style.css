@@ -56,7 +56,8 @@
   overflow-y: scroll;
   background-color: #FFF;
   width: 100%;
-  padding: 10px;
+  padding: 10px 0;
+  list-style: none;
   border: 1px solid var(--border-color);
   border-radius: 5px;
   visibility: hidden;
@@ -65,3 +66,14 @@
 .optionsWrapper.isOpen {
   visibility: visible;
 }
+
+.option {
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.option:hover {
+  background-color: var(--font-hover-background);
+}
+

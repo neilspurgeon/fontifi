@@ -12,14 +12,20 @@ class SelectFontDropDown extends React.Component {
     };
   };
 
-  toggleOpen = () => {
+  openDropDown = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: true
+    });
+  }
+
+  closeDropDown = () => {
+    this.setState({
+      isOpen: false
     });
   }
 
   handleClickOutside = () => {
-    this.toggleOpen();
+    this.closeDropDown();
   }
 
   render() {
@@ -32,23 +38,23 @@ class SelectFontDropDown extends React.Component {
       <div className={styles.selectWrapper}>
         <div
           className={styles.Select}
-          onClick={this.toggleOpen}>
+          onClick={this.openDropDown}>
           <span className={styles.dropDownLabel}>{this.props.value.family}</span>
         </div>
-        <div
+        <ul
           className={optionsWrapperClasses}
-          onClick={this.toggleOpen}>
+          onClick={this.closeDropDown}>
           {this.props.options.map((font, index) => {
             return (
-              <div
+              <li
                 className={styles.option}
                 key={index}
                 onClick={this.props.handleChange.bind(this, font)}>
                 {font.family}
-              </div>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
     );
   }
