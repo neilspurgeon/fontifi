@@ -145,6 +145,26 @@ class App extends Component {
     sessionStorage.setItem("state", JSON.stringify(this.state));
   }
 
+  handleDropDownChange = (fontType, propertyName, value) => {
+    if (propertyName === 'font') {
+
+      // Make sure set fontweight is available
+      const newFont = value;
+      const currWeight = this.state[fontType].fontWeight;
+      const hasWeight = newFont.variants.find((el) => {
+        return el === currWeight;
+      });
+
+      if (!hasWeight) {
+        // set to new font weight if not available
+        return this.setFontValue(fontType, 'fontWeight', newFont.variants[0]);
+      }
+      return this.setFontValue(fontType, propertyName, newFont);
+    }
+
+    this.setFontValue(fontType, propertyName, value);
+  }
+
   handleFontChange = (fontType, propertyName, event) => {
     // fontType: 'heading' or 'body'
     let newValue = event.target.value;
@@ -158,7 +178,7 @@ class App extends Component {
 
       // Make sure set fontweight is available
       const currWeight = this.state[fontType].fontWeight;
-      const newFont = JSON.parse(newValue);
+      const newFont = newValue;
       const hasWeight = newFont.variants.find((el) => {
         return el === currWeight;
       });
@@ -277,6 +297,7 @@ class App extends Component {
 
           <div className={controlsClassnames}>
             <FontControls
+              handleDropDownChange={this.handleDropDownChange}
               heading={this.state.heading}
               body={this.state.body}
               handleChange={this.handleFontChange}

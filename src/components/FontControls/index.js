@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './style.css';
 import SelectFont from 'components/forms/selectFont';
+import SelectFontDropDown from 'components/forms/SelectFontDropDown';
 import ComboSlider from 'components/forms/comboSlider';
 import ColorPicker from 'components/forms/colorPicker';
 import FormField from 'components/forms/formField';
@@ -17,8 +18,8 @@ const FontControls = (props) => {
         <form>
 
           <FormField labelText="Font Family" input={
-            <SelectFont
-              handleChange={props.handleChange.bind(this, props.activeFontType, 'font')}
+            <SelectFontDropDown
+              handleChange={props.handleDropDownChange.bind(this, props.activeFontType, 'font')}
               value={props.activeFontType === 'heading' ? props.heading.font : props.body.font}
               options={props.fontList}
                />

@@ -1,0 +1,67 @@
+@import '../../../variables.css';
+
+.dropDownLabel {
+    font-size: 14px;
+}
+
+.Select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background: #FFF;
+  padding: 10px 10px 8px;
+  font-size: 14px;
+  box-shadow: 0;
+  transition: .3s ease border, .3s ease box-shadow;
+  margin: 10px 0;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.Select:hover {
+  border: 1px solid #49a9ee;
+}
+
+.Select:focus {
+  outline: none ;
+  border: 1px solid #49a9ee;
+  box-shadow: 0 0 1px 1px #49a9ee;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.selectWrapper:after {
+  position: absolute;
+  top: 30px;
+  right: 9px;
+  width: 0;
+  height: 0;
+  content: ' ';
+  display: inline-block;
+  border-style: solid;
+  border-width: 4px 4px 0 4px;
+  border-color: var(--primary-ui-color) transparent transparent transparent;
+  pointer-events: none;
+}
+
+.optionsWrapper {
+  position: absolute;
+  z-index: 999;
+  top: calc(100% - 6px);
+  max-height: 60vh;
+  overflow-y: scroll;
+  background-color: #FFF;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  visibility: hidden;
+}
+
+.optionsWrapper.isOpen {
+  visibility: visible;
+}
