@@ -24,6 +24,12 @@ class SelectFontDropDown extends React.Component {
     });
   }
 
+  toggleDropDown = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
   handleClickOutside = () => {
     this.closeDropDown();
   }
@@ -38,7 +44,7 @@ class SelectFontDropDown extends React.Component {
       <div className={styles.selectWrapper}>
         <div
           className={styles.Select}
-          onClick={this.openDropDown}>
+          onClick={this.toggleDropDown}>
           <span className={styles.dropDownLabel}>{this.props.value.family}</span>
         </div>
         <ul
