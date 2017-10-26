@@ -1,12 +1,10 @@
 import React from 'react';
 import styles from './style.css';
-import SelectFont from 'components/forms/selectFont';
 import SelectFontDropDown from 'components/forms/SelectFontDropDown';
 import ComboSlider from 'components/forms/comboSlider';
 import ColorPicker from 'components/forms/colorPicker';
 import FormField from 'components/forms/formField';
 import SaveFonts from 'components/forms/saveFonts';
-import SelectWeight from 'components/forms/selectWeight';
 import SelectDropDown from 'components/forms/SelectDropDown';
 import closeIcon from './close.svg';
 
