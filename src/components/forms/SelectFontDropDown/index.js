@@ -66,6 +66,8 @@ class SelectFontDropDown extends React.Component {
       <div className={styles.selectWrapper}>
         <div
           className={styles.Select}
+          tabIndex="1"
+          onBlur={this.closeDropDown}
           onClick={this.toggleDropDown}>
           <span className={styles.dropDownLabel}>{this.props.value.family}</span>
         </div>
