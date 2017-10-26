@@ -7,9 +7,11 @@ import ColorPicker from 'components/forms/colorPicker';
 import FormField from 'components/forms/formField';
 import SaveFonts from 'components/forms/saveFonts';
 import SelectWeight from 'components/forms/selectWeight';
+import SelectDropDown from 'components/forms/SelectDropDown';
 import closeIcon from './close.svg';
 
 const FontControls = (props) => {
+    let fontWeights = props[props.activeFontType].font.variants.filter(weight => !weight.match('italic'));
     return (
       <div className={styles.ControlPanel}>
 
@@ -26,11 +28,10 @@ const FontControls = (props) => {
           }/>
 
           <FormField labelText="Font Weight" input={
-            <SelectWeight
-              handleChange={props.handleChange.bind(this, props.activeFontType, 'fontWeight')}
+            <SelectDropDown
+              handleChange={props.handleDropDownChange.bind(this, props.activeFontType, 'fontWeight')}
               value={props.activeFontType === 'heading' ? props.heading.fontWeight : props.body.fontWeight}
-              options={props[props.activeFontType].font.variants}
-              setFontValue={props.setFontValue.bind(this, props.activeFontType, 'fontWeight')}
+              options={fontWeights}
             />
           }/>
 
