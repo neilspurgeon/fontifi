@@ -57,12 +57,13 @@ class HeadingFont extends React.Component {
     let headingClasses = ClassNames(styles.heading, {[styles.isActive] : this.props.activeFontType === 'heading'}, {[styles.isLoading] : this.state.isLoading === true });
     const text = config.defaultHeadingText;
 
+    const color = this.props.color.rgba;
     const fontStyle = {
       fontFamily: this.props.fontFamily,
       fontSize: this.props.fontSize + 'px',
       fontWeight: this.props.fontWeight,
       letterSpacing: this.props.letterSpacing + 'em',
-      color: this.props.color,
+      color: `rgba(${ color.r }, ${ color.g }, ${ color.b }, ${ color.a })`,
       lineHeight: this.props.lineHeight
     };
 

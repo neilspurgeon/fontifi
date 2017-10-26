@@ -19,12 +19,13 @@ function BodyFont (props) {
       fontUrls.push(url + ':' + props.fontWeight);
     }
 
+    const color = props.color.rgba;
     const fontStyle = {
       fontFamily: props.fontFamily,
       fontSize: props.fontSize + 'px',
       fontWeight: props.fontWeight,
       letterSpacing: props.letterSpacing + 'em',
-      color: props.color,
+      color: `rgba(${ color.r }, ${ color.g }, ${ color.b }, ${ color.a })`,
       lineHeight: props.lineHeight
     };
 

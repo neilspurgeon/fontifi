@@ -58,8 +58,9 @@ const FontControls = (props) => {
 
           <FormField labelText="Color" input={
             <ColorPicker
-              handleChange={props.handleChange.bind(this, props.activeFontType, 'color')}
-              value={props.activeFontType === 'heading' ? props.heading.color : props.body.color}
+              onColorPickerChange={props.onColorPickerChange}
+              onInputChange={props.handleChange.bind(this, props.activeFontType, 'color')}
+              color={props.activeFontType === 'heading' ? props.heading.color : props.body.color}
             />
           }/>
 

@@ -54,6 +54,7 @@
     "precss": "^2.0.0",
     "promise": "7.1.1",
     "react": "^15.6.1",
+    "react-color": "^2.13.8",
     "react-dev-utils": "^3.0.2",
     "react-dom": "^15.6.1",
     "react-error-overlay": "^1.0.9",

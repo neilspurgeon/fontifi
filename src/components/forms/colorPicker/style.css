@@ -1,4 +1,4 @@
-.ColorPicker {
+.container {
   -webkit-appearance: none;
   -moz-appearance: none;
   border: 1px solid #E4E4E4;
@@ -11,22 +11,20 @@
   transition: .3s ease border, .3s ease box-shadow;
 }
 
-.ColorPicker.isHovered {
+.container.isHovered {
   border: 1px solid #49a9ee;
 }
 
-.ColorPicker.isFocused {
+.container.isFocused {
   outline: none ;
   border: 1px solid #49a9ee;
   box-shadow: 0 0 1px 1px #49a9ee;
 }
 
-.NativeColorSwatch {
-  visibility:hidden;
-}
-
-.CustomColorSwatch {
+.colorPickerSwatch {
   display: inline-block;;
+  flex-shrink: 0;
+  flex-grow: 0;
   width: 24px;
   height: 24px;
   margin-left: 10px;
@@ -36,7 +34,7 @@
   transition: .1s ease transform;
 }
 
-.CustomColorSwatch:hover {
+.colorPickerSwatch:hover {
   transform: scale(1.05);
 }
 
@@ -57,4 +55,14 @@
 
 .ColorCode:focus {
   outline: none;
+}
+
+.colorPicker {
+  position: absolute;
+  z-index: 9999;
+  visibility: hidden;
+}
+
+.colorPicker.isOpen {
+  visibility: visible;
 }

@@ -20,7 +20,15 @@ class App extends Component {
         fontSize: 50,
         lineHeight: 1.3,
         letterSpacing: 0,
-        color: '#333'
+        color: {
+          rgba: {
+            r: 51,
+            g: 51,
+            b: 51,
+            a: 1
+          },
+          hex: '#333'
+        },
       },
       body: {
         font: {
@@ -31,7 +39,15 @@ class App extends Component {
         fontSize: 18,
         lineHeight: 1.8,
         letterSpacing: 0.01,
-        color: '#444'
+        color: {
+          rgba: {
+            r: 51,
+            g: 51,
+            b: 51,
+            a: 1
+          },
+          hex: '#333'
+        },
       },
       fontList: [
         // Default fonts to prevent undefined state
@@ -143,6 +159,13 @@ class App extends Component {
 
     // Store state in session to save on reload
     sessionStorage.setItem("state", JSON.stringify(this.state));
+  }
+
+  handleColorPickerChange = (rgba, hex) => {
+    const colorValue = { rgba: rgba,
+                         hex: hex };
+    const fontType = this.state.activeFontType;
+    this.setFontValue(fontType, 'color', colorValue);
   }
 
   handleDropDownChange = (fontType, propertyName, value) => {
@@ -297,6 +320,7 @@ class App extends Component {
 
           <div className={controlsClassnames}>
             <FontControls
+              onColorPickerChange={this.handleColorPickerChange}
               handleDropDownChange={this.handleDropDownChange}
               heading={this.state.heading}
               body={this.state.body}
