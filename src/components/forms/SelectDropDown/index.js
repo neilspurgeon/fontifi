@@ -45,6 +45,7 @@ class SelectDropDown extends React.Component {
         <div
           className={styles.Select}
           tabIndex="1"
+          onBlur={this.closeDropDown}
           onClick={this.toggleDropDown}>
           <span className={styles.dropDownLabel}>{this.props.value}</span>
         </div>
@@ -57,7 +58,7 @@ class SelectDropDown extends React.Component {
               <li
                 className={styles.option}
                 key={index}
-                onClick={this.props.handleChange.bind(this, value)}>
+                onMouseDown={this.props.handleChange.bind(this, value)}>
                 {value}
               </li>
             );
