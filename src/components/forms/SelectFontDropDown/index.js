@@ -2,15 +2,34 @@ import React from 'react';
 import styles from './style.css';
 import ClassNames from 'classnames';
 import onClickOutside from 'react-onclickoutside';
+import WebFont from 'webfontloader';
 
 class SelectFontDropDown extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      fontsLoaded: false
     };
   };
+
+  loadFonts = (fontList) => {
+    const fontArr = [];
+    for (let i=0; i<fontList.length; i++) {
+      fontArr.push(fontList[i].family);
+    }
+
+    WebFont.load({
+      google: {
+        families: fontArr
+      }
+    });
+
+    this.setState({
+      fontLoaded: true
+    });
+  }
 
   openDropDown = () => {
     this.setState({
@@ -25,6 +44,9 @@ class SelectFontDropDown extends React.Component {
   }
 
   toggleDropDown = () => {
+    if (this.state.fontsLoaded === false) {
+      this.loadFonts(this.props.options);
+    }
     this.setState({
       isOpen: !this.state.isOpen
     });
@@ -51,11 +73,16 @@ class SelectFontDropDown extends React.Component {
           className={optionsWrapperClasses}
           onClick={this.closeDropDown}>
           {this.props.options.map((font, index) => {
+            let style = {
+              fontFamily: font.family + ', Poppins'
+            };
+
             return (
               <li
                 className={styles.option}
                 key={index}
-                onClick={this.props.handleChange.bind(this, font)}>
+                onClick={this.props.handleChange.bind(this, font)}
+                style={style}>
                 {font.family}
               </li>
             );
