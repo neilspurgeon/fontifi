@@ -13,6 +13,8 @@ const FontControls = (props) => {
     return (
       <div className={styles.controlPanel}>
 
+        <h2 className={styles.panelTitle}>Editor</h2>
+
         <img onClick={props.closeControls} className={styles.closeButton} src={closeIcon} alt="close" />
 
         <form>
