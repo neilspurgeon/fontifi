@@ -11,7 +11,7 @@ import closeIcon from './close.svg';
 const FontControls = (props) => {
     let fontWeights = props[props.activeFontType].font.variants.filter(weight => !weight.match('italic'));
     return (
-      <div className={styles.ControlPanel}>
+      <div className={styles.controlPanel}>
 
         <img onClick={props.closeControls} className={styles.closeButton} src={closeIcon} alt="close" />
 
@@ -75,7 +75,7 @@ const FontControls = (props) => {
             />
           }/>
 
-          <div className={styles.BottomActions}>
+          <div className={styles.bottomActions}>
             <SaveFonts onSubmit={props.onSubmit} />
           </div>
 
