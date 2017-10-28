@@ -19,10 +19,15 @@ class SelectFontDropDown extends React.Component {
     for (let i=0; i<fontList.length; i++) {
       fontArr.push(fontList[i].family);
     }
+    console.log(fontArr);
 
     WebFont.load({
       google: {
-        families: fontArr
+        families: fontArr,
+        // Minimize request by spefifying the characters needed.
+        // There's currently no way to speficy characters per family with webfontloader,
+        // which would further reduce the req.
+        text: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
       }
     });
 
