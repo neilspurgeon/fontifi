@@ -45,6 +45,7 @@ class ColorPicker extends React.Component {
   handleChange = (color) => {
     const value = { rgba: color.rgb, hex: color.hex };
     this.props.onColorPickerChange('color', value);
+    this.hexInput.value = color.hex;
   }
 
   handleBlur = (event) => {
@@ -121,6 +122,7 @@ class ColorPicker extends React.Component {
           onClick={this.openColorPicker}
         />
         <input
+          ref={(input) => {this.hexInput = input;}}
           className={styles.ColorCode}
           defaultValue={this.props.color.hex}
           onFocus={this.toggleFocus}
