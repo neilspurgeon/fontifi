@@ -88,7 +88,7 @@ class SelectFontDropDown extends React.Component {
               <li
                 className={styles.option}
                 key={index}
-                onMouseDown={this.props.handleChange.bind(this, font)}
+                onMouseDown={this.props.onChange.bind(this, font)}
                 style={style}>
                 {font.family}
               </li>

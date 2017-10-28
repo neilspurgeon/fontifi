@@ -58,7 +58,7 @@ class SelectDropDown extends React.Component {
               <li
                 className={styles.option}
                 key={index}
-                onMouseDown={this.props.handleChange.bind(this, value)}>
+                onMouseDown={this.props.onChange.bind(this, value)}>
                 {value}
               </li>
             );

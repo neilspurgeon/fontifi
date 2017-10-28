@@ -43,14 +43,14 @@ class ComboSlider extends React.Component {
             max={this.props.max}
             step={this.props.step}
             value={this.props.value}
-            onChange={this.props.handleChange}
+            onChange={this.props.onChange}
           />
           <div className={styles.sliderFill} style={sliderFillWidth} />
         </div>
         <input
           ref="numberInput"
           className={styles.Input}
-          onChange={this.props.handleChange}
+          onChange={this.props.onChange}
           type="number"
           min={this.props.min}
           max={this.props.max}

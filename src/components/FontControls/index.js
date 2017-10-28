@@ -21,7 +21,7 @@ const FontControls = (props) => {
 
           <FormField labelText="Font Family" input={
             <SelectFontDropDown
-              handleChange={props.handleDropDownChange.bind(this, props.activeFontType, 'font')}
+              onChange={props.onDropDownChange.bind(this, props.activeFontType, 'font')}
               value={props.activeFontType === 'heading' ? props.heading.font : props.body.font}
               options={props.fontList}
                />
@@ -29,7 +29,7 @@ const FontControls = (props) => {
 
           <FormField labelText="Font Weight" input={
             <SelectDropDown
-              handleChange={props.handleDropDownChange.bind(this, props.activeFontType, 'fontWeight')}
+              onChange={props.onDropDownChange.bind(this, props.activeFontType, 'fontWeight')}
               value={props.activeFontType === 'heading' ? props.heading.fontWeight : props.body.fontWeight}
               options={fontWeights}
             />
@@ -37,7 +37,7 @@ const FontControls = (props) => {
 
           <FormField labelText="Font Size" input={
             <ComboSlider
-              handleChange={props.handleChange.bind(this, props.activeFontType, 'fontSize')}
+              onChange={props.onChange.bind(this, props.activeFontType, 'fontSize')}
               min="14"
               max="100"
               step="1"
@@ -49,7 +49,7 @@ const FontControls = (props) => {
 
           <FormField labelText="Letter Spacing" input={
             <ComboSlider
-              handleChange={props.handleChange.bind(this, props.activeFontType, 'letterSpacing')}
+              onChange={props.onChange.bind(this, props.activeFontType, 'letterSpacing')}
               min="-0.05"
               max=".2"
               step=".01"
@@ -61,14 +61,14 @@ const FontControls = (props) => {
           <FormField labelText="Color" input={
             <ColorPicker
               onColorPickerChange={props.onColorPickerChange}
-              onInputChange={props.handleChange.bind(this, props.activeFontType, 'color')}
+              onInputChange={props.onChange.bind(this, props.activeFontType, 'color')}
               color={props.activeFontType === 'heading' ? props.heading.color : props.body.color}
             />
           }/>
 
           <FormField labelText="Line Height" input={
             <ComboSlider
-              handleChange={props.handleChange.bind(this, props.activeFontType, 'lineHeight')}
+              onChange={props.onChange.bind(this, props.activeFontType, 'lineHeight')}
               min="1"
               max="3"
               step=".1"
