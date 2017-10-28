@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ClassNames from 'classnames';
 import styles from './style.css';
 import HeadingFont from 'components/HeadingFont';
@@ -6,7 +6,8 @@ import BodyFont from 'components/BodyFont';
 import GetFonts from 'components/GetFonts';
 import FontControls from 'components/FontControls';
 import Navigation from 'containers/navigation';
-class App extends Component {
+
+class App extends React.Component {
 
   constructor(props) {
     super(props);
@@ -59,7 +60,7 @@ class App extends Component {
           variants: ['Regular']
         }
       ],
-      controlsOpen: true,
+      editorIsOpen: true,
       activeFontType: 'heading',
       modalOpen: false
     };
@@ -73,12 +74,14 @@ class App extends Component {
         return response.json();
       })
       .then((parsedData) => {
-        this.setState({
-          fontList: parsedData,
-        });
+        this.setState({ fontList: parsedData });
         this.setFont('heading', this.state.heading.font.family, parsedData);
         this.setFont('body', this.state.body.font.family, parsedData);
       });
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyPress);
   }
 
   setFont = (fontType, family, fontList) => {
@@ -88,13 +91,7 @@ class App extends Component {
     const fontTypeObj = this.state[fontType];
     fontTypeObj['font'] = fontObj;
 
-    this.setState({
-      [fontType]: fontTypeObj
-    });
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyPress);
+    this.setState({ [fontType]: fontTypeObj });
   }
 
   handleKeyPress = (e) => {
@@ -118,7 +115,6 @@ class App extends Component {
     if (fontType === 'body' && randomFont.category === 'Display') {
       return this.getRandomFont();
     };
-    console.log(randomFont);
     return randomFont;
   }
 
@@ -149,7 +145,6 @@ class App extends Component {
   setFontValue = (fontType, propertyName, value) => {
     // fontType: 'heading' or 'body'
     const font = this.state[fontType];
-
     font[propertyName] = value;
 
     this.setState({
@@ -162,10 +157,14 @@ class App extends Component {
   }
 
   handleColorPickerChange = (rgba, hex) => {
-    const colorValue = { rgba: rgba,
-                         hex: hex };
+    const colorValue = { rgba: rgba, hex: hex };
     const fontType = this.state.activeFontType;
     this.setFontValue(fontType, 'color', colorValue);
+  }
+
+  handleChange = (property, value) => {
+    const fontType = this.state.activeFontType;
+    this.setFontValue(fontType, property, value);
   }
 
   handleDropDownChange = (fontType, propertyName, value) => {
@@ -210,7 +209,6 @@ class App extends Component {
         // set to new font weight if not available
         this.setFontValue(fontType, 'fontWeight', newFont.variants[0]);
       }
-
       this.setFontValue(fontType, propertyName, newFont);
 
     } else {
@@ -218,28 +216,14 @@ class App extends Component {
     }
   }
 
-  handleControlsOpen = () => {
-    this.setState({
-      controlsOpen: !this.state.controlsOpen
-    });
+  handleCloseEditor = () => {
+    this.setState({ editorIsOpen: false });
   }
 
-  handleFontType = (fontType) => {
+  handleSetActiveFontType = (fontType) => {
     this.setState({
       activeFontType: fontType,
-      controlsOpen: true
-    });
-  }
-
-  handleFontTypeEvent = (event) => {
-    this.setState({
-      activeFontType: event.target.value
-    });
-  }
-
-  toggleModal = () => {
-    this.setState({
-      modalOpen: !this.state.modalOpen
+      editorIsOpen: true
     });
   }
 
@@ -282,8 +266,8 @@ class App extends Component {
   }
 
   render() {
-    let contentClassnames = ClassNames(styles.content, {[styles.isOpen] : this.state.controlsOpen});
-    let controlsClassnames = ClassNames(styles.controls, {[styles.isOpen] : this.state.controlsOpen});
+    let contentClassnames = ClassNames(styles.content, {[styles.isOpen] : this.state.editorIsOpen});
+    let controlsClassnames = ClassNames(styles.controls, {[styles.isOpen] : this.state.editorIsOpen});
 
     return (
       <div>
@@ -299,7 +283,7 @@ class App extends Component {
                 letterSpacing={this.state.heading.letterSpacing}
                 color={this.state.heading.color}
                 lineHeight={this.state.heading.lineHeight}
-                onFocus={this.handleFontType.bind(this, 'heading')}
+                onFocus={this.handleSetActiveFontType.bind(this, 'heading')}
                 activeFontType={this.state.activeFontType}
               />
               <BodyFont
@@ -309,30 +293,26 @@ class App extends Component {
                 letterSpacing={this.state.body.letterSpacing}
                 color={this.state.body.color}
                 lineHeight={this.state.body.lineHeight}
-                onFocus={this.handleFontType.bind(this, 'body')}
+                onFocus={this.handleSetActiveFontType.bind(this, 'body')}
                 activeFontType={this.state.activeFontType}
               />
               <GetFonts triggerUpdateFonts={this.updateFonts} className={styles.getFonts}/>
-
             </div>
-
           </div>
 
           <div className={controlsClassnames}>
             <FontControls
-              onColorPickerChange={this.handleColorPickerChange}
-              handleDropDownChange={this.handleDropDownChange}
+              onColorPickerChange={this.handleChange}
+              onDropDownChange={this.handleDropDownChange}
               heading={this.state.heading}
               body={this.state.body}
-              handleChange={this.handleFontChange}
-              closeControls={this.handleControlsOpen}
+              onChange={this.handleFontChange}
+              closeControls={this.handleCloseEditor}
               activeFontType={this.state.activeFontType}
               onSubmit={this.saveFonts}
-              handleFontType={this.handleFontTypeEvent}
               setFontValue={this.setFontValue}
               fontList={this.state.fontList}
             />
-
           </div>
 
       </div>
