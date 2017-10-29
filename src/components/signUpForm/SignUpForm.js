@@ -9,7 +9,7 @@ class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formType: 'signup',
+      formType: this.props.type || 'signup',
       error: null,
       email: '',
       password: ''

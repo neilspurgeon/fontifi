@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './style.css';
 import ClassNames from 'classnames';
 import Auth from 'utils/authService/AuthService.js';
-import AuthModal from 'components/authModal';
 import DropDown from 'containers/dropDown';
-import Button from 'components/forms/button';
+import Modal from 'containers/modal';
+import SignUpForm from 'components/signUpForm';
 
 class Account extends React.Component {
 
@@ -53,8 +53,13 @@ class Account extends React.Component {
 
     return (
       <div>
-        <Button onClick={this.toggleAuthModal} text="Sign Up / Log In" />
-        <AuthModal modalOpen={this.state.authModalOpen} closeModal={this.toggleAuthModal}/>
+        <a onClick={this.toggleAuthModal}>Log In</a>
+        <Modal
+          isOpen={this.state.authModalOpen}
+          closeModal={this.toggleAuthModal}
+          contentLabel="Sign Up or Log In">
+          <SignUpForm successCallback={this.props.closeModal}/>
+        </Modal>
       </div>
     );
   }
