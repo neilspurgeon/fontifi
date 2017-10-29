@@ -22,6 +22,9 @@ class Account extends React.Component {
   };
 
   handleOpenAuthModal = (type) => {
+    if (this.props.navIsOpen) {
+      this.props.closeNav();
+    };
     this.setState({
       authModalOpen: true,
       formType: type

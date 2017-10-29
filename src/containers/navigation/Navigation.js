@@ -11,15 +11,19 @@ class Navigation extends React.Component {
     this.state = {
       navOpen: false
     };
-    this.toggleNav = this.toggleNav.bind(this);
   };
 
-  toggleNav() {
-    console.log('toggle nav');
+  toggleNav = () => {
     this.setState({
       navOpen: !this.state.navOpen
     });
   };
+
+  closeNav = () => {
+    this.setState({
+      navOpen: false
+    });
+  }
 
   render() {
 
@@ -71,7 +75,7 @@ class Navigation extends React.Component {
           </ul>
 
           <div className={styles.account}>
-            <Account />
+            <Account closeNav={this.closeNav} navIsOpen={this.state.navOpen} />
           </div>
 
         </nav>
