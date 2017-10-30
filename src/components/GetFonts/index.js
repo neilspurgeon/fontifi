@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './style.css';
 import Button from 'components/forms/button';
 
 function GetFonts(props) {

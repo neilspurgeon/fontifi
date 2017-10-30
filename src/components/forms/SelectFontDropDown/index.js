@@ -19,7 +19,6 @@ class SelectFontDropDown extends React.Component {
     for (let i=0; i<fontList.length; i++) {
       fontArr.push(fontList[i].family);
     }
-    console.log(fontArr);
 
     WebFont.load({
       google: {
