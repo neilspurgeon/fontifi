@@ -98,7 +98,7 @@ class App extends React.Component {
     const el = document.activeElement;
 
     if (el.tagName !== 'INPUT' && el.isContentEditable !== true && e.code === 'Space') {
-      this.updateFonts();
+      this.getNewFonts();
     }
   }
 
@@ -118,16 +118,25 @@ class App extends React.Component {
     return randomFont;
   }
 
-  updateFonts = () => {
-    const headingObj = this.state.heading;
-    headingObj['font'] = this.getRandomFont('heading');
+  getNewFonts = () => {
+    const heading = this.getRandomFont('heading');
+    const body = this.getRandomFont('body');
 
-    const bodyObj = this.state.body;
-    bodyObj['font'] = this.getRandomFont('body');
+    this.updateFont('heading', heading);
+    this.updateFont('body', body);
+  }
+
+  updateFont = (fontType, fontObj) => {
+    const fontState = this.state[fontType];
+    const hasWeight = fontObj.variants.find((el) => {
+      return el === fontState.fontWeight;
+    });
+
+    if (!hasWeight) { fontState.fontWeight = 'regular'; }
+    fontState.font = fontObj;
 
     this.setState({
-      heading: headingObj,
-      body: bodyObj
+      [fontType]: fontState
     });
   }
 
@@ -169,21 +178,8 @@ class App extends React.Component {
 
   handleDropDownChange = (fontType, propertyName, value) => {
     if (propertyName === 'font') {
-
-      // Make sure set fontweight is available
-      const newFont = value;
-      const currWeight = this.state[fontType].fontWeight;
-      const hasWeight = newFont.variants.find((el) => {
-        return el === currWeight;
-      });
-
-      if (!hasWeight) {
-        // set to new font weight if not available
-        return this.setFontValue(fontType, 'fontWeight', newFont.variants[0]);
-      }
-      return this.setFontValue(fontType, propertyName, newFont);
+      return this.updateFont(fontType, value);
     }
-
     this.setFontValue(fontType, propertyName, value);
   }
 
@@ -197,7 +193,6 @@ class App extends React.Component {
       this.setFontValue(fontType, propertyName, newValue);
 
     } else if (propertyName === 'font') {
-
       // Make sure set fontweight is available
       const currWeight = this.state[fontType].fontWeight;
       const newFont = newValue;
@@ -296,7 +291,7 @@ class App extends React.Component {
                 onFocus={this.handleSetActiveFontType.bind(this, 'body')}
                 activeFontType={this.state.activeFontType}
               />
-              <GetFonts triggerUpdateFonts={this.updateFonts} className={styles.getFonts}/>
+            <GetFonts triggerUpdateFonts={this.getNewFonts} className={styles.getFonts}/>
             </div>
           </div>
 
