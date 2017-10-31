@@ -23,6 +23,7 @@ const FontControls = (props) => {
             <SelectFontDropDown
               onChange={props.onDropDownChange.bind(this, props.activeFontType, 'font')}
               value={props.activeFontType === 'heading' ? props.heading.font : props.body.font}
+              loadedFonts={[props.heading.font.family, props.body.font.family]}
               options={props.fontList}
                />
           }/>

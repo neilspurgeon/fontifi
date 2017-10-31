@@ -17,7 +17,11 @@ class SelectFontDropDown extends React.Component {
   loadFonts = (fontList) => {
     const fontArr = [];
     for (let i=0; i<fontList.length; i++) {
-      fontArr.push(fontList[i].family);
+      // Prevents trying to load a font that was already loaded by the Font component
+      // This caused the font the flash when it was reloaded
+      if (!this.props.loadedFonts.includes(fontList[i].family)) {
+        fontArr.push(fontList[i].family);
+      }
     }
 
     WebFont.load({
