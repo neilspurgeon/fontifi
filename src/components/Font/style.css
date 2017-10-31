@@ -1,17 +1,24 @@
 @import '../../variables.css';
 
-.body {
+@keyframes loading {
+    0% { opacity: 0; },
+    100% { opacity: 1; }
+}
+
+.font {
+  opacity: 0;
   padding: 20px;
-  transition: .2s ease background-color;
   outline: none;
   border: 1px solid transparent;
   margin: 0 -20px;
+  animation: loading .7s forwards;
+  animation-delay: .5s;
+  display: inline-block;
 }
-
-.body.isActive {
+.font.isActive {
   border: var(--active-font-border);
 }
 
-.body:hover {
+.font:hover {
   background-color: var(--font-hover-background);
 }

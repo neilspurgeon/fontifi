@@ -1,11 +1,11 @@
 import React from 'react';
 import ClassNames from 'classnames';
 import styles from './style.css';
-import HeadingFont from 'components/HeadingFont';
-import BodyFont from 'components/BodyFont';
+import Font from 'components/Font';
 import GetFonts from 'components/GetFonts';
 import FontControls from 'components/FontControls';
 import Navigation from 'containers/navigation';
+import config from 'config';
 
 class App extends React.Component {
 
@@ -271,7 +271,7 @@ class App extends React.Component {
 
           <div className={contentClassnames}>
             <div className={styles.fonts}>
-              <HeadingFont
+              <Font
                 fontFamily={this.state.heading.font.family}
                 fontSize={this.state.heading.fontSize}
                 fontWeight={this.state.heading.fontWeight}
@@ -279,9 +279,10 @@ class App extends React.Component {
                 color={this.state.heading.color}
                 lineHeight={this.state.heading.lineHeight}
                 onFocus={this.handleSetActiveFontType.bind(this, 'heading')}
-                activeFontType={this.state.activeFontType}
+                isActive={this.state.activeFontType === 'heading'}
+                text={config.defaultHeadingText}
               />
-              <BodyFont
+              <Font
                 fontFamily={this.state.body.font.family}
                 fontSize={this.state.body.fontSize}
                 fontWeight={this.state.body.fontWeight}
@@ -289,7 +290,8 @@ class App extends React.Component {
                 color={this.state.body.color}
                 lineHeight={this.state.body.lineHeight}
                 onFocus={this.handleSetActiveFontType.bind(this, 'body')}
-                activeFontType={this.state.activeFontType}
+                isActive={this.state.activeFontType === 'body'}
+                text={config.defaultBodyText}
               />
             <GetFonts triggerUpdateFonts={this.getNewFonts} className={styles.getFonts}/>
             </div>
