@@ -84,7 +84,7 @@ class SignUpForm extends React.Component {
     } else if (this.state.formType === 'login') {
       return (
         <div className={styles.formContainer}>
-          <p>{this.state.error}</p>
+          <p className={styles.message}>{this.state.error || this.props.message }</p>
           <h1 className={styles.heading}>Log In</h1>
           <form onSubmit={this.login}>
             <Input
