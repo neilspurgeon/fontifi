@@ -1,0 +1,24 @@
+@import '../../variables.css';
+
+.content {
+  width: 100%;
+  padding: 0 20px;
+  margin-top: 150px;
+
+  @media screen and (min-width: 670px) {
+    padding: 0 30px;
+  }
+
+  @media screen and (min-width: 1140px) {
+    padding: 0;
+    width: calc(100% - 570px);
+    margin-left: calc(50vw - 570px);
+  }
+}
+
+/*.content  {
+  margin: 0 auto;
+  max-width: 760px;
+  flex-direction: column;
+  justify-content: center;
+}*/
