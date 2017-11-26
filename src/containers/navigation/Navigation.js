@@ -63,15 +63,6 @@ class Navigation extends React.Component {
               </NavLink>
             </li>
 
-            <li className={styles.navLi}>
-              <NavLink
-                activeStyle={{opacity: 1}}
-                className={styles.navLink}
-                to={'/about'}>
-                About
-              </NavLink>
-            </li>
-
           </ul>
 
           <div className={styles.account}>
