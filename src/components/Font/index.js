@@ -19,9 +19,13 @@ class Font extends React.Component {
         google: {
           families: [nextProps.fontFamily + ':' + nextProps.fontWeight]
         },
-        active: () => {
+
+        // use fontactive instead of active because of a bug that prevents the 2nd instance from calling
+        // https://github.com/typekit/webfontloader/issues/345
+        fontactive: () => {
           // prevents flash of unstyled text by waiting to for font to load before changing
           this.setState({ fontFamily: nextProps.fontFamily });
+          console.log('font loaded and state set');
         }
       });
     }
