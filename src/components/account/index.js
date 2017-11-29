@@ -38,12 +38,11 @@ class Account extends React.Component {
     if (auth.isAuthenticated()) {
       return (
         <div className={accountContainerStyles}>
-          <div className={styles.accountIcon} onClick={this.handleOpenAuthModal}></div>
-            <ul className={styles.accountUl}>
-                <li className={styles.accountLi}>
-                  <a className={styles.navLink} onClick={auth.logout}>Log Out</a>
-                </li>
-            </ul>
+          <ul className={styles.accountUl}>
+              <li className={styles.accountLi}>
+                <a className={styles.navLink} onClick={auth.logout}>Log Out</a>
+              </li>
+          </ul>
         </div>
       );
     }
