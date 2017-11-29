@@ -118,9 +118,9 @@ class MyCollection extends Component {
               return (
                 <div className={styles.fontPair} key={obj._id} ref={obj._id}>
                   <div className={this.state.confirmModalId === obj._id ? [styles.confirmDelete, styles.isOpen].join(' ') : styles.confirmDelete} onMouseLeave={this.closeConfirmDelete}>
-                    <p>Are you sure you want to delete this font pair?</p>
-                    <button onClick={() => {this.delete(obj._id, index);}}>Delete</button>
-                    <button onClick={this.closeConfirmDelete}>Cancel</button>
+                    <p className={styles.cofirmDeleteMsg}>Are you sure you want to delete this font pair?</p>
+                    <button className={styles.deleteBtn} onClick={() => {this.delete(obj._id, index);}}>Delete</button>
+                    <button className={styles.cancelBtn} onClick={this.closeConfirmDelete}>Cancel</button>
                   </div>
                   <div className={styles.actions}>
                     <button className={styles.delete}>
