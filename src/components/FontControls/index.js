@@ -59,14 +59,6 @@ const FontControls = (props) => {
             />
           }/>
 
-          <FormField labelText="Color" input={
-            <ColorPicker
-              onColorPickerChange={props.onColorPickerChange}
-              onInputChange={props.onChange.bind(this, props.activeFontType, 'color')}
-              color={props.activeFontType === 'heading' ? props.heading.color : props.body.color}
-            />
-          }/>
-
           <FormField labelText="Line Height" input={
             <ComboSlider
               onChange={props.onChange.bind(this, props.activeFontType, 'lineHeight')}
@@ -75,6 +67,14 @@ const FontControls = (props) => {
               step=".1"
               value={props.activeFontType === 'heading' ? props.heading.lineHeight : props.body.lineHeight}
               setFontValue={props.setFontValue.bind(this, props.activeFontType, 'lineHeight')}
+            />
+          }/>
+
+          <FormField labelText="Color" input={
+            <ColorPicker
+              onColorPickerChange={props.onColorPickerChange}
+              onInputChange={props.onChange.bind(this, props.activeFontType, 'color')}
+              color={props.activeFontType === 'heading' ? props.heading.color : props.body.color}
             />
           }/>
 
