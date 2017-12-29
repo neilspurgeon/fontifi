@@ -47,7 +47,8 @@ class Font extends React.Component {
     };
 
     return (
-      <div>
+      <div className={styles.fontContainer}>
+          <input type="checkbox" className={styles.lock} onClick={this.props.onLockToggle} />
           <span onFocus={this.props.onFocus} contentEditable={true} suppressContentEditableWarning={true} spellCheck={false} className={classes} style={fontStyle}>{text}</span>
       </div>
     );

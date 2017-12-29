@@ -60,6 +60,8 @@ class App extends React.Component {
           variants: ['Regular']
         }
       ],
+      headingIsLocked: false,
+      bodyIsLocked: false,
       editorIsOpen: true,
       activeFontType: 'heading',
       modalOpen: false
@@ -119,11 +121,17 @@ class App extends React.Component {
   }
 
   getNewFonts = () => {
-    const heading = this.getRandomFont('heading');
-    const body = this.getRandomFont('body');
 
-    this.updateFont('heading', heading);
-    this.updateFont('body', body);
+    if (!this.state.headingIsLocked) {
+      const heading = this.getRandomFont('heading');
+      this.updateFont('heading', heading);
+    }
+
+    if (!this.state.bodyIsLocked) {
+      const body = this.getRandomFont('body');
+      this.updateFont('body', body);
+    }
+
   }
 
   updateFont = (fontType, fontObj) => {
@@ -211,6 +219,14 @@ class App extends React.Component {
     }
   }
 
+  handleLockToggle = (fontType) => {
+    const property = fontType + 'IsLocked';
+
+    this.setState({
+      [property]: !this.state[property]
+    });
+  }
+
   handleCloseEditor = () => {
     this.setState({ editorIsOpen: false });
   }
@@ -281,6 +297,7 @@ class App extends React.Component {
                 onFocus={this.handleSetActiveFontType.bind(this, 'heading')}
                 isActive={this.state.activeFontType === 'heading'}
                 text={config.defaultHeadingText}
+                onLockToggle={this.handleLockToggle.bind(this, 'heading')}
               />
               <Font
                 fontFamily={this.state.body.font.family}
@@ -292,6 +309,7 @@ class App extends React.Component {
                 onFocus={this.handleSetActiveFontType.bind(this, 'body')}
                 isActive={this.state.activeFontType === 'body'}
                 text={config.defaultBodyText}
+                onLockToggle={this.handleLockToggle.bind(this, 'body')}
               />
             <GetFonts triggerUpdateFonts={this.getNewFonts} className={styles.getFonts}/>
             </div>

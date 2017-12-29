@@ -22,3 +22,13 @@
 .font:hover {
   background-color: var(--font-hover-background);
 }
+
+.fontContainer {
+  position: relative;
+}
+
+.lock {
+  position: absolute;
+  top: 45%;
+  left: -50px;
+}
