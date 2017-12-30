@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './style.css';
 import ClassNames from 'classnames';
 import WebFont from 'webfontloader';
+import Lock from 'components/forms/lock';
 
 class Font extends React.Component {
 
@@ -48,7 +49,7 @@ class Font extends React.Component {
 
     return (
       <div className={styles.fontContainer}>
-          <input type="checkbox" className={styles.lock} onClick={this.props.onLockToggle} />
+          <Lock className={styles.lock} handleClick={this.props.onLockToggle} />
           <span onFocus={this.props.onFocus} contentEditable={true} suppressContentEditableWarning={true} spellCheck={false} className={classes} style={fontStyle}>{text}</span>
       </div>
     );

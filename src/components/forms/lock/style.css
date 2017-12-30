@@ -1,0 +1,26 @@
+.container {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.lock {
+  overflow: visible;
+  transition: .2s ease transform, .2s ease opacity;
+  opacity: .1;
+}
+
+.lock:hover {
+  transform: scale(1.1);
+}
+
+.isLocked {
+  opacity: .2;
+}
+
+.lockTop {
+  transition: .2s ease transform;
+}
+
+.isLocked .lockTop {
+  transform: translateY(22%);
+}
