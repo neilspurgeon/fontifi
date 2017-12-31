@@ -48,18 +48,8 @@ class App extends React.Component {
             a: 1
           },
           hex: '#333'
-        },
-      },
-      fontList: [
-        // Default fonts to prevent undefined state
-        {
-          family: 'Poppins',
-          variants: ['Regular']
-        }, {
-          family: 'Open Sans',
-          variants: ['Regular']
         }
-      ],
+      },
       headingIsLocked: false,
       bodyIsLocked: false,
       editorIsOpen: true,

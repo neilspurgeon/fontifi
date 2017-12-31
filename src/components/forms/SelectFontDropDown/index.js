@@ -82,7 +82,7 @@ class SelectFontDropDown extends React.Component {
         <ul
           className={optionsWrapperClasses}
           onClick={this.closeDropDown}>
-          {this.props.options.map((font, index) => {
+          {this.props.options && this.props.options.map((font, index) => {
             let style = {
               fontFamily: font.family + ', Poppins'
             };
