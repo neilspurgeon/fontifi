@@ -10,10 +10,13 @@
   padding: 20px;
   outline: none;
   border: 1px solid transparent;
-  margin: 0 -20px;
   animation: loading .7s forwards;
   animation-delay: .5s;
   display: inline-block;
+  margin-right: -20px;
+  margin-left: 20px;
+  width: calc(100% - 20px);
+
 }
 .font.isActive {
   border: var(--active-font-border);
@@ -24,11 +27,16 @@
 }
 
 .fontContainer {
-  position: relative;
+  /* position: relative; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media screen and (min-width: 1440px) {
+    margin-left: -60px;
+  }
 }
 
 .lock {
-  position: absolute;
-  top: 45%;
-  left: -75px;
+  align-self: center;
 }
